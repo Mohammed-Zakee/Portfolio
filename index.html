@@ -1,546 +1,631 @@
 <!DOCTYPE html>
 <html lang="en">
-<div class="slideshow-container">
-    <div class="slide active"></div>
-    <div class="slide"></div>
-    <div class="slide"></div>
-</div>
-<div class="hero-overlay"></div>
-<div class="cyber-grid"></div>
-<div class="hero-content">
-    <div class="profile-image-container">
-        <div class="profile-image">
-            <img src="profile-new.png" alt="Mohammed Zakee Profile Picture" id="profileImg">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio of Mohammed Zakee - Data Science undergraduate at SLIIT Malabe, showcasing skills in programming, project leadership, and community involvement.">
+    <meta name="keywords"
+        content="Mohammed Zakee, Data Science, SLIIT, Portfolio, Sri Lanka, Software Engineer, Web Developer, Java, Python">
+    <meta name="author" content="Mohammed Zakee">
+    <meta name="google-site-verification" content="z9kMAPDOLjrr4U2HVqDKhA8A_r0DSYnrWih1ptcKDko" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mohammed-zakee.github.io/Portfolio/">
+    <meta property="og:title" content="Mohammed Zakee | Data Science Portfolio">
+    <meta property="og:description"
+        content="Portfolio of Mohammed Zakee - Data Science undergraduate at SLIIT Malabe. Explore my projects, skills, and journey.">
+    <meta property="og:image" content="https://mohammed-zakee.github.io/Portfolio/profile-new.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mohammed-zakee.github.io/Portfolio/">
+    <meta property="twitter:title" content="Mohammed Zakee | Data Science Portfolio">
+    <meta property="twitter:description"
+        content="Portfolio of Mohammed Zakee - Data Science undergraduate at SLIIT Malabe. Explore my projects, skills, and journey.">
+    <meta property="twitter:image" content="https://mohammed-zakee.github.io/Portfolio/profile-new.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mohammed Zakee",
+      "url": "https://mohammed-zakee.github.io/Portfolio/",
+      "image": "https://mohammed-zakee.github.io/Portfolio/profile-new.png",
+      "sameAs": [
+        "https://www.linkedin.com/in/mohammed-zakee/",
+        "https://github.com/Mohammed-Zakee",
+        "https://www.instagram.com/its.zakee/"
+      ],
+      "jobTitle": "Data Science Undergraduate",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "SLIIT"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Sri Lanka Institute of Information Technology"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "Sri Lanka"
+      }
+    }
+    </script>
+
+    <title>Mohammed Zakee | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+</head>
+
+<body>
+    <!-- Hero Section with Slideshow -->
+    <section id="hero" class="hero-section">
+        <div class="slideshow-container">
+            <div class="slide active"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
         </div>
-    </div>
-    <h1 class="hero-title">
-        <span class="greeting">Hello, I'm</span>
-        <span class="name" id="nameText">Mohammed Zakee</span>
-    </h1>
-    <p class="hero-subtitle typing-text" id="typingText"></p>
-    <a href="CV_Mohammed_Zakee.pdf" download class="cv-download-btn">
-        <i class="fas fa-download"></i> Download CV
-    </a>
-    <div class="scroll-indicator">
-        <i class="fas fa-chevron-down"></i>
-    </div>
-</div>
-</section>
-
-<!-- About Section -->
-<section id="about" class="section about-section">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">
-            <span class="title-icon">▸</span> About Me
-        </h2>
-        <div class="about-content" data-aos="fade-up" data-aos-delay="100">
-            <div class="about-text">
-            </div>
-</section>
-
-<!-- Education Section -->
-<section id="education" class="section education-section">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">
-            <span class="title-icon">▸</span> Education
-        </h2>
-        <div class="education-content">
-            <div class="education-main" data-aos="fade-up" data-aos-delay="100">
-                <div class="edu-icon">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <div class="edu-details">
-                    <h3>SLIIT - Sri Lanka Institute of Information Technology</h3>
-                    <p class="degree">BSc (Hons) in Information Technology specializing in Data Science</p>
-                    <p class="status">Currently Pursuing</p>
+        <div class="hero-overlay"></div>
+        <div class="cyber-grid"></div>
+        <div class="hero-content">
+            <div class="profile-image-container">
+                <div class="profile-image">
+                    <img src="profile-new.png" alt="Mohammed Zakee Profile Picture" id="profileImg">
                 </div>
             </div>
+            <h1 class="hero-title">
+                <span class="greeting">Hello, I'm</span>
+                <span class="name" id="nameText">Mohammed Zakee</span>
+            </h1>
+            <p class="hero-subtitle typing-text" id="typingText"></p>
+            <a href="CV_Mohammed_Zakee.pdf" download class="cv-download-btn">
+                <i class="fas fa-download"></i> Download CV
+            </a>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
 
-            <div class="education-secondary" data-aos="fade-up" data-aos-delay="200">
-                <div class="school-card">
-                    <h4>Sri Lankan International School Jeddah</h4>
-                    <div class="qualifications">
-                        <div class="qual-item">
-                            <strong>A Levels</strong>
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-icon">▸</span> About Me
+            </h2>
+            <div class="about-content" data-aos="fade-up" data-aos-delay="100">
+                <div class="about-text">
+                    <p class="intro-text">
+                        I'm an undergraduate student at <span class="highlight">SLIIT Malabe, Sri Lanka</span>,
+                        pursuing a degree in <span class="highlight">Data Science</span>. I'm passionate about
+                        leveraging technology and data to solve real-world problems and creating meaningful impact
+                        through innovation.
+                    </p>
+                    <p class="description-text">
+                        With a strong foundation in programming, project leadership, and analytics, I'm constantly
+                        exploring cutting-edge technologies. My journey combines academic excellence with hands-on
+                        experience in fintech and active community involvement across multiple organizations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section education-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-icon">▸</span> Education
+            </h2>
+            <div class="education-content">
+                <div class="education-main" data-aos="fade-up" data-aos-delay="100">
+                    <div class="edu-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="edu-details">
+                        <h3>SLIIT - Sri Lanka Institute of Information Technology</h3>
+                        <p class="degree">BSc (Hons) in Information Technology specializing in Data Science</p>
+                        <p class="status">Currently Pursuing</p>
+                    </div>
+                </div>
+
+                <div class="education-secondary" data-aos="fade-up" data-aos-delay="200">
+                    <div class="school-card">
+                        <h4>Sri Lankan International School Jeddah</h4>
+                        <div class="qualifications">
+                            <div class="qual-item">
+                                <strong>A Levels</strong>
+                                <ul>
+                                    <li>Chemistry</li>
+                                    <li>Physics</li>
+                                    <li>Mathematics</li>
+                                </ul>
+                            </div>
+                            <div class="qual-item">
+                                <strong>IGCSEs</strong>
+                                <ul>
+                                    <li>English</li>
+                                    <li>Mathematics</li>
+                                    <li>Chemistry</li>
+                                    <li>Biology</li>
+                                    <li>Accounting</li>
+                                    <li>Economics</li>
+                                    <li>Business Studies</li>
+                                    <li>Information Technology</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="courses-section" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="courses-title">Courses & Certifications</h3>
+                    <div class="courses-grid">
+                        <div class="course-group">
+                            <h4>University of Moratuwa</h4>
                             <ul>
-                                <li>Chemistry</li>
-                                <li>Physics</li>
-                                <li>Mathematics</li>
+                                <li>Python for Beginners</li>
+                                <li>Front-End Developing</li>
+                                <li>Back-End Developing</li>
                             </ul>
                         </div>
-                        <div class="qual-item">
-                            <strong>IGCSEs</strong>
+                        <div class="course-group">
+                            <h4>Alison</h4>
                             <ul>
-                                <li>English</li>
-                                <li>Mathematics</li>
-                                <li>Chemistry</li>
-                                <li>Biology</li>
-                                <li>Accounting</li>
-                                <li>Economics</li>
-                                <li>Business Studies</li>
-                                <li>Information Technology</li>
+                                <li>Microsoft Office Revised</li>
+                                <li>Graphic Designing</li>
+                            </ul>
+                        </div>
+                        <div class="course-group">
+                            <h4>HP LIFE</h4>
+                            <ul>
+                                <li>Data Science and Analytics</li>
+                                <li>Business Emails</li>
+                            </ul>
+                        </div>
+                        <div class="course-group">
+                            <h4>British Council</h4>
+                            <ul>
+                                <li>Child Protection Awareness</li>
+                                <li>Introduction to Exams Invigilation</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="courses-section" data-aos="fade-up" data-aos-delay="300">
-                <h3 class="courses-title">Courses & Certifications</h3>
-                <div class="courses-grid">
-                    <div class="course-group">
-                        <h4>University of Moratuwa</h4>
-                        <ul>
-                            <li>Python for Beginners</li>
-                            <li>Front-End Developing</li>
-                            <li>Back-End Developing</li>
-                        </ul>
-                    </div>
-                    <div class="course-group">
-                        <h4>Alison</h4>
-                        <ul>
-                            <li>Microsoft Office Revised</li>
-                            <li>Graphic Designing</li>
-                        </ul>
-                    </div>
-                    <div class="course-group">
-                        <h4>HP LIFE</h4>
-                        <ul>
-                            <li>Data Science and Analytics</li>
-                            <li>Business Emails</li>
-                        </ul>
-                    </div>
-                    <div class="course-group">
-                        <h4>British Council</h4>
-                        <ul>
-                            <li>Child Protection Awareness</li>
-                            <li>Introduction to Exams Invigilation</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Experience Section -->
-<section id="experience" class="section experience-section">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">
-            <span class="title-icon">▸</span> Experience & Leadership
-        </h2>
-        <div class="experience-grid">
-            <div class="experience-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="card-icon">
-                    <i class="fas fa-rocket"></i>
-                </div>
-                <h3>Project Lead</h3>
-                <p class="company">Singapore Fintech Festival 2025</p>
-                <p class="location">Representing Sri Lanka</p>
-                <p class="description">Led Sri Lankan representation at one of Asia's premier fintech events,
-                    coordinating cross-functional teams and showcasing innovative solutions.</p>
-            </div>
-
-            <div class="experience-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="card-icon">
-                    <i class="fas fa-handshake"></i>
-                </div>
-                <h3>Partnership Executive</h3>
-                <p class="company">Fintech Digital Private Limited</p>
-                <p class="description">Building strategic partnerships and driving business growth in the fintech
-                    sector, connecting stakeholders and creating value.</p>
-            </div>
-
-            <div class="experience-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="card-icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-                <h3>Invigilator</h3>
-                <p class="company">British Council</p>
-                <p class="location">From March 2025</p>
-                <p class="description">Ensuring examination integrity and maintaining professional standards during
-                    British Council examinations.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Volunteering Section -->
-<section id="volunteering" class="section volunteering-section">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">
-            <span class="title-icon">▸</span> Community Involvement
-        </h2>
-        <div class="volunteer-grid">
-            <div class="volunteer-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="card-header">
+    <!-- Experience Section -->
+    <section id="experience" class="section experience-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-icon">▸</span> Experience & Leadership
+            </h2>
+            <div class="experience-grid">
+                <div class="experience-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="card-icon">
-                        <i class="fas fa-globe"></i>
+                        <i class="fas fa-rocket"></i>
                     </div>
-                    <h3>AIESEC in SLIIT</h3>
+                    <h3>Project Lead</h3>
+                    <p class="company">Singapore Fintech Festival 2025</p>
+                    <p class="location">Representing Sri Lanka</p>
+                    <p class="description">Led Sri Lankan representation at one of Asia's premier fintech events,
+                        coordinating cross-functional teams and showcasing innovative solutions.</p>
                 </div>
-                <div class="role-badge">Incoming Global Talent Team Member</div>
-                <p class="description">Contributing to global talent exchange programs and youth leadership
-                    development initiatives.</p>
-            </div>
 
-            <div class="volunteer-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-microchip"></i>
-                    </div>
-                    <h3>IEEE of SLIIT</h3>
-                </div>
-                <div class="role-list">
-                    <div class="role-item">
-                        <i class="fas fa-code"></i>
-                        <span>Program Co-Lead - CellSpell</span>
-                    </div>
-                    <div class="role-item">
-                        <i class="fas fa-coins"></i>
-                        <span>Finance Team Member - RoboMesh</span>
-                    </div>
-                    <div class="role-item">
-                        <i class="fas fa-truck"></i>
-                        <span>Logistics Team Lead - LeadSpring 2025</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="volunteer-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div>
-                        <h3>FCSC of SLIIT</h3>
-                        <p class="org-subtitle">Faculty of Computing Student Community</p>
-                    </div>
-                </div>
-                <div class="role-list">
-                    <div class="role-item">
-                        <i class="fas fa-film"></i>
-                        <span>Crew - Wiramaya 2025</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="volunteer-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="card-header">
+                <div class="experience-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="card-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
-                    <div>
-                        <h3>SIS</h3>
-                        <p class="org-subtitle">Student Interactive Society</p>
+                    <h3>Partnership Executive</h3>
+                    <p class="company">Fintech Digital Private Limited</p>
+                    <p class="description">Building strategic partnerships and driving business growth in the fintech
+                        sector, connecting stakeholders and creating value.</p>
+                </div>
+
+                <div class="experience-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Invigilator</h3>
+                    <p class="company">British Council</p>
+                    <p class="location">From March 2025</p>
+                    <p class="description">Ensuring examination integrity and maintaining professional standards during
+                        British Council examinations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteering Section -->
+    <section id="volunteering" class="section volunteering-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-icon">▸</span> Community Involvement
+            </h2>
+            <div class="volunteer-grid">
+                <div class="volunteer-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>AIESEC in SLIIT</h3>
+                    </div>
+                    <div class="role-badge">Incoming Global Talent Team Member</div>
+                    <p class="description">Contributing to global talent exchange programs and youth leadership
+                        development initiatives.</p>
+                </div>
+
+                <div class="volunteer-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3>IEEE of SLIIT</h3>
+                    </div>
+                    <div class="role-list">
+                        <div class="role-item">
+                            <i class="fas fa-code"></i>
+                            <span>Program Co-Lead - CellSpell</span>
+                        </div>
+                        <div class="role-item">
+                            <i class="fas fa-coins"></i>
+                            <span>Finance Team Member - RoboMesh</span>
+                        </div>
+                        <div class="role-item">
+                            <i class="fas fa-truck"></i>
+                            <span>Logistics Team Lead - LeadSpring 2025</span>
+                        </div>
                     </div>
                 </div>
-                <div class="role-list">
-                    <div class="role-item">
-                        <i class="fas fa-star"></i>
-                        <span>Official - ODYSSEY 2025</span>
+
+                <div class="volunteer-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h3>FCSC of SLIIT</h3>
+                            <p class="org-subtitle">Faculty of Computing Student Community</p>
+                        </div>
+                    </div>
+                    <div class="role-list">
+                        <div class="role-item">
+                            <i class="fas fa-film"></i>
+                            <span>Crew - Wiramaya 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="volunteer-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div>
+                            <h3>SIS</h3>
+                            <p class="org-subtitle">Student Interactive Society</p>
+                        </div>
+                    </div>
+                    <div class="role-list">
+                        <div class="role-item">
+                            <i class="fas fa-star"></i>
+                            <span>Official - ODYSSEY 2025</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Skills Section -->
-<section id="skills" class="section skills-section">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">
-            <span class="title-icon">▸</span> Technical Skills
-        </h2>
-        <div class="skills-content">
-            <div class="skills-grid" data-aos="fade-up" data-aos-delay="100">
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">
-                            <i class="fab fa-html5"></i> HTML
-                        </span>
-                        <span class="skill-percentage">95%</span>
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-icon">▸</span> Technical Skills
+            </h2>
+            <div class="skills-content">
+                <div class="skills-grid" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fab fa-html5"></i> HTML
+                            </span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="95"></div>
+                        </div>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="95"></div>
-                    </div>
-                </div>
 
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">
-                            <i class="fab fa-css3-alt"></i> CSS
-                        </span>
-                        <span class="skill-percentage">90%</span>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fab fa-css3-alt"></i> CSS
+                            </span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="90"></div>
+                        </div>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="90"></div>
-                    </div>
-                </div>
 
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">
-                            <i class="fab fa-java"></i> Java
-                        </span>
-                        <span class="skill-percentage">85%</span>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fab fa-java"></i> Java
+                            </span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="85"></div>
+                        </div>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="85"></div>
-                    </div>
-                </div>
 
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">
-                            <i class="fab fa-python"></i> Python
-                        </span>
-                        <span class="skill-percentage">90%</span>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fab fa-python"></i> Python
+                            </span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="90"></div>
+                        </div>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="90"></div>
-                    </div>
-                </div>
 
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">
-                            <i class="fas fa-code"></i> C++
-                        </span>
-                        <span class="skill-percentage">80%</span>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fas fa-code"></i> C++
+                            </span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="80"></div>
+                        </div>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="80"></div>
-                    </div>
-                </div>
 
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">
-                            <i class="fas fa-database"></i> SQL
-                        </span>
-                        <span class="skill-percentage">85%</span>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fas fa-database"></i> SQL
+                            </span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="85"></div>
+                        </div>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="85"></div>
-                    </div>
-                </div>
 
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">
-                            <i class="fas fa-cog"></i> Rust
-                        </span>
-                        <span class="skill-percentage">40%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="40"></div>
-                    </div>
-                    <span class="learning-badge">Currently Learning</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Languages Section -->
-<section id="languages" class="section languages-section">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">
-            <span class="title-icon">▸</span> Language Fluency
-        </h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
-            Multilingual communication across diverse cultures
-        </p>
-        <div class="languages-grid" data-aos="fade-up" data-aos-delay="200">
-            <div class="language-card">
-                <div class="language-icon">E</div>
-                <h3>English</h3>
-                <p>Speak • Read • Write</p>
-            </div>
-            <div class="language-card">
-                <div class="language-icon">සි</div>
-                <h3>Sinhala</h3>
-                <p>Speak • Read • Write</p>
-            </div>
-            <div class="language-card">
-                <div class="language-icon">த</div>
-                <h3>Tamil</h3>
-                <p>Speak Only</p>
-            </div>
-            <div class="language-card">
-                <div class="language-icon">ع</div>
-                <h3>Arabic</h3>
-                <p>Speak • Read • Write</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Projects Section -->
-<section id="projects" class="section projects-section">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">
-            <span class="title-icon">▸</span> Projects
-        </h2>
-        <div class="projects-grid">
-            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="project-header">
-                    <div class="project-icon">
-                        <i class="fas fa-car"></i>
-                    </div>
-                    <h3>Project Phoenix</h3>
-                </div>
-                <div class="project-tech">
-                    <span class="tech-badge">HTML</span>
-                    <span class="tech-badge">CSS</span>
-                    <span class="tech-badge">Servlets</span>
-                    <span class="tech-badge">Stack</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/Mohammed-Zakee/Project-Phoenix" target="_blank" class="project-link">
-                        <i class="fab fa-github"></i> View Code
-                    </a>
-                </div>
-                <p class="project-description">
-                    A comprehensive car rental system that allows users to rent vehicles with ease.
-                    Features include user authentication, car reservation with cash or card payment options,
-                    and admin capabilities to manage the vehicle inventory. Implemented using servlets for
-                    backend logic and stack data structure for efficient data management.
-                </p>
-                <div class="project-features">
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>User Login & Authentication</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>Car Reservation System</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>Admin Dashboard</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>Payment Integration</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="project-header">
-                    <div class="project-icon">
-                        <i class="fas fa-hotel"></i>
-                    </div>
-                    <h3>Golden Palm Grand Hotel</h3>
-                </div>
-                <div class="project-tech">
-                    <span class="tech-badge">HTML</span>
-                    <span class="tech-badge">CSS</span>
-                    <span class="tech-badge">React</span>
-                    <span class="tech-badge">SQL</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/Mohammed-Zakee/Golden-Palm-Hotel-Reservation-System" target="_blank"
-                        class="project-link">
-                        <i class="fab fa-github"></i> View Code
-                    </a>
-                </div>
-                <p class="project-description">
-                    A sophisticated hotel reservation system designed for wedding events. Couples can book
-                    hotel accommodations based on their preferences and send RSVP forms to guests. The admin
-                    panel allows for comprehensive management of bookings and guest details. Built with React
-                    for a dynamic frontend and SQL database for robust data storage.
-                </p>
-                <div class="project-features">
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>Wedding Booking System</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>RSVP Management</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>Preference-based Booking</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-check"></i>
-                        <span>SQL Database Integration</span>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">
+                                <i class="fas fa-cog"></i> Rust
+                            </span>
+                            <span class="skill-percentage">40%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-progress="40"></div>
+                        </div>
+                        <span class="learning-badge">Currently Learning</span>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Contact Section -->
-<section id="contact" class="section contact-section">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">
-            <span class="title-icon">▸</span> Let's Connect
-        </h2>
-        <p class="contact-subtitle" data-aos="fade-up" data-aos-delay="100">
-            Feel free to reach out for collaborations or just a friendly chat
-        </p>
+    <!-- Languages Section -->
+    <section id="languages" class="section languages-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-icon">▸</span> Language Fluency
+            </h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Multilingual communication across diverse cultures
+            </p>
+            <div class="languages-grid" data-aos="fade-up" data-aos-delay="200">
+                <div class="language-card">
+                    <div class="language-icon">E</div>
+                    <h3>English</h3>
+                    <p>Speak • Read • Write</p>
+                </div>
+                <div class="language-card">
+                    <div class="language-icon">සි</div>
+                    <h3>Sinhala</h3>
+                    <p>Speak • Read • Write</p>
+                </div>
+                <div class="language-card">
+                    <div class="language-icon">த</div>
+                    <h3>Tamil</h3>
+                    <p>Speak Only</p>
+                </div>
+                <div class="language-card">
+                    <div class="language-icon">ع</div>
+                    <h3>Arabic</h3>
+                    <p>Speak • Read • Write</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Contact Form -->
-        <div class="contact-form-container" data-aos="fade-up" data-aos-delay="150">
-            <form id="contactForm" class="contact-form" action="https://formspree.io/f/xldzqpvv" method="POST">
-                <div class="form-row">
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-icon">▸</span> Projects
+            </h2>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3>Project Phoenix</h3>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">HTML</span>
+                        <span class="tech-badge">CSS</span>
+                        <span class="tech-badge">Servlets</span>
+                        <span class="tech-badge">Stack</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Mohammed-Zakee/Project-Phoenix" target="_blank"
+                            class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                    <p class="project-description">
+                        A comprehensive car rental system that allows users to rent vehicles with ease.
+                        Features include user authentication, car reservation with cash or card payment options,
+                        and admin capabilities to manage the vehicle inventory. Implemented using servlets for
+                        backend logic and stack data structure for efficient data management.
+                    </p>
+                    <div class="project-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>User Login & Authentication</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Car Reservation System</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Admin Dashboard</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Payment Integration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-hotel"></i>
+                        </div>
+                        <h3>Golden Palm Grand Hotel</h3>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">HTML</span>
+                        <span class="tech-badge">CSS</span>
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">SQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Mohammed-Zakee/Golden-Palm-Hotel-Reservation-System" target="_blank"
+                            class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                    <p class="project-description">
+                        A sophisticated hotel reservation system designed for wedding events. Couples can book
+                        hotel accommodations based on their preferences and send RSVP forms to guests. The admin
+                        panel allows for comprehensive management of bookings and guest details. Built with React
+                        for a dynamic frontend and SQL database for robust data storage.
+                    </p>
+                    <div class="project-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Wedding Booking System</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>RSVP Management</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Preference-based Booking</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>SQL Database Integration</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-icon">▸</span> Let's Connect
+            </h2>
+            <p class="contact-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Feel free to reach out for collaborations or just a friendly chat
+            </p>
+
+            <!-- Contact Form -->
+            <div class="contact-form-container" data-aos="fade-up" data-aos-delay="150">
+                <form id="contactForm" class="contact-form" action="https://formspree.io/f/xldzqpvv" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                    </div>
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="text" name="_subject" placeholder="Subject" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
                     </div>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="_subject" placeholder="Subject" required>
-                </div>
-                <div class="form-group">
-                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-paper-plane"></i> Send Message
-                </button>
-            </form>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+
+            <div class="social-icons" data-aos="fade-up" data-aos-delay="200">
+                <a href="mailto:mohammedzakee2006@gmail.com" class="social-icon" title="Email">
+                    <i class="fas fa-envelope"></i>
+                    <span class="icon-label">Email</span>
+                </a>
+                <a href="https://www.linkedin.com/in/mohammed-zakee/" target="_blank" class="social-icon"
+                    title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span class="icon-label">LinkedIn</span>
+                </a>
+                <a href="https://github.com/Mohammed-Zakee" target="_blank" class="social-icon" title="GitHub">
+                    <i class="fab fa-github"></i>
+                    <span class="icon-label">GitHub</span>
+                </a>
+                <a href="https://www.instagram.com/its.zakee/" target="_blank" class="social-icon" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span class="icon-label">Instagram</span>
+                </a>
+                <a href="tel:+94706103115" class="social-icon" title="Phone">
+                    <i class="fas fa-phone"></i>
+                    <span class="icon-label">Phone</span>
+                </a>
+            </div>
         </div>
+    </section>
 
-        <div class="social-icons" data-aos="fade-up" data-aos-delay="200">
-            <a href="mailto:mohammedzakee2006@gmail.com" class="social-icon" title="Email">
-                <i class="fas fa-envelope"></i>
-                <span class="icon-label">Email</span>
-            </a>
-            <a href="https://www.linkedin.com/in/mohammed-zakee/" target="_blank" class="social-icon" title="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-                <span class="icon-label">LinkedIn</span>
-            </a>
-            <a href="https://github.com/Mohammed-Zakee" target="_blank" class="social-icon" title="GitHub">
-                <i class="fab fa-github"></i>
-                <span class="icon-label">GitHub</span>
-            </a>
-            <a href="https://www.instagram.com/its.zakee/" target="_blank" class="social-icon" title="Instagram">
-                <i class="fab fa-instagram"></i>
-                <span class="icon-label">Instagram</span>
-            </a>
-            <a href="tel:+94706103115" class="social-icon" title="Phone">
-                <i class="fas fa-phone"></i>
-                <span class="icon-label">Phone</span>
-            </a>
-        </div>
-    </div>
-</section>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Mohammed Zakee. Designed with <i class="fas fa-heart"></i> and innovation.</p>
+    </footer>
 
-<!-- Footer -->
-<footer class="footer">
-    <p>&copy; 2025 Mohammed Zakee. Designed with <i class="fas fa-heart"></i> and innovation.</p>
-</footer>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
