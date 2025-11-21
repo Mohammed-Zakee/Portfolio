@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mohammed-zakee.github.io/Portfolio/sitemap.xml
