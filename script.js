@@ -15,13 +15,13 @@ setInterval(changeSlide, 4000);
 // ===== TYPING EFFECT =====
 const typingText = document.getElementById('typingText');
 const phrases = [
-    'Data Science Undergraduate',
-    'Project Lead - Singapore Fintech Festival',
-    'Partnership Executive',
-    'British Council Invigilator',
-    'AIESEC Global Talent Team Member',
+    'AI Undergraduate @ SLIIT',
+    'Strategic Partnership Executive',
+    'Project Lead @ FASL',
+    'British Council Exam Invigilator',
     'IEEE Volunteer Leader',
-    'Tech Enthusiast',
+    'United Nations Volunteer',
+    'AI & Tech Enthusiast',
     'Multilingual Communicator'
 ];
 
