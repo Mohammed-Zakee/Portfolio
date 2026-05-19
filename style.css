@@ -731,16 +731,23 @@ button, input, textarea {
 }
 
 .lang-chip {
+    display: inline-flex;
+    align-items: center;
     padding: 8px 16px;
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     font-size: 0.88rem;
     font-weight: 500;
+    gap: 8px;
 }
 
-.lang-chip .flag {
-    margin-right: 4px;
+.flag-icon {
+    width: 20px;
+    height: 14px;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .location-text {
