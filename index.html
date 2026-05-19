@@ -61,6 +61,26 @@
 </head>
 
 <body>
+    <!-- Premium Cinematic Preloader Overlay -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-terminal">
+                <div class="terminal-line">// SYNCING PORTFOLIO NODE...</div>
+                <div class="terminal-line" id="loaderStatus">◆ SYSTEM STATUS: SHIELDING</div>
+                <div class="terminal-line">◆ CORE LAYOUT: SWISS ARCHITECTURAL GRID</div>
+            </div>
+            <div class="loader-counter">
+                <span id="loaderNumber">00</span><span class="pct-sign">%</span>
+            </div>
+            <div class="loader-bar-wrap">
+                <div class="loader-bar" id="loaderBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Neural Network Canvas Backdrop -->
+    <canvas id="neuralCanvas" class="neural-canvas"></canvas>
+
     <!-- Premium Interactive Magnetic/Custom Cursor -->
     <div class="cursor-dot" id="cursorDot"></div>
     <div class="cursor-ring" id="cursorRing"></div>
@@ -749,6 +769,28 @@
             </div>
         </div>
     </footer>
+
+    <!-- Zakee-Bot On-Page AI Terminal Assistant -->
+    <div id="zakeeBot" class="zakeebot-widget">
+        <button id="botToggle" class="bot-toggle-btn" aria-label="Toggle AI Assistant">
+            <span class="bot-pulse"></span>
+            <i class="fa-solid fa-terminal"></i>
+            <span class="bot-toggle-text">Zakee-Bot</span>
+        </button>
+        <div id="botConsole" class="bot-console">
+            <div class="console-header">
+                <div class="console-title"><i class="fa-solid fa-terminal"></i> ZAKEE-BOT v1.2</div>
+                <button id="consoleClose" class="console-close-btn">&times;</button>
+            </div>
+            <div id="consoleBody" class="console-body">
+                <div class="console-msg system">◆ AI NODE ONLINE. Ask me anything about Zakee's skills, qualifications, certifications, or hobbies. Type 'help' to see suggestions.</div>
+            </div>
+            <form id="consoleForm" class="console-input-row">
+                <span class="console-prompt">&gt;</span>
+                <input type="text" id="consoleInput" placeholder="Ask a question..." autocomplete="off">
+            </form>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
