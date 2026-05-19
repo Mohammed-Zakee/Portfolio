@@ -2070,3 +2070,60 @@ button, input, textarea {
         bottom: 56px;
     }
 }
+
+/* ── Skip Intro Styling ── */
+.skip-preloader-btn {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-dim);
+    padding: 8px 16px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all var(--trans);
+    z-index: 10001;
+}
+
+.skip-preloader-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* ── Suggested Dialog Chips ── */
+.console-chips {
+    display: flex;
+    gap: 8px;
+    padding: 10px 18px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-top: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.console-chips::-webkit-scrollbar {
+    display: none;
+}
+
+.console-chip {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 0.68rem;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    transition: all var(--trans);
+    white-space: nowrap;
+}
+
+.console-chip:hover {
+    border-color: var(--accent);
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.04);
+}

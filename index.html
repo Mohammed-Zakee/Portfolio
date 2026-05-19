@@ -63,6 +63,7 @@
 <body>
     <!-- Premium Cinematic Preloader Overlay -->
     <div id="preloader" class="preloader">
+        <button id="skipPreloader" class="skip-preloader-btn" aria-label="Skip introduction animation">Skip Intro // &gt;&gt;</button>
         <div class="preloader-content">
             <div class="preloader-terminal">
                 <div class="terminal-line">// SYNCING PORTFOLIO NODE...</div>
@@ -784,6 +785,13 @@
             </div>
             <div id="consoleBody" class="console-body">
                 <div class="console-msg system">◆ AI NODE ONLINE. Ask me anything about Zakee's skills, qualifications, certifications, or hobbies. Type 'help' to see suggestions.</div>
+            </div>
+            <div class="console-chips">
+                <button type="button" class="console-chip" data-cmd="about">About</button>
+                <button type="button" class="console-chip" data-cmd="skills">Skills</button>
+                <button type="button" class="console-chip" data-cmd="experience">Jobs</button>
+                <button type="button" class="console-chip" data-cmd="volunteer">Volunteering</button>
+                <button type="button" class="console-chip" data-cmd="source">Source Code</button>
             </div>
             <form id="consoleForm" class="console-input-row">
                 <span class="console-prompt">&gt;</span>

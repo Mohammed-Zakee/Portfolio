@@ -268,9 +268,25 @@ const preloader = document.getElementById('preloader');
 const loaderNumber = document.getElementById('loaderNumber');
 const loaderBar = document.getElementById('loaderBar');
 const loaderStatus = document.getElementById('loaderStatus');
+const skipPreloader = document.getElementById('skipPreloader');
 
 if (preloader && loaderNumber && loaderBar) {
     let count = 0;
+    let bypassed = false;
+
+    function revealCoreSite() {
+        if (bypassed) return;
+        bypassed = true;
+        preloader.classList.add('loaded');
+        
+        // Trigger scroll reveals for hero elements with smooth staggers
+        document.querySelectorAll('.hero .reveal').forEach((el, index) => {
+            setTimeout(() => {
+                el.classList.add('visible');
+            }, index * 80);
+        });
+    }
+
     const preloaderInterval = setInterval(() => {
         count += Math.floor(Math.random() * 8) + 2; // Retro organic variable speed
         if (count >= 100) {
@@ -281,16 +297,7 @@ if (preloader && loaderNumber && loaderBar) {
             loaderBar.style.width = '100%';
             if (loaderStatus) loaderStatus.textContent = '◆ SYSTEM INITIALIZATION: COMPLETE';
             
-            setTimeout(() => {
-                preloader.classList.add('loaded');
-                
-                // Trigger scroll reveals for hero elements with smooth staggers
-                document.querySelectorAll('.hero .reveal').forEach((el, index) => {
-                    setTimeout(() => {
-                        el.classList.add('visible');
-                    }, index * 80);
-                });
-            }, 600);
+            setTimeout(revealCoreSite, 600);
         } else {
             let formattedCount = count < 10 ? '0' + count : count;
             loaderNumber.textContent = formattedCount;
@@ -306,6 +313,16 @@ if (preloader && loaderNumber && loaderBar) {
             }
         }
     }, 40);
+
+    if (skipPreloader) {
+        skipPreloader.addEventListener('click', () => {
+            clearInterval(preloaderInterval);
+            loaderNumber.textContent = '100';
+            loaderBar.style.width = '100%';
+            if (loaderStatus) loaderStatus.textContent = '◆ SYSTEM INITIALIZATION: COMPLETE';
+            revealCoreSite();
+        });
+    }
 }
 
 /* ── Interactive Particle Neural Network Canvas Backdrop ── */
@@ -450,7 +467,7 @@ if (botToggle && botConsole && consoleClose && consoleBody && consoleForm && con
     });
     
     const qaPairs = {
-        help: "◆ COMMAND MATRIX:<br>- <strong>about</strong>: General information about Zakee.<br>- <strong>skills</strong>: AI, web, and data skillset.<br>- <strong>education</strong>: SLIIT details & secondary studies.<br>- <strong>experience</strong>: Positions in fintech, invigilation, etc.<br>- <strong>volunteer</strong>: IEEE, UN, FCSC leadership history.<br>- <strong>certifications</strong>: Summary of 15+ industry credentials.<br>- <strong>contact</strong>: Instant contact references.",
+        help: "◆ COMMAND MATRIX:<br>- <strong>about</strong>: General information about Zakee.<br>- <strong>skills</strong>: AI, web, and data skillset.<br>- <strong>education</strong>: SLIIT details & secondary studies.<br>- <strong>experience</strong>: Positions in fintech, invigilation, etc.<br>- <strong>volunteer</strong>: IEEE, UN, FCSC leadership history.<br>- <strong>certifications</strong>: Summary of 15+ industry credentials.<br>- <strong>source</strong>: Zakee-Bot's open source code matrix.<br>- <strong>contact</strong>: Instant contact references.",
         
         about: "Mohammed Zakee Nowfal is an Artificial Intelligence undergraduate student at SLIIT, Malabe, Sri Lanka. He works as a Strategic Partnership Executive in fintech and holds active leadership posts across major student boards (IEEE, FCSC, Majlis). He focuses on merging AI development with executive fintech strategy.",
         
@@ -463,6 +480,10 @@ if (botToggle && botConsole && consoleClose && consoleBody && consoleForm && con
         volunteer: "Zakee has a significant history of volunteer leadership:<br>• <strong>Assistant Treasurer</strong> – IEEE Student Branch (SB) of SLIIT (2026/27)<br>• <strong>Committee Member</strong> – Faculty of Computing Student Community (FCSC)<br>• <strong>Assistant Treasurer</strong> – Majlis of SLIIT (Muslim Students' Association) (2026/27)<br>• <strong>UN Online Volunteer</strong> – United Nations<br>• <strong>Major Contributions:</strong> EUPHORIA (SIS), RoboMesh, CellSpell, LeadSpring.",
         
         certifications: "Zakee holds over <strong>15 industry-recognized credentials</strong>:<br>• AWS Academy Graduate (Cloud Foundations)<br>• UPenn Wharton (Introduction to Fintech)<br>• Google & Coursera (Foundations of Project Management)<br>• University of Moratuwa (Python for Beginners)<br>• Alison (AI, ML, Neural Networks, Deep Learning)<br>• HP Life (Strategic Planning, Presentations).",
+        
+        source: "◆ REPOSITORY NODE: /zakeebot-core<br>◆ STATUS: <strong>OPEN SOURCE</strong> (MIT license)<br>• Type <strong>code</strong> to view the routing algorithm.<br>• Fork the full website on GitHub: <a href='https://github.com/Mohammed-Zakee/Portfolio' target='_blank' style='color:#6366f1;text-decoration:underline;'>github.com/Mohammed-Zakee/Portfolio</a>",
+        
+        code: "◆ ZAKEE-BOT CORE NLP ALGORITHM:<br><pre style='background:rgba(0,0,0,0.3);padding:8px;border-radius:4px;font-size:0.7rem;overflow-x:auto;color:#a1a1aa;'>class ZakeeBot {\n  constructor() {\n    this.matrix = QA_PAIRS;\n  }\n  process(query) {\n    let q = query.toLowerCase();\n    return this.matrix[q] ||\n           this.fallbackSearch(q);\n  }\n}</pre>",
         
         contact: "Get in touch with Zakee immediately:<br>• Email: <a href='mailto:mohammedzakee2006@gmail.com' style='color:#6366f1;text-decoration:underline;'>mohammedzakee2006@gmail.com</a><br>• Phone: <a href='tel:+94762512967' style='color:#6366f1;text-decoration:underline;'>+94 76 251 2967</a><br>• LinkedIn: <a href='https://www.linkedin.com/in/mohammed-zakee/' target='_blank' style='color:#6366f1;text-decoration:underline;'>linkedin.com/in/mohammed-zakee</a>"
     };
@@ -531,6 +552,8 @@ if (botToggle && botConsole && consoleClose && consoleBody && consoleForm && con
             reply = qaPairs.volunteer;
         } else if (q.includes('mail') || q.includes('phone') || q.includes('linkedin') || q.includes('contact')) {
             reply = qaPairs.contact;
+        } else if (q.includes('source') || q.includes('repo') || q.includes('github') || q.includes('open')) {
+            reply = qaPairs.source;
         } else {
             reply = "I parsed your input but don't have a direct answer mapped. Type <strong>about</strong>, <strong>skills</strong>, <strong>experience</strong>, <strong>volunteer</strong>, or <strong>help</strong> to query my knowledge matrix.";
         }
@@ -540,6 +563,7 @@ if (botToggle && botConsole && consoleClose && consoleBody && consoleForm && con
         }, 200);
     }
     
+    // Bind console input form
     consoleForm.addEventListener('submit', e => {
         e.preventDefault();
         const text = consoleInput.value;
@@ -548,6 +572,17 @@ if (botToggle && botConsole && consoleClose && consoleBody && consoleForm && con
         appendMessage(text, 'user');
         consoleInput.value = '';
         processInput(text);
+    });
+
+    // Bind console quick dialog chips
+    document.querySelectorAll('.console-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+            const cmd = chip.getAttribute('data-cmd');
+            if (cmd) {
+                appendMessage(chip.textContent, 'user');
+                processInput(cmd);
+            }
+        });
     });
 }
 
