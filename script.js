@@ -497,7 +497,7 @@ if (botToggle && botConsole && consoleClose && consoleBody && consoleForm && con
         
         code: "◆ ZAKEE-BOT CORE NLP ALGORITHM:<br><pre style='background:rgba(0,0,0,0.3);padding:8px;border-radius:4px;font-size:0.7rem;overflow-x:auto;color:#a1a1aa;'>class ZakeeBot {\n  constructor() {\n    this.matrix = QA_PAIRS;\n  }\n  process(query) {\n    let q = query.toLowerCase();\n    return this.matrix[q] ||\n           this.fallbackSearch(q);\n  }\n}</pre>",
         
-        contact: "Get in touch with Zakee immediately:<br>• Email: <a href='mailto:mohammedzakee2006@gmail.com' style='color:#6366f1;text-decoration:underline;'>mohammedzakee2006@gmail.com</a><br>• Phone: <a href='tel:+94762512967' style='color:#6366f1;text-decoration:underline;'>+94 76 251 2967</a><br>• LinkedIn: <a href='https://www.linkedin.com/in/mohammed-zakee/' target='_blank' style='color:#6366f1;text-decoration:underline;'>linkedin.com/in/mohammed-zakee</a>"
+        contact: "Get in touch with Zakee immediately:<br>• Email: <a href='mailto:mohammedzakee2006@gmail.com' style='color:#6366f1;text-decoration:underline;'>mohammedzakee2006@gmail.com</a><br>• Phone: <a href='tel:+94706103115' style='color:#6366f1;text-decoration:underline;'>+94 706 103 115</a><br>• LinkedIn: <a href='https://www.linkedin.com/in/mohammed-zakee/' target='_blank' style='color:#6366f1;text-decoration:underline;'>linkedin.com/in/mohammed-zakee</a>"
     };
     
     // Typist streamer helper
@@ -988,12 +988,14 @@ function initDeveloperTerminal() {
     
     function openTerminal() {
         terminal.classList.add('open');
+        document.body.classList.add('terminal-open');
         input.focus();
         startMatrixRain();
     }
     
     function closeTerminal() {
         terminal.classList.remove('open');
+        document.body.classList.remove('terminal-open');
         stopMatrixRain();
         if (snakeActive) {
             endSnakeGame();

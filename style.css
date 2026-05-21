@@ -80,7 +80,10 @@ button, input, textarea {
 /* ── Backdrop Layers (Blueprint Aesthetic) ── */
 .noise-bg {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 1;
     opacity: 0.02;
     pointer-events: none;
@@ -89,7 +92,10 @@ button, input, textarea {
 
 .grid-backdrop {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 1;
     background-image: 
         linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
@@ -1768,7 +1774,10 @@ button, input, textarea {
 /* ── Cinematic Preloader Overlay ── */
 .preloader {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: #070708;
     z-index: 10000;
     display: flex;
@@ -2988,10 +2997,15 @@ body.sim-active.light-theme {
 /* ── Retro Developer CLI Terminal Overlay ── */
 .dev-cli-terminal {
     position: fixed;
-    inset: 0;
-    background: #030712;
-    z-index: 10005;
-    color: #10b981; /* Matrix green */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #030712 !important;
+    z-index: 100000 !important;
+    color: #10b981 !important;
     font-family: var(--font-mono);
     padding: 32px;
     display: flex;
@@ -3009,29 +3023,38 @@ body.sim-active.light-theme {
 
 .cli-overlay-effects {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     pointer-events: none;
-    z-index: 10007;
+    z-index: 100001;
 }
 
 .cli-scanlines {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: linear-gradient(
         rgba(18, 16, 16, 0) 50%, 
         rgba(0, 0, 0, 0.25) 50%
     );
     background-size: 100% 4px;
-    z-index: 10008;
+    z-index: 100002;
 }
 
 .cli-flicker {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(16, 185, 129, 0.015);
     opacity: 0.15;
     animation: cliFlicker 0.15s infinite;
-    z-index: 10009;
+    z-index: 100003;
 }
 
 @keyframes cliFlicker {
@@ -3049,7 +3072,7 @@ body.sim-active.light-theme {
     font-size: 0.8rem;
     margin-bottom: 20px;
     position: relative;
-    z-index: 10010;
+    z-index: 100005;
 }
 
 .cli-header-left {
@@ -3068,18 +3091,19 @@ body.sim-active.light-theme {
 .cli-title {
     font-weight: 700;
     letter-spacing: 1px;
+    color: #10b981 !important;
 }
 
 .cli-help-tip {
     font-size: 0.72rem;
-    color: rgba(16, 185, 129, 0.6);
+    color: rgba(16, 185, 129, 0.6) !important;
     margin-right: 16px;
 }
 
 .cli-close-btn {
     background: none;
     border: none;
-    color: #10b981;
+    color: #10b981 !important;
     font-size: 1.5rem;
     cursor: pointer;
     line-height: 1;
@@ -3097,13 +3121,16 @@ body.sim-active.light-theme {
     line-height: 1.6;
     padding-right: 10px;
     position: relative;
-    z-index: 10010;
+    z-index: 100005;
+    color: #10b981 !important;
 }
 
 .cli-line {
     margin: 4px 0;
     word-break: break-all;
     white-space: pre-wrap;
+    color: #10b981 !important;
+    font-family: var(--font-mono) !important;
 }
 
 .cli-input-line {
@@ -3114,26 +3141,29 @@ body.sim-active.light-theme {
     padding-top: 12px;
     margin-top: auto;
     position: relative;
-    z-index: 10010;
+    z-index: 100005;
 }
 
 .cli-prompt {
-    color: #6366f1; /* Indigo prompt */
+    color: #6366f1 !important; /* Indigo prompt */
     font-weight: 700;
     margin-right: 8px;
+    font-family: var(--font-mono) !important;
 }
 
-.cli-input-line input {
+/* Style for terminal input box targeting its ID directly to override user-agent and autocomplete styles */
+#cliInput {
     flex: 1;
-    background: transparent;
-    border: none;
-    color: #10b981;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-}
-
-.cli-input-line input:focus {
-    outline: none;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    color: #10b981 !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.85rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100%;
 }
 
 .cli-floating-toggle {
@@ -3159,6 +3189,17 @@ body.sim-active.light-theme {
     border-color: var(--accent);
     color: var(--accent);
     transform: translateY(-3px);
+}
+
+/* Prevent body scrolling behind terminal overlay and hide conflicting controls */
+body.terminal-open {
+    overflow: hidden !important;
+}
+
+body.terminal-open .cli-floating-toggle,
+body.terminal-open .device-sim-controls,
+body.terminal-open .zakeebot-widget {
+    display: none !important;
 }
 
 @media (max-width: 768px) {
