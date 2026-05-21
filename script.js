@@ -609,13 +609,12 @@ function initThemeToggle() {
     const themeToggle = document.getElementById('themeToggle');
     
     function applyTheme(theme) {
-        const icon = themeToggle ? themeToggle.querySelector('i') : null;
         if (theme === 'light') {
             document.documentElement.classList.add('light-theme');
-            if (icon) icon.className = 'fa-solid fa-sun';
+            if (themeToggle) themeToggle.checked = true;
         } else {
             document.documentElement.classList.remove('light-theme');
-            if (icon) icon.className = 'fa-solid fa-moon';
+            if (themeToggle) themeToggle.checked = false;
         }
         // Emit custom event for dynamic components to redraw
         window.dispatchEvent(new Event('theme-changed'));
@@ -626,77 +625,153 @@ function initThemeToggle() {
     applyTheme(savedTheme);
     
     if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.classList.contains('light-theme') ? 'light' : 'dark';
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        themeToggle.addEventListener('change', () => {
+            const newTheme = themeToggle.checked ? 'light' : 'dark';
             localStorage.setItem('theme', newTheme);
             applyTheme(newTheme);
         });
     }
 }
 
-/* ── Interactive Viewport Device Simulator ── */
-function initDeviceSimulator() {
-    const deviceToggle = document.getElementById('deviceToggle');
-    const simControls = document.getElementById('deviceSimulatorControls');
-    const appWrapper = document.getElementById('appWrapper');
-    const rotateBtn = document.getElementById('rotateSimBtn');
-    const simButtons = document.querySelectorAll('.sim-btn[data-mode]');
+/* ── Bento Professional Gallery Slideshow ── */
+function initBentoGallery() {
+    const slides = document.querySelectorAll('.bento-gallery .gallery-slide');
+    const dots = document.querySelectorAll('.bento-gallery .gallery-dot');
+    const prevBtn = document.getElementById('galleryPrevBtn');
+    const nextBtn = document.getElementById('galleryNextBtn');
     
-    if (!appWrapper || !simControls) return;
+    if (slides.length === 0) return;
     
-    if (deviceToggle) {
-        deviceToggle.addEventListener('click', () => {
-            simControls.classList.toggle('visible');
-            if (simControls.classList.contains('visible')) {
-                setSimulatorMode('mobile');
-            } else {
-                setSimulatorMode('full');
-            }
+    let currentSlide = 0;
+    let autoplayInterval;
+    
+    function showSlide(index) {
+        if (index >= slides.length) currentSlide = 0;
+        else if (index < 0) currentSlide = slides.length - 1;
+        else currentSlide = index;
+        
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === currentSlide);
+        });
+        
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentSlide);
         });
     }
     
-    simButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const mode = btn.getAttribute('data-mode');
-            setSimulatorMode(mode);
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+    
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+    
+    function startAutoplay() {
+        stopAutoplay();
+        autoplayInterval = setInterval(nextSlide, 5000);
+    }
+    
+    function stopAutoplay() {
+        if (autoplayInterval) clearInterval(autoplayInterval);
+    }
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            startAutoplay();
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            startAutoplay();
+        });
+    }
+    
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            showSlide(i);
+            startAutoplay();
         });
     });
     
-    if (rotateBtn) {
-        rotateBtn.addEventListener('click', () => {
-            if (appWrapper.classList.contains('sim-mobile') || appWrapper.classList.contains('sim-tablet')) {
-                appWrapper.classList.toggle('landscape');
-                setTimeout(() => window.dispatchEvent(new Event('resize')), 550);
+    showSlide(0);
+    startAutoplay();
+    
+    const galleryCard = document.querySelector('.bento-gallery');
+    if (galleryCard) {
+        galleryCard.addEventListener('mouseenter', stopAutoplay);
+        galleryCard.addEventListener('mouseleave', startAutoplay);
+    }
+}
+
+/* ── Featured Projects Slideshow ── */
+function initProjectsSlideshow() {
+    const slides = document.querySelectorAll('.projects-ledger .project-item');
+    const tabs = document.querySelectorAll('.projects-tabs .project-tab');
+    const dots = document.querySelectorAll('.projects-controls .project-dot');
+    const prevBtn = document.getElementById('projectPrevBtn');
+    const nextBtn = document.getElementById('projectNextBtn');
+    
+    if (slides.length === 0) return;
+    
+    let currentSlide = 0;
+    
+    function showSlide(index) {
+        if (index >= slides.length) currentSlide = 0;
+        else if (index < 0) currentSlide = slides.length - 1;
+        else currentSlide = index;
+        
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === currentSlide);
+            const explorer = slide.querySelector('.project-explorer');
+            const explorerBtn = slide.querySelector('.btn-explorer-toggle');
+            if (explorer && explorerBtn && !slide.classList.contains('active')) {
+                explorer.classList.remove('open');
+                explorerBtn.classList.remove('active');
+                const icon = explorerBtn.querySelector('i');
+                if (icon) icon.className = 'fa-solid fa-folder';
             }
+        });
+        
+        tabs.forEach((tab, i) => {
+            tab.classList.toggle('active', i === currentSlide);
+        });
+        
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentSlide);
+        });
+        
+        setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
+    }
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            showSlide(currentSlide - 1);
         });
     }
     
-    function setSimulatorMode(mode) {
-        simButtons.forEach(b => {
-            b.classList.toggle('active', b.getAttribute('data-mode') === mode);
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            showSlide(currentSlide + 1);
         });
-        
-        document.body.classList.remove('sim-active');
-        appWrapper.classList.remove('sim-mobile', 'sim-tablet', 'landscape');
-        
-        if (mode === 'mobile') {
-            document.body.classList.add('sim-active');
-            appWrapper.classList.add('sim-mobile');
-            simControls.classList.add('visible');
-        } else if (mode === 'tablet') {
-            document.body.classList.add('sim-active');
-            appWrapper.classList.add('sim-tablet');
-            simControls.classList.add('visible');
-        } else {
-            simControls.classList.remove('visible');
-        }
-        
-        // Dispatch resize to align canvases and layouts
-        setTimeout(() => {
-            window.dispatchEvent(new Event('resize'));
-        }, 550);
     }
+    
+    tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => {
+            showSlide(i);
+        });
+    });
+    
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            showSlide(i);
+        });
+    });
+    
+    showSlide(0);
 }
 
 /* ── GitHub Repositories Carousel ── */
@@ -1337,19 +1412,18 @@ function initDeveloperTerminal() {
                 printLine('  - Teaching Assistant // SLIIT (Jan 2025 — Present)');
                 break;
             case 'theme':
+                const themeToggleEl = document.getElementById('themeToggle');
                 if (args[1] === 'light') {
                     document.documentElement.classList.add('light-theme');
                     localStorage.setItem('theme', 'light');
+                    if (themeToggleEl) themeToggleEl.checked = true;
                     window.dispatchEvent(new Event('theme-changed'));
-                    const tIcon = document.querySelector('#themeToggle i');
-                    if (tIcon) tIcon.className = 'fa-solid fa-sun';
                     printLine('System theme changed to LIGHT.');
                 } else if (args[1] === 'dark') {
                     document.documentElement.classList.remove('light-theme');
                     localStorage.setItem('theme', 'dark');
+                    if (themeToggleEl) themeToggleEl.checked = false;
                     window.dispatchEvent(new Event('theme-changed'));
-                    const tIcon = document.querySelector('#themeToggle i');
-                    if (tIcon) tIcon.className = 'fa-solid fa-moon';
                     printLine('System theme changed to DARK.');
                 } else {
                     printLine('Usage: theme [light|dark]');
@@ -1550,7 +1624,8 @@ function initRadarChart() {
 
 /* ── Boot Initializer ── */
 initThemeToggle();
-initDeviceSimulator();
+initBentoGallery();
+initProjectsSlideshow();
 initGitHubRepos();
 initProjectExplorer();
 initDeveloperTerminal();
