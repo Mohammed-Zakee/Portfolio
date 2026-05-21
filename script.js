@@ -633,79 +633,7 @@ function initThemeToggle() {
     }
 }
 
-/* ── Bento Professional Gallery Slideshow ── */
-function initBentoGallery() {
-    const slides = document.querySelectorAll('.bento-gallery .gallery-slide');
-    const dots = document.querySelectorAll('.bento-gallery .gallery-dot');
-    const prevBtn = document.getElementById('galleryPrevBtn');
-    const nextBtn = document.getElementById('galleryNextBtn');
-    
-    if (slides.length === 0) return;
-    
-    let currentSlide = 0;
-    let autoplayInterval;
-    
-    function showSlide(index) {
-        if (index >= slides.length) currentSlide = 0;
-        else if (index < 0) currentSlide = slides.length - 1;
-        else currentSlide = index;
-        
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === currentSlide);
-        });
-        
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentSlide);
-        });
-    }
-    
-    function nextSlide() {
-        showSlide(currentSlide + 1);
-    }
-    
-    function prevSlide() {
-        showSlide(currentSlide - 1);
-    }
-    
-    function startAutoplay() {
-        stopAutoplay();
-        autoplayInterval = setInterval(nextSlide, 5000);
-    }
-    
-    function stopAutoplay() {
-        if (autoplayInterval) clearInterval(autoplayInterval);
-    }
-    
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-            startAutoplay();
-        });
-    }
-    
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            startAutoplay();
-        });
-    }
-    
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => {
-            showSlide(i);
-            startAutoplay();
-        });
-    });
-    
-    showSlide(0);
-    startAutoplay();
-    
-    const galleryCard = document.querySelector('.bento-gallery');
-    if (galleryCard) {
-        galleryCard.addEventListener('mouseenter', stopAutoplay);
-        galleryCard.addEventListener('mouseleave', startAutoplay);
-    }
-}
+
 
 /* ── Featured Projects Slideshow ── */
 function initProjectsSlideshow() {
@@ -1624,7 +1552,7 @@ function initRadarChart() {
 
 /* ── Boot Initializer ── */
 initThemeToggle();
-initBentoGallery();
+
 initProjectsSlideshow();
 initGitHubRepos();
 initProjectExplorer();
