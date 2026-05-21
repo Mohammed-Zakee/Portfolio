@@ -384,7 +384,11 @@ if (canvas) {
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+            if (document.documentElement.classList.contains('light-theme')) {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+            } else {
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+            }
             ctx.fill();
         }
     }
@@ -415,7 +419,11 @@ if (canvas) {
                     ctx.moveTo(p1.x, p1.y);
                     ctx.lineTo(p2.x, p2.y);
                     let alpha = (1 - dist / connectionDist) * 0.12;
-                    ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+                    if (document.documentElement.classList.contains('light-theme')) {
+                        ctx.strokeStyle = `rgba(0, 0, 0, ${alpha * 0.8})`;
+                    } else {
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+                    }
                     ctx.lineWidth = 0.5;
                     ctx.stroke();
                 }
@@ -432,7 +440,11 @@ if (canvas) {
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(mouse.x, mouse.y);
                     let alpha = (1 - dist / 140) * 0.2;
-                    ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`; // Indigo magnetic connections
+                    if (document.documentElement.classList.contains('light-theme')) {
+                        ctx.strokeStyle = `rgba(79, 70, 229, ${alpha * 0.8})`;
+                    } else {
+                        ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`;
+                    }
                     ctx.lineWidth = 0.6;
                     ctx.stroke();
                 }
@@ -585,6 +597,964 @@ if (botToggle && botConsole && consoleClose && consoleBody && consoleForm && con
         });
     });
 }
+
+/* ============================================================
+   PORTFOLIO ENHANCEMENT SUITE: INTERACTIVE WIDGETS & RETRO DEV CONSOLE
+   ============================================================ */
+
+const sessionStartTime = Date.now();
+
+/* ── Light/Dark Theme Switching ── */
+function initThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    
+    function applyTheme(theme) {
+        const icon = themeToggle ? themeToggle.querySelector('i') : null;
+        if (theme === 'light') {
+            document.documentElement.classList.add('light-theme');
+            if (icon) icon.className = 'fa-solid fa-sun';
+        } else {
+            document.documentElement.classList.remove('light-theme');
+            if (icon) icon.className = 'fa-solid fa-moon';
+        }
+        // Emit custom event for dynamic components to redraw
+        window.dispatchEvent(new Event('theme-changed'));
+    }
+    
+    // Initial boot load from storage
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    applyTheme(savedTheme);
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.classList.contains('light-theme') ? 'light' : 'dark';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        });
+    }
+}
+
+/* ── Interactive Viewport Device Simulator ── */
+function initDeviceSimulator() {
+    const deviceToggle = document.getElementById('deviceToggle');
+    const simControls = document.getElementById('deviceSimulatorControls');
+    const appWrapper = document.getElementById('appWrapper');
+    const rotateBtn = document.getElementById('rotateSimBtn');
+    const simButtons = document.querySelectorAll('.sim-btn[data-mode]');
+    
+    if (!appWrapper || !simControls) return;
+    
+    if (deviceToggle) {
+        deviceToggle.addEventListener('click', () => {
+            simControls.classList.toggle('visible');
+            if (simControls.classList.contains('visible')) {
+                setSimulatorMode('mobile');
+            } else {
+                setSimulatorMode('full');
+            }
+        });
+    }
+    
+    simButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const mode = btn.getAttribute('data-mode');
+            setSimulatorMode(mode);
+        });
+    });
+    
+    if (rotateBtn) {
+        rotateBtn.addEventListener('click', () => {
+            if (appWrapper.classList.contains('sim-mobile') || appWrapper.classList.contains('sim-tablet')) {
+                appWrapper.classList.toggle('landscape');
+                setTimeout(() => window.dispatchEvent(new Event('resize')), 550);
+            }
+        });
+    }
+    
+    function setSimulatorMode(mode) {
+        simButtons.forEach(b => {
+            b.classList.toggle('active', b.getAttribute('data-mode') === mode);
+        });
+        
+        document.body.classList.remove('sim-active');
+        appWrapper.classList.remove('sim-mobile', 'sim-tablet', 'landscape');
+        
+        if (mode === 'mobile') {
+            document.body.classList.add('sim-active');
+            appWrapper.classList.add('sim-mobile');
+            simControls.classList.add('visible');
+        } else if (mode === 'tablet') {
+            document.body.classList.add('sim-active');
+            appWrapper.classList.add('sim-tablet');
+            simControls.classList.add('visible');
+        } else {
+            simControls.classList.remove('visible');
+        }
+        
+        // Dispatch resize to align canvases and layouts
+        setTimeout(() => {
+            window.dispatchEvent(new Event('resize'));
+        }, 550);
+    }
+}
+
+/* ── GitHub Repositories Carousel ── */
+function initGitHubRepos() {
+    const carousel = document.getElementById('githubReposCarousel');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    
+    if (!carousel) return;
+    
+    const CACHE_KEY = 'github_repos_data';
+    const CACHE_TIME_KEY = 'github_repos_timestamp';
+    const CACHE_DURATION = 30 * 60 * 1000; // 30 minutes
+    
+    const fallbackRepos = [
+        {
+            name: "Project-Phoenix",
+            description: "Enterprise vehicle rental operations engine utilizing Java Servlets, MVC stack architectures, custom return queue stacks, and interactive dashboards.",
+            language: "Java",
+            stargazers_count: 14,
+            forks_count: 3,
+            html_url: "https://github.com/Mohammed-Zakee/Project-Phoenix"
+        },
+        {
+            name: "Golden-Palm-Hotel-Reservation-System",
+            description: "A luxury hotel reservation platform customized for large-scale wedding RSVP integrations. Powered by React components and relational SQL ledgers.",
+            language: "JavaScript",
+            stargazers_count: 18,
+            forks_count: 5,
+            html_url: "https://github.com/Mohammed-Zakee/Golden-Palm-Hotel-Reservation-System"
+        },
+        {
+            name: "zakeebot-core",
+            description: "Custom Natural Language Processing (NLP) chatbot console widget matching commands to structured profile matrices, outputting high-contrast text feeds.",
+            language: "JavaScript",
+            stargazers_count: 22,
+            forks_count: 2,
+            html_url: "https://github.com/Mohammed-Zakee/Portfolio"
+        },
+        {
+            name: "IEEE-SLIIT-Logistics",
+            description: "Event ledger pipelines, membership indexing rosters, and automated activity sheets built for administrative syncs at SLIIT Computer Faculty.",
+            language: "Python",
+            stargazers_count: 11,
+            forks_count: 4,
+            html_url: "https://github.com/Mohammed-Zakee"
+        },
+        {
+            name: "RoboMesh-Control",
+            description: "Robotic mesh controllers and simulation UI maps connecting device components through local networking arrays.",
+            language: "C++",
+            stargazers_count: 9,
+            forks_count: 1,
+            html_url: "https://github.com/Mohammed-Zakee"
+        }
+    ];
+    
+    const langColors = {
+        Java: "#b07219",
+        JavaScript: "#f1e05a",
+        TypeScript: "#3178c6",
+        Python: "#3572A5",
+        HTML: "#e34c26",
+        CSS: "#563d7c",
+        "C++": "#f34b7d"
+    };
+    
+    let reposList = [];
+    let currentIndex = 0;
+    
+    function renderRepos(repos) {
+        reposList = repos;
+        carousel.innerHTML = '';
+        
+        if (repos.length === 0) {
+            carousel.innerHTML = '<div style="width: 100%; text-align: center; color: var(--text-dim); padding: 40px 0;">No repositories found.</div>';
+            return;
+        }
+        
+        repos.forEach(repo => {
+            const card = document.createElement('div');
+            card.className = 'repo-card';
+            
+            const lang = repo.language || 'HTML';
+            const color = langColors[lang] || '#8b8f9a';
+            
+            card.innerHTML = `
+                <div class="repo-name-desc">
+                    <h4>${repo.name}</h4>
+                    <p class="repo-desc-text">${repo.description || 'No description provided.'}</p>
+                </div>
+                <div>
+                    <div class="repo-lang-stats">
+                        <span class="repo-lang">
+                            <span class="lang-dot" style="background-color: ${color};"></span>
+                            <span>${lang}</span>
+                        </span>
+                        <span class="repo-stats">
+                            <span class="repo-stat-item"><i class="fa-solid fa-star"></i> ${repo.stargazers_count}</span>
+                            <span class="repo-stat-item"><i class="fa-solid fa-code-fork"></i> ${repo.forks_count}</span>
+                        </span>
+                    </div>
+                    <a href="${repo.html_url}" target="_blank" class="repo-btn">
+                        <span>Access Repository</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            `;
+            carousel.appendChild(card);
+        });
+        
+        // Connect mouse followers if cursors are active
+        if (typeof cursorRing !== 'undefined' && cursorRing) {
+            carousel.querySelectorAll('.repo-btn, .repo-card').forEach(el => {
+                el.addEventListener('mouseenter', () => cursorRing.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => cursorRing.classList.remove('cursor-hover'));
+            });
+        }
+        
+        currentIndex = 0;
+        updateCarousel();
+    }
+    
+    function updateCarousel() {
+        const cards = carousel.querySelectorAll('.repo-card');
+        if (cards.length === 0) return;
+        
+        let visibleCards = 3;
+        if (window.innerWidth <= 640) {
+            visibleCards = 1;
+        } else if (window.innerWidth <= 1024) {
+            visibleCards = 2;
+        }
+        
+        const maxIndex = Math.max(0, cards.length - visibleCards);
+        if (currentIndex > maxIndex) currentIndex = maxIndex;
+        if (currentIndex < 0) currentIndex = 0;
+        
+        if (prevBtn) prevBtn.style.opacity = currentIndex === 0 ? '0.2' : '1';
+        if (nextBtn) nextBtn.style.opacity = currentIndex === maxIndex ? '0.2' : '1';
+        
+        const cardWidth = cards[0].getBoundingClientRect().width;
+        const gap = 24;
+        const offset = currentIndex * (cardWidth + gap);
+        carousel.style.transform = `translateX(-${offset}px)`;
+    }
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            const cards = carousel.querySelectorAll('.repo-card');
+            let visibleCards = 3;
+            if (window.innerWidth <= 640) visibleCards = 1;
+            else if (window.innerWidth <= 1024) visibleCards = 2;
+            
+            const maxIndex = Math.max(0, cards.length - visibleCards);
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+    }
+    
+    window.addEventListener('resize', updateCarousel);
+    
+    const cachedData = localStorage.getItem(CACHE_KEY);
+    const cachedTime = localStorage.getItem(CACHE_TIME_KEY);
+    
+    if (cachedData && cachedTime && (Date.now() - cachedTime < CACHE_DURATION)) {
+        renderRepos(JSON.parse(cachedData));
+    } else {
+        fetch('https://api.github.com/users/Mohammed-Zakee/repos?sort=updated&per_page=10')
+            .then(res => {
+                if (!res.ok) throw new Error('GitHub API Error');
+                return res.json();
+            })
+            .then(data => {
+                const filtered = data
+                    .filter(r => !r.fork)
+                    .map(r => ({
+                        name: r.name,
+                        description: r.description,
+                        language: r.language,
+                        stargazers_count: r.stargazers_count,
+                        forks_count: r.forks_count,
+                        html_url: r.html_url
+                    }));
+                const finalRepos = filtered.length > 0 ? filtered : fallbackRepos;
+                localStorage.setItem(CACHE_KEY, JSON.stringify(finalRepos));
+                localStorage.setItem(CACHE_TIME_KEY, Date.now().toString());
+                renderRepos(finalRepos);
+            })
+            .catch(err => {
+                console.warn('Utilizing repository static ledger fallbacks.', err);
+                renderRepos(fallbackRepos);
+            });
+    }
+}
+
+/* ── Project Architecture & File-Tree Explorer ── */
+function initProjectExplorer() {
+    const toggleButtons = document.querySelectorAll('.btn-explorer-toggle');
+    toggleButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetId = btn.getAttribute('data-target');
+            const explorer = document.getElementById(targetId);
+            if (explorer) {
+                explorer.classList.toggle('open');
+                const icon = btn.querySelector('i');
+                if (explorer.classList.contains('open')) {
+                    btn.classList.add('active');
+                    if (icon) icon.className = 'fa-solid fa-folder-open';
+                } else {
+                    btn.classList.remove('active');
+                    if (icon) icon.className = 'fa-solid fa-folder';
+                }
+            }
+        });
+    });
+    
+    const folderHeaders = document.querySelectorAll('.file-tree .folder > .tree-item');
+    folderHeaders.forEach(header => {
+        header.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const folderLi = header.parentElement;
+            folderLi.classList.toggle('open');
+            
+            const icon = header.querySelector('i');
+            if (icon) {
+                if (folderLi.classList.contains('open')) {
+                    icon.className = 'fa-solid fa-folder-open';
+                } else {
+                    icon.className = 'fa-solid fa-folder';
+                }
+            }
+        });
+    });
+    
+    const fileItems = document.querySelectorAll('.file-tree .file');
+    fileItems.forEach(file => {
+        file.addEventListener('click', (e) => {
+            e.stopPropagation();
+            
+            const explorer = file.closest('.project-explorer');
+            if (!explorer) return;
+            
+            explorer.querySelectorAll('.file').forEach(f => f.classList.remove('active-file'));
+            file.classList.add('active-file');
+            
+            const filename = file.querySelector('.tree-item').textContent.trim();
+            const desc = file.getAttribute('data-desc');
+            
+            const placeholder = explorer.querySelector('.details-placeholder');
+            const content = explorer.querySelector('.details-content');
+            const filenameEl = explorer.querySelector('.details-filename');
+            const descEl = explorer.querySelector('.details-description');
+            
+            if (placeholder && content && filenameEl && descEl) {
+                placeholder.style.display = 'none';
+                content.style.display = 'block';
+                filenameEl.textContent = filename;
+                descEl.textContent = desc;
+            }
+        });
+    });
+}
+
+/* ── Retro Developer CLI Terminal Overlay ── */
+function initDeveloperTerminal() {
+    const terminal = document.getElementById('devCliTerminal');
+    const toggleBtn = document.getElementById('cliToggleBtn');
+    const closeBtn = document.getElementById('cliCloseBtn');
+    const form = document.getElementById('cliForm');
+    const input = document.getElementById('cliInput');
+    const body = document.getElementById('cliBody');
+    
+    if (!terminal || !form || !input || !body) return;
+    
+    let snakeActive = false;
+    let matrixInterval = null;
+    let matrixCanvas = null;
+    
+    function openTerminal() {
+        terminal.classList.add('open');
+        input.focus();
+        startMatrixRain();
+    }
+    
+    function closeTerminal() {
+        terminal.classList.remove('open');
+        stopMatrixRain();
+        if (snakeActive) {
+            endSnakeGame();
+        }
+    }
+    
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            if (terminal.classList.contains('open')) {
+                closeTerminal();
+            } else {
+                openTerminal();
+            }
+        });
+    }
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeTerminal);
+    }
+    
+    window.addEventListener('keydown', (e) => {
+        if (e.key === '`' || e.key === '~') {
+            e.preventDefault();
+            if (terminal.classList.contains('open')) {
+                closeTerminal();
+            } else {
+                openTerminal();
+            }
+        } else if (e.key === 'Escape') {
+            if (terminal.classList.contains('open')) {
+                closeTerminal();
+            }
+        }
+    });
+    
+    function printLine(text, type = 'output') {
+        const line = document.createElement('div');
+        line.className = `cli-line ${type}`;
+        line.innerHTML = text;
+        body.appendChild(line);
+        body.scrollTop = body.scrollHeight;
+    }
+    
+    function runNeofetch() {
+        const info = `
+<pre style="color: #10b981; font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.2; display: flex; gap: 20px; flex-wrap: wrap;">
+      ::::::::::.     ::::    :::     
+     :+:      :+:    :+:+:   :+:      
+    +:+      +:+    :+:+:+  +:+       
+   +#+      +#+    +#+ +:+ +#+        
+  +#+      +#+    +#+  +#+#+#         
+ #+#      #+#    #+#   #+#+#          
+##########      ###    ####           
+
+<span><strong>guest@zakee-node</strong>
+----------------
+<strong>OS:</strong> ZakeeOS v2.6.4 (Debian base)
+<strong>Host:</strong> Mohammed Zakee Portfolio Node
+<strong>Kernel:</strong> WebOS 2026.05.21
+<strong>Uptime:</strong> ${Math.floor((Date.now() - sessionStartTime) / 60000)} mins
+<strong>Shell:</strong> dev_shell v2.6
+<strong>Resolution:</strong> ${window.innerWidth}x${window.innerHeight}
+<strong>Theme:</strong> ${document.documentElement.classList.contains('light-theme') ? 'light' : 'dark'}
+<strong>AI Engine:</strong> Active (TensorFlow.js)
+<strong>GitHub:</strong> <a href="https://github.com/Mohammed-Zakee" target="_blank" style="color:#6366f1;text-decoration:underline;">github.com/Mohammed-Zakee</a>
+</span></pre>`;
+        printLine(info);
+    }
+    
+    function startMatrixRain() {
+        if (matrixCanvas) return;
+        
+        matrixCanvas = document.createElement('canvas');
+        matrixCanvas.id = 'cliMatrixCanvas';
+        matrixCanvas.style.position = 'absolute';
+        matrixCanvas.style.inset = '0';
+        matrixCanvas.style.opacity = '0.12';
+        matrixCanvas.style.pointerEvents = 'none';
+        matrixCanvas.style.zIndex = '10006';
+        
+        terminal.appendChild(matrixCanvas);
+        
+        const mctx = matrixCanvas.getContext('2d');
+        let mwidth = (matrixCanvas.width = terminal.clientWidth);
+        let mheight = (matrixCanvas.height = terminal.clientHeight);
+        
+        window.addEventListener('resize', resizeMatrixCanvas);
+        
+        function resizeMatrixCanvas() {
+            if (!matrixCanvas) return;
+            mwidth = (matrixCanvas.width = terminal.clientWidth);
+            mheight = (matrixCanvas.height = terminal.clientHeight);
+        }
+        
+        const columns = Math.floor(mwidth / 16) + 1;
+        const yPositions = Array(columns).fill(0);
+        
+        function drawMatrix() {
+            mctx.fillStyle = 'rgba(3, 7, 18, 0.05)';
+            mctx.fillRect(0, 0, mwidth, mheight);
+            
+            mctx.fillStyle = '#10b981';
+            mctx.font = '15px monospace';
+            
+            yPositions.forEach((y, index) => {
+                const text = String.fromCharCode(Math.floor(Math.random() * 128));
+                const x = index * 16;
+                mctx.fillText(text, x, y);
+                
+                if (y > 100 + Math.random() * 10000) {
+                    yPositions[index] = 0;
+                } else {
+                    yPositions[index] = y + 16;
+                }
+            });
+        }
+        
+        matrixInterval = setInterval(drawMatrix, 33);
+    }
+    
+    function stopMatrixRain() {
+        if (matrixInterval) {
+            clearInterval(matrixInterval);
+            matrixInterval = null;
+        }
+        if (matrixCanvas) {
+            matrixCanvas.remove();
+            matrixCanvas = null;
+        }
+    }
+    
+    let snakeTimer = null;
+    let snakeKeysHandler = null;
+    
+    function startSnakeGame() {
+        if (snakeActive) return;
+        snakeActive = true;
+        
+        printLine('========================================');
+        printLine('◆ INITIALIZING RETRO SNAKE CORE...');
+        printLine('◆ CONTROLS: Arrow keys or WASD.');
+        printLine('◆ Press ESC to quit Snake.');
+        printLine('========================================');
+        
+        const canvasContainer = document.createElement('div');
+        canvasContainer.style.textAlign = 'center';
+        canvasContainer.style.margin = '16px 0';
+        
+        const scanvas = document.createElement('canvas');
+        scanvas.width = 300;
+        scanvas.height = 200;
+        scanvas.style.border = '2px solid #10b981';
+        scanvas.style.background = '#020617';
+        scanvas.style.borderRadius = '4px';
+        
+        canvasContainer.appendChild(scanvas);
+        body.appendChild(canvasContainer);
+        body.scrollTop = body.scrollHeight;
+        
+        const sctx = scanvas.getContext('2d');
+        const grid = 10;
+        let count = 0;
+        
+        let snake = {
+            x: 150,
+            y: 100,
+            dx: grid,
+            dy: 0,
+            cells: [],
+            maxCells: 4
+        };
+        
+        let apple = {
+            x: 60,
+            y: 60
+        };
+        
+        let score = 0;
+        
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+        
+        function resetApple() {
+            apple.x = getRandomInt(0, 30) * grid;
+            apple.y = getRandomInt(0, 20) * grid;
+        }
+        
+        function loop() {
+            if (!snakeActive) return;
+            snakeTimer = requestAnimationFrame(loop);
+            
+            if (++count < 6) {
+                return;
+            }
+            count = 0;
+            
+            sctx.clearRect(0, 0, scanvas.width, scanvas.height);
+            
+            snake.x += snake.dx;
+            snake.y += snake.dy;
+            
+            if (snake.x < 0) snake.x = scanvas.width - grid;
+            else if (snake.x >= scanvas.width) snake.x = 0;
+            
+            if (snake.y < 0) snake.y = scanvas.height - grid;
+            else if (snake.y >= scanvas.height) snake.y = 0;
+            
+            snake.cells.unshift({x: snake.x, y: snake.y});
+            
+            if (snake.cells.length > snake.maxCells) {
+                snake.cells.pop();
+            }
+            
+            sctx.fillStyle = '#ef4444';
+            sctx.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+            
+            sctx.fillStyle = '#10b981';
+            snake.cells.forEach((cell, index) => {
+                sctx.fillRect(cell.x, cell.y, grid - 1, grid - 1);
+                
+                if (cell.x === apple.x && cell.y === apple.y) {
+                    snake.maxCells++;
+                    score += 10;
+                    resetApple();
+                }
+                
+                for (let i = index + 1; i < snake.cells.length; i++) {
+                    if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+                        endSnakeGame(score);
+                    }
+                }
+            });
+            
+            sctx.fillStyle = 'rgba(16, 185, 129, 0.7)';
+            sctx.font = '10px monospace';
+            sctx.fillText(`Score: ${score}`, 8, 16);
+        }
+        
+        snakeKeysHandler = function(e) {
+            if ([37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+                e.preventDefault();
+            }
+            
+            if ((e.which === 37 || e.which === 65) && snake.dx === 0) {
+                snake.dx = -grid;
+                snake.dy = 0;
+            }
+            else if ((e.which === 38 || e.which === 87) && snake.dy === 0) {
+                snake.dy = -grid;
+                snake.dx = 0;
+            }
+            else if ((e.which === 39 || e.which === 68) && snake.dx === 0) {
+                snake.dx = grid;
+                snake.dy = 0;
+            }
+            else if ((e.which === 40 || e.which === 83) && snake.dy === 0) {
+                snake.dy = grid;
+                snake.dx = 0;
+            }
+            else if (e.key === 'Escape') {
+                endSnakeGame(score, true);
+            }
+        };
+        
+        window.addEventListener('keydown', snakeKeysHandler);
+        snakeTimer = requestAnimationFrame(loop);
+    }
+    
+    function endSnakeGame(finalScore = 0, aborted = false) {
+        if (!snakeActive) return;
+        snakeActive = false;
+        
+        cancelAnimationFrame(snakeTimer);
+        window.removeEventListener('keydown', snakeKeysHandler);
+        
+        printLine('========================================');
+        if (aborted) {
+            printLine('◆ SNAKE GAME INTERRUPTED.');
+        } else {
+            printLine('◆ GAME OVER // SNAKE CORE CRASHED.');
+        }
+        printLine(`◆ FINAL SCORE: ${finalScore}`);
+        printLine('◆ Type \'snake\' to restart.');
+        printLine('========================================');
+        
+        input.focus();
+    }
+    
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fullCmd = input.value.trim();
+        input.value = '';
+        
+        if (!fullCmd) return;
+        
+        printLine(`<span class="cli-prompt">guest@zakee-node:~$</span> ${fullCmd}`);
+        
+        if (snakeActive) {
+            if (fullCmd.toLowerCase() === 'exit' || fullCmd.toLowerCase() === 'quit') {
+                endSnakeGame(0, true);
+            }
+            return;
+        }
+        
+        const args = fullCmd.split(' ');
+        const cmd = args[0].toLowerCase();
+        
+        switch (cmd) {
+            case 'help':
+                printLine('Available Commands:');
+                printLine('  neofetch       - Display system spec sheet & ASCII banner');
+                printLine('  about          - View biography profile');
+                printLine('  skills         - List target core competencies');
+                printLine('  experience     - Read professional career logs');
+                printLine('  theme [l/d]    - Set theme: \'theme light\' or \'theme dark\'');
+                printLine('  snake          - Play 8-bit retro terminal snake');
+                printLine('  clear          - Flush console logging buffers');
+                printLine('  exit           - Shut down dev console interface');
+                break;
+            case 'neofetch':
+                runNeofetch();
+                break;
+            case 'about':
+                printLine('Mohammed Zakee Nowfal is an Artificial Intelligence undergraduate student at SLIIT, Malabe, Sri Lanka.');
+                printLine('He is focused on deep learning engineering, cloud architectures, and fintech strategic partnerships.');
+                break;
+            case 'skills':
+                printLine('Core Technical Matrix:');
+                printLine('  - AI / ML      : TensorFlow, Pandas, NumPy, Scikit-learn, Matplotlib');
+                printLine('  - Languages    : HTML5, CSS3, JS (ES6), Python, C++');
+                printLine('  - Platforms    : Git, AWS Academy, IntelliJ IDEA, Figma');
+                break;
+            case 'experience':
+                printLine('Professional Ledger:');
+                printLine('  - Project Lead // FASL (Feb 2026 — Present)');
+                printLine('  - Strategic Partnership Executive // Fintech Zone (Mar 2025 — Present)');
+                printLine('  - Exam Invigilator // British Council Sri Lanka (May 2025 — Present)');
+                printLine('  - Teaching Assistant // SLIIT (Jan 2025 — Present)');
+                break;
+            case 'theme':
+                if (args[1] === 'light') {
+                    document.documentElement.classList.add('light-theme');
+                    localStorage.setItem('theme', 'light');
+                    window.dispatchEvent(new Event('theme-changed'));
+                    const tIcon = document.querySelector('#themeToggle i');
+                    if (tIcon) tIcon.className = 'fa-solid fa-sun';
+                    printLine('System theme changed to LIGHT.');
+                } else if (args[1] === 'dark') {
+                    document.documentElement.classList.remove('light-theme');
+                    localStorage.setItem('theme', 'dark');
+                    window.dispatchEvent(new Event('theme-changed'));
+                    const tIcon = document.querySelector('#themeToggle i');
+                    if (tIcon) tIcon.className = 'fa-solid fa-moon';
+                    printLine('System theme changed to DARK.');
+                } else {
+                    printLine('Usage: theme [light|dark]');
+                }
+                break;
+            case 'snake':
+                startSnakeGame();
+                break;
+            case 'clear':
+                body.innerHTML = '';
+                break;
+            case 'exit':
+                closeTerminal();
+                break;
+            default:
+                printLine(`bash: command not found: ${cmd}. Type 'help' for command directory.`);
+        }
+    });
+}
+
+/* ── Expandable Experience Accordion ── */
+function initExperienceAccordion() {
+    const expRows = document.querySelectorAll('.exp-row.exp-expandable');
+    expRows.forEach(row => {
+        row.addEventListener('click', (e) => {
+            if (e.target.closest('a') || e.target.closest('button')) return;
+            
+            row.classList.toggle('expanded');
+            const hintText = row.querySelector('.exp-hint');
+            if (hintText) {
+                const isExpanded = row.classList.contains('expanded');
+                hintText.innerHTML = `${isExpanded ? 'COLLAPSE' : 'EXPAND'} // <i class="fa-solid fa-chevron-down"></i>`;
+            }
+        });
+    });
+}
+
+/* ── 3D Bento Mouse Parallax Tilt ── */
+function initBentoParallax() {
+    const cards = document.querySelectorAll('.bento-card');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const xc = rect.width / 2;
+            const yc = rect.height / 2;
+            const dx = x - xc;
+            const dy = y - yc;
+            const tiltX = -(dy / yc) * 8;
+            const tiltY = (dx / xc) * 8;
+            card.style.transition = 'none';
+            card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, background 0.3s';
+            card.style.transform = '';
+        });
+    });
+}
+
+/* ── Interactive Skills Radar Chart (High-DPI Canvas) ── */
+function initRadarChart() {
+    const canvas = document.getElementById('radarChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    
+    const skills = [
+        { name: 'AI / ML', value: 0.90 },
+        { name: 'Web Dev', value: 0.80 },
+        { name: 'Databases', value: 0.75 },
+        { name: 'Systems', value: 0.70 },
+        { name: 'Leadership', value: 0.85 },
+        { name: 'Data Analytics', value: 0.80 }
+    ];
+    
+    const dpr = window.devicePixelRatio || 1;
+    let width = 300;
+    let height = 300;
+    
+    function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        width = rect.width;
+        height = rect.height;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.scale(dpr, dpr);
+        draw();
+    }
+    
+    function draw() {
+        ctx.clearRect(0, 0, width, height);
+        
+        const isLight = document.documentElement.classList.contains('light-theme');
+        const gridColor = isLight ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.08)';
+        const gridLinesColor = isLight ? 'rgba(0, 0, 0, 0.15)' : 'rgba(255, 255, 255, 0.15)';
+        const textColor = isLight ? '#27272a' : '#e4e4e7';
+        const accentColor = 'rgba(99, 102, 241, 0.85)';
+        const fillColor = isLight ? 'rgba(99, 102, 241, 0.15)' : 'rgba(99, 102, 241, 0.2)';
+        
+        const center = { x: width / 2, y: height / 2 };
+        const radius = Math.min(width, height) / 2 * 0.75;
+        const numAxes = skills.length;
+        const angleStep = (Math.PI * 2) / numAxes;
+        
+        // Concentric Grid Polygons
+        const levels = 5;
+        for (let level = 1; level <= levels; level++) {
+            const r = (radius / levels) * level;
+            ctx.beginPath();
+            for (let i = 0; i < numAxes; i++) {
+                const angle = i * angleStep - Math.PI / 2;
+                const x = center.x + Math.cos(angle) * r;
+                const y = center.y + Math.sin(angle) * r;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.strokeStyle = gridColor;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        }
+        
+        // Axes Lines and Labels
+        ctx.font = 'bold 9px var(--font-mono)';
+        ctx.fillStyle = textColor;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        
+        for (let i = 0; i < numAxes; i++) {
+            const angle = i * angleStep - Math.PI / 2;
+            const outerX = center.x + Math.cos(angle) * radius;
+            const outerY = center.y + Math.sin(angle) * radius;
+            
+            ctx.beginPath();
+            ctx.moveTo(center.x, center.y);
+            ctx.lineTo(outerX, outerY);
+            ctx.strokeStyle = gridLinesColor;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+            
+            const labelDist = radius + 15;
+            const labelX = center.x + Math.cos(angle) * labelDist;
+            const labelY = center.y + Math.sin(angle) * labelDist;
+            
+            if (Math.abs(Math.cos(angle)) < 0.1) {
+                ctx.textAlign = 'center';
+            } else if (Math.cos(angle) > 0) {
+                ctx.textAlign = 'left';
+            } else {
+                ctx.textAlign = 'right';
+            }
+            ctx.fillText(skills[i].name, labelX, labelY);
+        }
+        
+        // Draw Data Polygon
+        ctx.beginPath();
+        for (let i = 0; i < numAxes; i++) {
+            const angle = i * angleStep - Math.PI / 2;
+            const r = radius * skills[i].value;
+            const x = center.x + Math.cos(angle) * r;
+            const y = center.y + Math.sin(angle) * r;
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.fillStyle = fillColor;
+        ctx.fill();
+        ctx.strokeStyle = accentColor;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        
+        // Draw Data Points
+        for (let i = 0; i < numAxes; i++) {
+            const angle = i * angleStep - Math.PI / 2;
+            const r = radius * skills[i].value;
+            const x = center.x + Math.cos(angle) * r;
+            const y = center.y + Math.sin(angle) * r;
+            
+            ctx.beginPath();
+            ctx.arc(x, y, 4, 0, Math.PI * 2);
+            ctx.fillStyle = isLight ? '#ffffff' : '#09090b';
+            ctx.fill();
+            ctx.strokeStyle = accentColor;
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+        }
+    }
+    
+    // Listen to theme changed and window resize
+    window.addEventListener('theme-changed', draw);
+    window.addEventListener('resize', resizeCanvas);
+    
+    // Initial draw trigger
+    resizeCanvas();
+}
+
+/* ── Boot Initializer ── */
+initThemeToggle();
+initDeviceSimulator();
+initGitHubRepos();
+initProjectExplorer();
+initDeveloperTerminal();
+initExperienceAccordion();
+initBentoParallax();
+initRadarChart();
 
 /* ── Architectural Console Branding ── */
 console.log('%c◆ ZAKEE NOWFAL — PORTFOLIO 2026 ◆', 'color:#e2e8f0;background:#09090b;font-size:14px;font-weight:bold;padding:4px 8px;border:1px solid #27272a;');

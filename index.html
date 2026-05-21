@@ -61,6 +61,9 @@
 </head>
 
 <body>
+    <!-- Dynamic Page Scroll Indicator -->
+    <div id="scrollProgress" class="scroll-progress-bar"></div>
+
     <!-- Premium Cinematic Preloader Overlay -->
     <div id="preloader" class="preloader">
         <button id="skipPreloader" class="skip-preloader-btn" aria-label="Skip introduction animation">Skip Intro // &gt;&gt;</button>
@@ -90,6 +93,9 @@
     <div class="noise-bg"></div>
     <div class="grid-backdrop"></div>
 
+    <!-- App Wrapper to support simulated frame sizing -->
+    <div id="appWrapper" class="app-wrapper">
+
     <!-- Floating Dynamic Pill Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -107,9 +113,17 @@
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
 
-            <a href="CV_Mohammed_Zakee.pdf" download class="nav-cta">
-                <span>Resume</span> <i class="fa-solid fa-arrow-down-long"></i>
-            </a>
+            <div class="nav-controls">
+                <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button id="deviceToggle" class="device-toggle-btn" aria-label="Toggle device view">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </button>
+                <a href="CV_Mohammed_Zakee.pdf" download class="nav-cta">
+                    <span>Resume</span> <i class="fa-solid fa-arrow-down-long"></i>
+                </a>
+            </div>
 
             <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
                 <span></span>
@@ -264,6 +278,36 @@
                     <p class="location-text">Malabe, Sri Lanka 🇱🇰</p>
                     <p class="location-sub"><i class="fa-solid fa-phone"></i> +94 706 103 115</p>
                 </div>
+                
+                <!-- LinkedIn Card -->
+                <div class="bento-card bento-linkedin reveal">
+                    <div class="card-num">07</div>
+                    <div class="bento-header">
+                        <span class="bento-tag">// NETWORK</span>
+                        <h3>LinkedIn Highlights</h3>
+                    </div>
+                    <div class="linkedin-post-preview">
+                        <div class="linkedin-user">
+                            <img src="profile-new.webp" alt="Zakee Nowfal" class="linkedin-avatar">
+                            <div class="linkedin-user-info">
+                                <span class="linkedin-name">Zakee Nowfal</span>
+                                <span class="linkedin-headline">AI Undergraduate & Strategic Partnerships</span>
+                                <span class="linkedin-time">Recent Post</span>
+                            </div>
+                            <i class="fa-brands fa-linkedin linkedin-icon"></i>
+                        </div>
+                        <div class="linkedin-content">
+                            <p class="linkedin-text">Stepped into my new role as <strong>Project Lead</strong> at the <strong>Fintech Association of Sri Lanka (FASL)</strong>! Extremely excited to drive national-level B2B events to accelerate digital finance pipelines... <span class="linkedin-see-more">see more</span></p>
+                        </div>
+                        <div class="linkedin-actions">
+                            <span class="linkedin-stat"><i class="fa-solid fa-thumbs-up"></i> 142 Likes</span>
+                            <span class="linkedin-stat"><i class="fa-solid fa-comment"></i> 24 Comments</span>
+                        </div>
+                        <a href="https://www.linkedin.com/in/mohammed-zakee/" target="_blank" class="linkedin-btn">
+                            <span>View Post on LinkedIn</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -388,54 +432,86 @@
             
             <div class="exp-ledger">
                 <!-- FASL -->
-                <div class="exp-row reveal">
+                <div class="exp-row exp-expandable reveal">
                     <div class="exp-left">
                         <div class="exp-dates">FEB 2026 — PRESENT</div>
                         <div class="exp-badge current-badge">CURRENT</div>
+                        <span class="exp-hint">EXPAND // <i class="fa-solid fa-chevron-down"></i></span>
                     </div>
                     <div class="exp-right">
                         <h3 class="exp-role">Project Lead</h3>
                         <div class="exp-institution">FASL – Fintech Association of Sri Lanka</div>
                         <p class="exp-desc">Spearheading national-level event coordination for banking and finance organizations in Sri Lanka; co-organizing premium B2B fintech events to accelerate digital adoption and network engagement for 15+ institutional partners.</p>
+                        <div class="exp-details-panel">
+                            <ul class="exp-achievements">
+                                <li><span class="bullet">■</span> Orchestrated collaborative sync sessions with 15+ central banking and private institutional tech leaders.</li>
+                                <li><span class="bullet">■</span> Designed agendas for nationwide tech-adoption panels and B2B matchmaking roundtables.</li>
+                                <li><span class="bullet">■</span> Drafted project proposals and partnership packages for corporate sponsors and international delegates.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Strategic Partnership Exec -->
-                <div class="exp-row reveal">
+                <div class="exp-row exp-expandable reveal">
                     <div class="exp-left">
                         <div class="exp-dates">AUG 2025 — PRESENT</div>
                         <div class="exp-badge current-badge">CURRENT</div>
+                        <span class="exp-hint">EXPAND // <i class="fa-solid fa-chevron-down"></i></span>
                     </div>
                     <div class="exp-right">
                         <h3 class="exp-role">Strategic Partnership Executive</h3>
                         <div class="exp-institution">Fintech Digital Pvt Ltd</div>
                         <p class="exp-desc">Driving strategic business development and high-value alliances; successfully established key touchpoints with 10+ financial institutions, technology partners, and industry bodies to scale Fintech Digital's national ecosystem.</p>
+                        <div class="exp-details-panel">
+                            <ul class="exp-achievements">
+                                <li><span class="bullet">■</span> Onboarded key tech partners to the startup ecosystem, negotiating 5 strategic agreements.</li>
+                                <li><span class="bullet">■</span> Managed pipelines for high-value Fintech alliances in B2B spaces.</li>
+                                <li><span class="bullet">■</span> Supported sales outreach campaigns for enterprise digital banking platforms.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <!-- SFF Lead -->
-                <div class="exp-row reveal">
+                <div class="exp-row exp-expandable reveal">
                     <div class="exp-left">
                         <div class="exp-dates">AUG 2025 — NOV 2025</div>
                         <div class="exp-badge">COMPLETED</div>
+                        <span class="exp-hint">EXPAND // <i class="fa-solid fa-chevron-down"></i></span>
                     </div>
                     <div class="exp-right">
                         <h3 class="exp-role">Project Lead – Singapore Fintech Festival</h3>
                         <div class="exp-institution">Fintech Digital Pvt Ltd</div>
                         <p class="exp-desc">Directly managed the Sri Lankan delegation at the Singapore Fintech Festival 2025; successfully onboarded high-potential local startups, coordinated international booth presence, and facilitated cross-border B2B collaboration pipelines.</p>
+                        <div class="exp-details-panel">
+                            <ul class="exp-achievements">
+                                <li><span class="bullet">■</span> Represented Sri Lanka in Singapore, managing communication and presentation logistics for 6 local startups.</li>
+                                <li><span class="bullet">■</span> Facilitated 20+ investor networking meetings for delegation startup founders.</li>
+                                <li><span class="bullet">■</span> Managed booth designs and international media pipelines.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Invigilator -->
-                <div class="exp-row reveal">
+                <div class="exp-row exp-expandable reveal">
                     <div class="exp-left">
                         <div class="exp-dates">MAY 2025 — PRESENT</div>
                         <div class="exp-badge current-badge">CURRENT</div>
+                        <span class="exp-hint">EXPAND // <i class="fa-solid fa-chevron-down"></i></span>
                     </div>
                     <div class="exp-right">
                         <h3 class="exp-role">Exam Invigilator</h3>
                         <div class="exp-institution">British Council</div>
                         <p class="exp-desc">Managing secure, fair, and high-fidelity administration of international IELTS and Cambridge examinations; supervised 500+ high-stakes academic and professional assessments under stringent compliance guidelines.</p>
+                        <div class="exp-details-panel">
+                            <ul class="exp-achievements">
+                                <li><span class="bullet">■</span> Enforced compliance guidelines for British Council exam centers.</li>
+                                <li><span class="bullet">■</span> Welcomed and verified ID checks for hundreds of students.</li>
+                                <li><span class="bullet">■</span> Supervised exams under strict timelines and reporting parameters.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -605,6 +681,17 @@
                     </div>
                 </div>
 
+                <!-- Interactive Radar Chart -->
+                <div class="skills-radar-wrap reveal">
+                    <div class="radar-header">
+                        <span class="radar-tag">// DATA VISUALIZATION</span>
+                        <h3>Skill Dimensions</h3>
+                    </div>
+                    <div class="radar-container">
+                        <canvas id="radarChart" width="300" height="300"></canvas>
+                    </div>
+                </div>
+
                 <!-- Sleek Tag Clouds -->
                 <div class="skill-tags-ledger reveal">
                     <div class="ledger-tag-label">CORE DOMAINS //</div>
@@ -671,6 +758,54 @@
                         </div>
                     </div>
                     
+                    <!-- Architecture Explorer -->
+                    <div class="project-explorer-container">
+                        <button type="button" class="btn-explorer-toggle" data-target="explorerPhoenix">
+                            <i class="fa-solid fa-folder-open"></i> <span>Explore Architecture Tree</span>
+                        </button>
+                        <div class="project-explorer" id="explorerPhoenix">
+                            <div class="explorer-inner">
+                                <div class="file-tree">
+                                    <ul>
+                                        <li class="folder open">
+                                            <span class="tree-item"><i class="fa-solid fa-folder"></i> src/</span>
+                                            <ul>
+                                                <li class="folder">
+                                                    <span class="tree-item"><i class="fa-solid fa-folder"></i> controller/</span>
+                                                    <ul>
+                                                        <li class="file" data-desc="Handles client HTTP requests (GET/POST), performs user session validation, and interfaces with the database controllers."><span class="tree-item"><i class="fa-solid fa-file-code"></i> CarServlet.java</span></li>
+                                                        <li class="file" data-desc="Manages authentication and access permissions for users, hosts, and admins."><span class="tree-item"><i class="fa-solid fa-file-code"></i> AuthServlet.java</span></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="folder">
+                                                    <span class="tree-item"><i class="fa-solid fa-folder"></i> model/</span>
+                                                    <ul>
+                                                        <li class="file" data-desc="A custom Stack (LIFO) implementation to manage car keys and vehicle availability queue for returns."><span class="tree-item"><i class="fa-solid fa-file-code"></i> ReturnStack.java</span></li>
+                                                        <li class="file" data-desc="Entity model containing car states, availability boolean, fuel levels, and pricing data."><span class="tree-item"><i class="fa-solid fa-file-code"></i> Car.java</span></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="folder">
+                                            <span class="tree-item"><i class="fa-solid fa-folder"></i> web/</span>
+                                            <ul>
+                                                <li class="file" data-desc="The landing and search interface for customers to select rental dates and check rates."><span class="tree-item"><i class="fa-solid fa-file-code"></i> dashboard.jsp</span></li>
+                                                <li class="file" data-desc="Admin control center showing active rentals and fleet stack levels."><span class="tree-item"><i class="fa-solid fa-file-code"></i> admin.jsp</span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="file-details">
+                                    <div class="details-placeholder">Click a file to inspect its architectural purpose and decisions.</div>
+                                    <div class="details-content" style="display: none;">
+                                        <h4 class="details-filename"></h4>
+                                        <p class="details-description"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="project-footer">
                         <a href="https://github.com/Mohammed-Zakee/Project-Phoenix" target="_blank" class="project-link">
                             <span>GitHub Source</span> <i class="fa-brands fa-github"></i>
@@ -710,11 +845,70 @@
                         </div>
                     </div>
                     
+                    <!-- Architecture Explorer -->
+                    <div class="project-explorer-container">
+                        <button type="button" class="btn-explorer-toggle" data-target="explorerHotel">
+                            <i class="fa-solid fa-folder-open"></i> <span>Explore Architecture Tree</span>
+                        </button>
+                        <div class="project-explorer" id="explorerHotel">
+                            <div class="explorer-inner">
+                                <div class="file-tree">
+                                    <ul>
+                                        <li class="folder open">
+                                            <span class="tree-item"><i class="fa-solid fa-folder"></i> src/</span>
+                                            <ul>
+                                                <li class="folder">
+                                                    <span class="tree-item"><i class="fa-solid fa-folder"></i> components/</span>
+                                                    <ul>
+                                                        <li class="file" data-desc="React dashboard panel displaying dynamic guest accommodation availability grids."><span class="tree-item"><i class="fa-solid fa-file-code"></i> RoomGrid.jsx</span></li>
+                                                        <li class="file" data-desc="Interactive form collecting meal choices, RSVP validations, and guest listings."><span class="tree-item"><i class="fa-solid fa-file-code"></i> RsvpForm.jsx</span></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="folder">
+                                                    <span class="tree-item"><i class="fa-solid fa-folder"></i> database/</span>
+                                                    <ul>
+                                                        <li class="file" data-desc="Relational SQL tables defining users, reservations, guest preference mappings, and foreign-key logs."><span class="tree-item"><i class="fa-solid fa-file-code"></i> schema.sql</span></li>
+                                                        <li class="file" data-desc="Optimized query script joining bookings and guest RSVP records for admin ledger sheets."><span class="tree-item"><i class="fa-solid fa-file-code"></i> queries.sql</span></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="file-details">
+                                    <div class="details-placeholder">Click a file to inspect its architectural purpose and decisions.</div>
+                                    <div class="details-content" style="display: none;">
+                                        <h4 class="details-filename"></h4>
+                                        <p class="details-description"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="project-footer">
                         <a href="https://github.com/Mohammed-Zakee/Golden-Palm-Hotel-Reservation-System" target="_blank" class="project-link">
                             <span>GitHub Source</span> <i class="fa-brands fa-github"></i>
                         </a>
                     </div>
+                </div>
+            </div>
+
+            <!-- GitHub Repos Carousel Section -->
+            <div class="github-repos-section reveal" style="margin-top: 5rem; border-top: 1px solid var(--border); padding-top: 4rem;">
+                <div class="github-header" style="margin-bottom: 2.5rem;">
+                    <span class="github-tag" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); letter-spacing: 2px; font-weight: 500; text-transform: uppercase;">06.1 // OPEN SOURCE CONTRIBUTION</span>
+                    <h3 class="github-title" style="font-family: var(--font-title); font-size: 2.2rem; font-weight: 700; text-transform: uppercase; margin-top: 0.5rem; letter-spacing: -0.02em;">GitHub Repositories</h3>
+                </div>
+                <div class="carousel-container-outer" style="position: relative; display: flex; align-items: center; gap: 16px; width: 100%;">
+                    <button class="carousel-control prev" id="carouselPrev" aria-label="Previous Slide" style="background: rgba(13, 13, 15, 0.8); border: 1px solid var(--border); color: var(--text); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all var(--trans); z-index: 10;"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="carousel-track-wrapper" style="overflow: hidden; width: 100%;">
+                        <div class="carousel-track" id="githubReposCarousel" style="display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); width: 100%;">
+                            <!-- Dynamically loaded repositories go here -->
+                            <div class="carousel-placeholder" style="width: 100%; text-align: center; font-family: var(--font-mono); color: var(--text-muted); padding: 40px 0;">Loading repositories from GitHub...</div>
+                        </div>
+                    </div>
+                    <button class="carousel-control next" id="carouselNext" aria-label="Next Slide" style="background: rgba(13, 13, 15, 0.8); border: 1px solid var(--border); color: var(--text); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all var(--trans); z-index: 10;"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
@@ -824,6 +1018,51 @@
                 <input type="text" id="consoleInput" placeholder="Ask a question..." autocomplete="off">
             </form>
         </div>
+    </div>
+    </div> <!-- /#appWrapper -->
+
+    <!-- Retro Developer CLI Terminal Overlay -->
+    <div id="devCliTerminal" class="dev-cli-terminal">
+        <div class="cli-overlay-effects">
+            <div class="cli-scanlines"></div>
+            <div class="cli-flicker"></div>
+        </div>
+        
+        <div class="cli-header">
+            <div class="cli-header-left">
+                <span class="cli-status-dot"></span>
+                <span class="cli-title">DEV_SHELL v2.6 // SECURE_NODE</span>
+            </div>
+            <div class="cli-header-right">
+                <span class="cli-help-tip">Type 'help' for commands // Press 'ESC' or type 'exit'</span>
+                <button type="button" id="cliCloseBtn" class="cli-close-btn">&times;</button>
+            </div>
+        </div>
+        
+        <div class="cli-body" id="cliBody">
+            <div class="cli-line">◆ ZAKEE SECURE NODE INITIALIZED [v2.6.4]</div>
+            <div class="cli-line">◆ SYSTEM: DEBIAN CORE / PORTFOLIO SHIELDED</div>
+            <div class="cli-line">◆ TYPE 'help' TO QUERY DIRECTORIES OR RUN MODULES.</div>
+            <div class="cli-line">&nbsp;</div>
+        </div>
+        
+        <form id="cliForm" class="cli-input-line">
+            <span class="cli-prompt">guest@zakee-node:~$</span>
+            <input type="text" id="cliInput" autocomplete="off" autofocus>
+        </form>
+    </div>
+
+    <!-- Floating Developer CLI Trigger -->
+    <button id="cliToggleBtn" class="cli-floating-toggle" title="Open Developer CLI (~)" aria-label="Toggle Developer CLI">
+        <i class="fa-solid fa-terminal"></i>
+    </button>
+
+    <!-- Floating Device Simulator Controls (only visible on desktop) -->
+    <div id="deviceSimulatorControls" class="device-sim-controls">
+        <button class="sim-btn active" data-mode="full" title="Full Screen"><i class="fa-solid fa-expand"></i> <span>Full View</span></button>
+        <button class="sim-btn" data-mode="mobile" title="iPhone View"><i class="fa-solid fa-mobile-screen-button"></i> <span>Mobile</span></button>
+        <button class="sim-btn" data-mode="tablet" title="iPad View"><i class="fa-solid fa-tablet-screen-button"></i> <span>Tablet</span></button>
+        <button class="sim-btn" id="rotateSimBtn" title="Rotate Orientation"><i class="fa-solid fa-rotate"></i></button>
     </div>
 
     <script src="script.js"></script>
