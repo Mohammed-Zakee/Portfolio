@@ -545,29 +545,188 @@ if (botToggle && botConsole && consoleClose && consoleBody && consoleForm && con
     }
     
     function processInput(query) {
-        const q = query.trim().toLowerCase();
+        const cleanQ = query.trim().toLowerCase().replace(/[?.!,;:]/g, '');
         let reply = "";
         
-        if (qaPairs[q]) {
-            reply = qaPairs[q];
-        } else if (q.includes('hi') || q.includes('hello') || q.includes('hey')) {
-            reply = "Hello! I am Zakee-Bot. Ask me about Zakee's <strong>about</strong>, <strong>skills</strong>, <strong>education</strong>, <strong>experience</strong>, <strong>volunteer</strong> roles, <strong>certifications</strong>, or <strong>contact</strong>. Type 'help' for commands.";
-        } else if (q.includes('work') || q.includes('job') || q.includes('fintech') || q.includes('association') || q.includes('role')) {
+        // Exact match
+        if (qaPairs[cleanQ]) {
+            reply = qaPairs[cleanQ];
+        } 
+        // Conversational: Feelings / How are you
+        else if (
+            cleanQ.includes('how are you') || 
+            cleanQ.includes('hows it going') || 
+            cleanQ.includes('how do you do') || 
+            cleanQ.includes('are you ok') || 
+            cleanQ.includes('are you fine') || 
+            cleanQ.includes('how are things') ||
+            cleanQ === 'how are u' ||
+            cleanQ === 'how r u'
+        ) {
+            reply = "I'm doing great, thank you for asking! 😊 I'm fully charged and ready to help you explore Zakee's portfolio. How can I assist you today?";
+        } 
+        // Conversational: Greetings
+        else if (
+            cleanQ.includes('hello') || 
+            cleanQ.includes('hi') || 
+            cleanQ.includes('hey') || 
+            cleanQ.includes('yo') || 
+            cleanQ.includes('greetings') || 
+            cleanQ.includes('sup') ||
+            cleanQ.includes('good morning') ||
+            cleanQ.includes('good afternoon') ||
+            cleanQ.includes('good evening')
+        ) {
+            reply = "Hello! I am Zakee-Bot, a conversational agent. Ask me about Zakee's <strong>about</strong>, <strong>skills</strong>, <strong>education</strong>, <strong>experience</strong>, <strong>volunteer</strong> roles, <strong>certifications</strong>, or <strong>contact</strong>. Type 'help' to see all commands!";
+        } 
+        // Conversational: Gratitude / small positive feedback
+        else if (
+            cleanQ.includes('thank you') || 
+            cleanQ.includes('thanks') || 
+            cleanQ.includes('appreciate') || 
+            cleanQ === 'cool' || 
+            cleanQ === 'awesome' || 
+            cleanQ === 'great' || 
+            cleanQ === 'nice'
+        ) {
+            reply = "You're very welcome! I'm glad I could help. Let me know if you want to know anything else about Zakee.";
+        } 
+        // Conversational: Identity / What is this bot
+        else if (
+            cleanQ.includes('who are you') || 
+            cleanQ.includes('what is your name') || 
+            cleanQ.includes('what are you') || 
+            cleanQ.includes('your name')
+        ) {
+            reply = "I am Zakee-Bot v1.2, a custom conversational assistant built to share insights about Zakee Nowfal's professional journey and qualifications.";
+        } 
+        // Conversational: Creator
+        else if (
+            cleanQ.includes('who created you') || 
+            cleanQ.includes('who made you') || 
+            cleanQ.includes('who is your developer') || 
+            cleanQ.includes('who built you') || 
+            cleanQ.includes('who is your creator')
+        ) {
+            reply = "I was developed by Zakee Nowfal! You can inspect my source code in this very terminal by typing <strong>source</strong> or <strong>code</strong>.";
+        } 
+        // Conversational: Goodbyes
+        else if (
+            cleanQ.includes('bye') || 
+            cleanQ.includes('goodbye') || 
+            cleanQ.includes('see you') || 
+            cleanQ.includes('exit') || 
+            cleanQ.includes('quit')
+        ) {
+            reply = "Goodbye! Thanks for chatting. Have a wonderful day! 👋";
+        } 
+        // Conversational: Jokes / Fun
+        else if (
+            cleanQ.includes('joke') || 
+            cleanQ.includes('tell me a joke')
+        ) {
+            reply = "Why do programmers wear glasses? Because they can't C#! 💻 Let's keep exploring Zakee's work!";
+        } 
+        else if (
+            cleanQ.includes('weather')
+        ) {
+            reply = "I don't have real-time internet access to check the weather right now, but things are looking bright here in Zakee's portfolio! ☀️";
+        }
+        // Portfolio: Experience / Career
+        else if (
+            cleanQ.includes('work') || 
+            cleanQ.includes('job') || 
+            cleanQ.includes('career') || 
+            cleanQ.includes('fintech') || 
+            cleanQ.includes('association') || 
+            cleanQ.includes('role') || 
+            cleanQ.includes('profession') || 
+            cleanQ.includes('experience') ||
+            cleanQ.includes('history')
+        ) {
             reply = qaPairs.experience;
-        } else if (q.includes('study') || q.includes('college') || q.includes('university') || q.includes('sliit') || q.includes('school')) {
+        } 
+        // Portfolio: Education
+        else if (
+            cleanQ.includes('study') || 
+            cleanQ.includes('college') || 
+            cleanQ.includes('university') || 
+            cleanQ.includes('sliit') || 
+            cleanQ.includes('school') ||
+            cleanQ.includes('education') ||
+            cleanQ.includes('degree')
+        ) {
             reply = qaPairs.education;
-        } else if (q.includes('code') || q.includes('python') || q.includes('programming') || q.includes('tech') || q.includes('ai')) {
+        } 
+        // Portfolio: Skills
+        else if (
+            cleanQ.includes('code') || 
+            cleanQ.includes('python') || 
+            cleanQ.includes('programming') || 
+            cleanQ.includes('tech') || 
+            cleanQ.includes('skill') || 
+            cleanQ.includes('ai') || 
+            cleanQ.includes('deep learning') || 
+            cleanQ.includes('machine learning') || 
+            cleanQ.includes('competencies')
+        ) {
             reply = qaPairs.skills;
-        } else if (q.includes('cert') || q.includes('course') || q.includes('aws') || q.includes('google')) {
+        } 
+        // Portfolio: Certifications
+        else if (
+            cleanQ.includes('cert') || 
+            cleanQ.includes('course') || 
+            cleanQ.includes('aws') || 
+            cleanQ.includes('google') ||
+            cleanQ.includes('credentials')
+        ) {
             reply = qaPairs.certifications;
-        } else if (q.includes('volunteer') || q.includes('ieee') || q.includes('fcsc') || q.includes('majlis') || q.includes('volunteer')) {
+        } 
+        // Portfolio: Volunteering
+        else if (
+            cleanQ.includes('volunteer') || 
+            cleanQ.includes('ieee') || 
+            cleanQ.includes('fcsc') || 
+            cleanQ.includes('majlis') || 
+            cleanQ.includes('un online') ||
+            cleanQ.includes('leadership')
+        ) {
             reply = qaPairs.volunteer;
-        } else if (q.includes('mail') || q.includes('phone') || q.includes('linkedin') || q.includes('contact')) {
+        } 
+        // Portfolio: Contact
+        else if (
+            cleanQ.includes('mail') || 
+            cleanQ.includes('phone') || 
+            cleanQ.includes('linkedin') || 
+            cleanQ.includes('contact') || 
+            cleanQ.includes('reach') || 
+            cleanQ.includes('hire') || 
+            cleanQ.includes('email')
+        ) {
             reply = qaPairs.contact;
-        } else if (q.includes('source') || q.includes('repo') || q.includes('github') || q.includes('open')) {
+        } 
+        // Portfolio: Source / GitHub
+        else if (
+            cleanQ.includes('source') || 
+            cleanQ.includes('repo') || 
+            cleanQ.includes('github') || 
+            cleanQ.includes('open')
+        ) {
             reply = qaPairs.source;
-        } else {
-            reply = "I parsed your input but don't have a direct answer mapped. Type <strong>about</strong>, <strong>skills</strong>, <strong>experience</strong>, <strong>volunteer</strong>, or <strong>help</strong> to query my knowledge matrix.";
+        } 
+        // Portfolio: About
+        else if (
+            cleanQ.includes('about') || 
+            cleanQ.includes('bio') || 
+            cleanQ.includes('who is zakee') || 
+            cleanQ.includes('zakee nowfal') || 
+            cleanQ.includes('mohammed')
+        ) {
+            reply = qaPairs.about;
+        } 
+        // Conversational Fallback
+        else {
+            reply = "I'm Zakee-Bot, your virtual portfolio assistant! I didn't quite catch that, but feel free to ask me about Zakee's <strong>about</strong>, <strong>skills</strong>, <strong>education</strong>, <strong>experience</strong>, <strong>volunteer</strong> roles, <strong>certifications</strong>, or type <strong>help</strong> for the command matrix.";
         }
         
         setTimeout(() => {
