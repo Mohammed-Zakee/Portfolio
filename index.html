@@ -138,7 +138,7 @@
                         </span>
                     </label>
                 </div>
-                <a href="CV_Mohammed_Zakee.pdf" download class="nav-cta">
+                <a href="CV_Mohammed_Zakee.pdf" download class="nav-cta magnetic-btn">
                     <span>Resume</span> <i class="fa-solid fa-arrow-down-long"></i>
                 </a>
             </div>
@@ -1081,7 +1081,7 @@
 
     <!-- Zakee-Bot On-Page AI Terminal Assistant -->
     <div id="zakeeBot" class="zakeebot-widget">
-        <button id="botToggle" class="bot-toggle-btn" aria-label="Toggle AI Assistant">
+        <button id="botToggle" class="bot-toggle-btn magnetic-btn" aria-label="Toggle AI Assistant">
             <span class="bot-pulse"></span>
             <i class="fa-solid fa-terminal"></i>
             <span class="bot-toggle-text">Zakee-Bot</span>
@@ -1089,7 +1089,10 @@
         <div id="botConsole" class="bot-console">
             <div class="console-header">
                 <div class="console-title"><i class="fa-solid fa-terminal"></i> ZAKEE-BOT v1.2</div>
-                <button id="consoleClose" class="console-close-btn">&times;</button>
+                <div class="console-actions" style="display: flex; align-items: center; gap: 12px;">
+                    <button type="button" class="sound-toggle-btn" id="soundToggle" title="Toggle Terminal Sounds" style="background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; padding: 4px; transition: color var(--trans);"><i class="fa-solid fa-volume-xmark"></i></button>
+                    <button id="consoleClose" class="console-close-btn" style="margin: 0;">&times;</button>
+                </div>
             </div>
             <div id="consoleBody" class="console-body">
                 <div class="console-msg system">◆ AI NODE ONLINE. Ask me anything about Zakee's skills, qualifications, certifications, or hobbies. Type 'help' to see suggestions.</div>

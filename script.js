@@ -457,12 +457,14 @@ if (canvas) {
 }
 
 /* ── Zakee-Bot Terminal AI Dialogue Router ── */
+/* ── Zakee-Bot Terminal AI Dialogue Router ── */
 const botToggle = document.getElementById('botToggle');
 const botConsole = document.getElementById('botConsole');
 const consoleClose = document.getElementById('consoleClose');
 const consoleBody = document.getElementById('consoleBody');
 const consoleForm = document.getElementById('consoleForm');
 const consoleInput = document.getElementById('consoleInput');
+const soundToggle = document.getElementById('soundToggle');
 
 if (botToggle && botConsole && consoleClose && consoleBody && consoleForm && consoleInput) {
     
@@ -478,25 +480,67 @@ if (botToggle && botConsole && consoleClose && consoleBody && consoleForm && con
         botConsole.classList.remove('open');
     });
     
+    // Global terminal sound toggle hook
+    if (soundToggle) {
+        soundToggle.addEventListener('click', () => {
+            window.terminalSoundEnabled = !window.terminalSoundEnabled;
+            if (window.terminalSoundEnabled) {
+                soundToggle.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+                soundToggle.style.color = 'var(--accent)';
+                window.playMechanicalClick();
+            } else {
+                soundToggle.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+                soundToggle.style.color = 'var(--text-muted)';
+            }
+        });
+    }
+
+    // Sound feedback keydown binding
+    consoleInput.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
+            window.playMechanicalClick();
+        }
+    });
+
+    // Command history state
+    let commandHistory = [];
+    let historyIndex = -1;
+
+    consoleInput.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (commandHistory.length > 0) {
+                if (historyIndex === -1) {
+                    historyIndex = commandHistory.length - 1;
+                } else if (historyIndex > 0) {
+                    historyIndex--;
+                }
+                consoleInput.value = commandHistory[historyIndex];
+            }
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (commandHistory.length > 0 && historyIndex !== -1) {
+                if (historyIndex < commandHistory.length - 1) {
+                    historyIndex++;
+                    consoleInput.value = commandHistory[historyIndex];
+                } else {
+                    historyIndex = -1;
+                    consoleInput.value = '';
+                }
+            }
+        }
+    });
+    
     const qaPairs = {
         help: "◆ COMMAND MATRIX:<br>- <strong>about</strong>: General information about Zakee.<br>- <strong>skills</strong>: AI, web, and data skillset.<br>- <strong>education</strong>: SLIIT details & secondary studies.<br>- <strong>experience</strong>: Positions in fintech, invigilation, etc.<br>- <strong>volunteer</strong>: IEEE, UN, FCSC leadership history.<br>- <strong>certifications</strong>: Summary of 15+ industry credentials.<br>- <strong>source</strong>: Zakee-Bot's open source code matrix.<br>- <strong>contact</strong>: Instant contact references.",
-        
         about: "Mohammed Zakee Nowfal is an Artificial Intelligence undergraduate student at SLIIT, Malabe, Sri Lanka. He works as a Strategic Partnership Executive in fintech and holds active leadership posts across major student boards (IEEE, FCSC, Majlis). He focuses on merging AI development with executive fintech strategy.",
-        
         skills: "Zakee's technical competencies include:<br>• <strong>Languages:</strong> HTML5, CSS3, Javascript (ES6), Python, C++<br>• <strong>AI & Deep Learning:</strong> TensorFlow, Pandas, NumPy, Scikit-learn, Matplotlib<br>• <strong>Platforms:</strong> Git, AWS Academy, IntelliJ IDEA, Figma",
-        
         education: "Zakee is pursuing a BSc (Hons) in Information Technology specializing in <strong>Artificial Intelligence</strong> at SLIIT, Malabe. He completed his high school education at Jeddah International School in Jeddah, Saudi Arabia.",
-        
         experience: "Zakee's professional ledger details:<br>1. <strong>Strategic Partnership Executive</strong> – Fintech Zone (Mar 2025 – Present)<br>2. <strong>Project Lead</strong> – Fintech Association of Sri Lanka (FASL) (Jun 2024 – Present)<br>3. <strong>Exam Invigilator</strong> – British Council Sri Lanka (May 2025 – Present)<br>4. <strong>Teaching Assistant</strong> – SLIIT Malabe (Jan 2025 – Present)",
-        
         volunteer: "Zakee has a significant history of volunteer leadership:<br>• <strong>Assistant Treasurer</strong> – IEEE Student Branch (SB) of SLIIT (2026/27)<br>• <strong>Committee Member</strong> – Faculty of Computing Student Community (FCSC)<br>• <strong>Assistant Treasurer</strong> – Majlis of SLIIT (Muslim Students' Association) (2026/27)<br>• <strong>UN Online Volunteer</strong> – United Nations<br>• <strong>Major Contributions:</strong> EUPHORIA (SIS), RoboMesh, CellSpell, LeadSpring.",
-        
         certifications: "Zakee holds over <strong>15 industry-recognized credentials</strong>:<br>• AWS Academy Graduate (Cloud Foundations)<br>• UPenn Wharton (Introduction to Fintech)<br>• Google & Coursera (Foundations of Project Management)<br>• University of Moratuwa (Python for Beginners)<br>• Alison (AI, ML, Neural Networks, Deep Learning)<br>• HP Life (Strategic Planning, Presentations).",
-        
         source: "◆ REPOSITORY NODE: /zakeebot-core<br>◆ STATUS: <strong>OPEN SOURCE</strong> (MIT license)<br>• Type <strong>code</strong> to view the routing algorithm.<br>• Fork the full website on GitHub: <a href='https://github.com/Mohammed-Zakee/Portfolio' target='_blank' style='color:#6366f1;text-decoration:underline;'>github.com/Mohammed-Zakee/Portfolio</a>",
-        
         code: "◆ ZAKEE-BOT CORE NLP ALGORITHM:<br><pre style='background:rgba(0,0,0,0.3);padding:8px;border-radius:4px;font-size:0.7rem;overflow-x:auto;color:#a1a1aa;'>class ZakeeBot {\n  constructor() {\n    this.matrix = QA_PAIRS;\n  }\n  process(query) {\n    let q = query.toLowerCase();\n    return this.matrix[q] ||\n           this.fallbackSearch(q);\n  }\n}</pre>",
-        
         contact: "Get in touch with Zakee immediately:<br>• Email: <a href='mailto:mohammedzakee2006@gmail.com' style='color:#6366f1;text-decoration:underline;'>mohammedzakee2006@gmail.com</a><br>• Phone: <a href='tel:+94706103115' style='color:#6366f1;text-decoration:underline;'>+94 706 103 115</a><br>• LinkedIn: <a href='https://www.linkedin.com/in/mohammed-zakee/' target='_blank' style='color:#6366f1;text-decoration:underline;'>linkedin.com/in/mohammed-zakee</a>"
     };
     
@@ -729,19 +773,33 @@ if (botToggle && botConsole && consoleClose && consoleBody && consoleForm && con
             reply = "I'm Zakee-Bot, your virtual portfolio assistant! I didn't quite catch that, but feel free to ask me about Zakee's <strong>about</strong>, <strong>skills</strong>, <strong>education</strong>, <strong>experience</strong>, <strong>volunteer</strong> roles, <strong>certifications</strong>, or type <strong>help</strong> for the command matrix.";
         }
         
+        // Show simulated typing indicator latency
+        const typingIndicator = document.createElement('div');
+        typingIndicator.className = 'console-msg bot typing-indicator-msg';
+        typingIndicator.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+        consoleBody.appendChild(typingIndicator);
+        consoleBody.scrollTop = consoleBody.scrollHeight;
+        
         setTimeout(() => {
+            typingIndicator.remove();
             appendMessage(reply, 'bot');
-        }, 200);
+        }, 550);
     }
     
     // Bind console input form
     consoleForm.addEventListener('submit', e => {
         e.preventDefault();
-        const text = consoleInput.value;
+        const text = consoleInput.value.trim();
         if (!text) return;
         
         appendMessage(text, 'user');
         consoleInput.value = '';
+        
+        // Add to history
+        commandHistory.push(text);
+        if (commandHistory.length > 50) commandHistory.shift(); // cap history
+        historyIndex = -1; // reset history index
+        
         processInput(text);
     });
 
@@ -763,7 +821,7 @@ if (botToggle && botConsole && consoleClose && consoleBody && consoleForm && con
 
 const sessionStartTime = Date.now();
 
-/* ── Light/Dark Theme Switching ── */
+/* ── Light/Dark Theme Switching with Circular Wipe ── */
 function initThemeToggle() {
     const themeToggle = document.getElementById('themeToggle');
     
@@ -775,11 +833,9 @@ function initThemeToggle() {
             document.documentElement.classList.remove('light-theme');
             if (themeToggle) themeToggle.checked = false;
         }
-        // Emit custom event for dynamic components to redraw
         window.dispatchEvent(new Event('theme-changed'));
     }
     
-    // Initial boot load from storage
     const savedTheme = localStorage.getItem('theme') || 'dark';
     applyTheme(savedTheme);
     
@@ -787,7 +843,41 @@ function initThemeToggle() {
         themeToggle.addEventListener('change', () => {
             const newTheme = themeToggle.checked ? 'light' : 'dark';
             localStorage.setItem('theme', newTheme);
-            applyTheme(newTheme);
+            
+            // View Transition circular swipe animation
+            if (!document.startViewTransition) {
+                applyTheme(newTheme);
+                return;
+            }
+            
+            const rect = themeToggle.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            const endRadius = Math.hypot(
+                Math.max(x, window.innerWidth - x),
+                Math.max(y, window.innerHeight - y)
+            );
+            
+            const transition = document.startViewTransition(() => {
+                applyTheme(newTheme);
+            });
+            
+            transition.ready.then(() => {
+                const clipPath = [
+                    `circle(0px at ${x}px ${y}px)`,
+                    `circle(${endRadius}px at ${x}px ${y}px)`
+                ];
+                document.documentElement.animate(
+                    {
+                        clipPath: newTheme === 'light' ? clipPath : [...clipPath].reverse(),
+                    },
+                    {
+                        duration: 500,
+                        easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                        pseudoElement: newTheme === 'light' ? '::view-transition-new(root)' : '::view-transition-old(root)',
+                    }
+                );
+            });
         });
     }
 }
@@ -1143,6 +1233,12 @@ function initDeveloperTerminal() {
     const body = document.getElementById('cliBody');
     
     if (!terminal || !form || !input || !body) return;
+
+    input.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
+            window.playMechanicalClick();
+        }
+    });
     
     let snakeActive = false;
     let matrixInterval = null;
@@ -1711,7 +1807,6 @@ function initRadarChart() {
 
 /* ── Boot Initializer ── */
 initThemeToggle();
-
 initProjectsSlideshow();
 initGitHubRepos();
 initProjectExplorer();
@@ -1719,6 +1814,128 @@ initDeveloperTerminal();
 initExperienceAccordion();
 initBentoParallax();
 initRadarChart();
+initRadialGlow();
+init3DTilt();
+initMagneticButtons();
+initScrollReveal();
+
+/* ── Global Terminal Audio Click Synthesis (Web Audio API) ── */
+window.terminalSoundEnabled = false;
+window.playMechanicalClick = function() {
+    if (!window.terminalSoundEnabled) return;
+    try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        if (ctx.state === 'suspended') {
+            ctx.resume();
+        }
+        const osc = ctx.createOscillator();
+        const oscGain = ctx.createGain();
+        
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(1400, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(150, ctx.currentTime + 0.035);
+        
+        oscGain.gain.setValueAtTime(0.012, ctx.currentTime);
+        oscGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.035);
+        
+        osc.connect(oscGain);
+        oscGain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.04);
+        
+        const bufferSize = ctx.sampleRate * 0.015;
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+            data[i] = Math.random() * 2 - 1;
+        }
+        const noise = ctx.createBufferSource();
+        noise.buffer = buffer;
+        const noiseFilter = ctx.createBiquadFilter();
+        noiseFilter.type = 'highpass';
+        noiseFilter.frequency.value = 7000;
+        const noiseGain = ctx.createGain();
+        noiseGain.gain.setValueAtTime(0.005, ctx.currentTime);
+        noiseGain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.015);
+        
+        noise.connect(noiseFilter);
+        noiseFilter.connect(noiseGain);
+        noiseGain.connect(ctx.destination);
+        noise.start();
+        noise.stop(ctx.currentTime + 0.018);
+    } catch (e) {
+        // Silently capture AudioContext errors (like autoplay blocks)
+    }
+};
+
+/* ── Radial Glow Hover Effect ── */
+function initRadialGlow() {
+    const cards = document.querySelectorAll('.bento-card, .project-item, .exp-row');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+}
+
+/* ── 3D Hover Parallax Card Tilt ── */
+function init3DTilt() {
+    const elements = document.querySelectorAll('.bento-card, .project-explorer, .nav-cta, .console-widget');
+    elements.forEach(el => {
+        el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const xc = rect.width / 2;
+            const yc = rect.height / 2;
+            const angleX = (yc - y) / 25;
+            const angleY = (x - xc) / 25;
+            el.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale3d(1.01, 1.01, 1.01)`;
+        });
+        el.addEventListener('mouseleave', () => {
+            el.style.transform = '';
+        });
+    });
+}
+
+/* ── Magnetic attraction micro-interactions ── */
+function initMagneticButtons() {
+    const magneticBtns = document.querySelectorAll('.magnetic-btn');
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
+    });
+}
+
+/* ── IntersectionObserver Staggered Scroll Reveal ── */
+function initScrollReveal() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px'
+    });
+    
+    document.querySelectorAll('.reveal').forEach((el) => {
+        observer.observe(el);
+    });
+}
 
 /* ── Architectural Console Branding ── */
 console.log('%c◆ ZAKEE NOWFAL — PORTFOLIO 2026 ◆', 'color:#e2e8f0;background:#09090b;font-size:14px;font-weight:bold;padding:4px 8px;border:1px solid #27272a;');

@@ -3134,3 +3134,97 @@ body.terminal-open .zakeebot-widget {
         bottom: 20px;
     }
 }
+
+/* ── Premium Interactions and Visual Effects ── */
+
+/* 1. Staggered Scroll Reveals */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 2. Radial Border Glow Highlight */
+.bento-card, .project-item, .exp-row {
+    position: relative;
+}
+.bento-card::before, .project-item::before, .exp-row::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(
+        350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+        rgba(99, 102, 241, 0.25),
+        transparent 50%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 5;
+}
+.bento-card:hover::before, .project-item:hover::before, .exp-row:hover::before {
+    opacity: 1;
+}
+
+/* 3. Zakee-Bot Typing Indicator */
+.typing-indicator-msg {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    width: fit-content;
+}
+.typing-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    animation: typingBounce 1.4s infinite ease-in-out both;
+}
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typingBounce {
+    0%, 80%, 100% { transform: scale(0.2); opacity: 0.4; }
+    40% { transform: scale(1.0); opacity: 1; }
+}
+
+/* 4. Sound Toggle & Magnetic Helper Styling */
+.sound-toggle-btn:hover {
+    color: var(--accent) !important;
+}
+
+.magnetic-btn {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* 5. View Transition circular theme wipe helper */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+    z-index: 1;
+}
+::view-transition-new(root) {
+    z-index: 9999;
+}
+.light-theme::view-transition-old(root) {
+    z-index: 9999;
+}
+.light-theme::view-transition-new(root) {
+    z-index: 1;
+}
