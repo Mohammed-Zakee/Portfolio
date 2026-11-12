@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f5f0" />
+    <title>Mohammed Zakee (Zakee Nowfal) | AI & Fintech Portfolio</title>
+
     <meta name="description"
-        content="Professional portfolio of Mohammed Zakee (Zakee Naufel / Zakee Nowfal) – AI Undergraduate at SLIIT Malabe and Strategic Partnership Executive, specializing in Artificial Intelligence and fintech leadership.">
+        content="Professional portfolio of Mohammed Zakee (Zakee Nowfal) – AI Undergraduate at SLIIT Malabe and Strategic Partnership Executive, specializing in Artificial Intelligence and fintech leadership." />
+    <meta name="author" content="Mohammed Zakee" />
     <meta name="keywords"
-        content="Mohammed Zakee, Zakee Naufel, Zakee Nowfal, Mohammed Zakee Nowfal, Mohammed Zakee Naufel, Zakee, Nowfal, Naufel, AI Undergraduate SLIIT, Fintech Association Sri Lanka, FASL, Fintech Digital, SLIIT Malabe, Artificial Intelligence, Portfolio, Sri Lanka, Python, Java, Machine Learning">
-    <meta name="author" content="Mohammed Zakee">
+        content="Mohammed Zakee, Zakee Naufel, Zakee Nowfal, AI Undergraduate SLIIT, Fintech Association Sri Lanka, FASL, Fintech Digital, SLIIT Malabe, Artificial Intelligence, Portfolio, Sri Lanka, Python, Java, Machine Learning" />
     <meta name="google-site-verification" content="z9kMAPDOLjrr4U2HVqDKhA8A_r0DSYnrWih1ptcKDko" />
 
     <!-- Open Graph -->
@@ -16,7 +19,7 @@
     <meta property="og:url" content="https://mohammed-zakee.github.io/Portfolio/">
     <meta property="og:title" content="Mohammed Zakee (Zakee Nowfal) | AI & Fintech Portfolio">
     <meta property="og:description"
-        content="AI Undergraduate & Strategic Partnership Executive – Explore Mohammed Zakee's (Zakee Naufel / Zakee Nowfal) professional timeline, projects, and impact.">
+        content="AI Undergraduate & Strategic Partnership Executive – Explore Mohammed Zakee's timeline, projects, and impact.">
     <meta property="og:image" content="https://mohammed-zakee.github.io/Portfolio/profile-new.webp">
 
     <!-- Twitter -->
@@ -24,7 +27,7 @@
     <meta property="twitter:url" content="https://mohammed-zakee.github.io/Portfolio/">
     <meta property="twitter:title" content="Mohammed Zakee (Zakee Nowfal) | AI & Fintech Portfolio">
     <meta property="twitter:description"
-        content="AI Undergraduate & Strategic Partnership Executive – Explore Mohammed Zakee's (Zakee Naufel / Zakee Nowfal) professional timeline, projects, and impact.">
+        content="AI Undergraduate & Strategic Partnership Executive – Explore Mohammed Zakee's timeline, projects, and impact.">
     <meta property="twitter:image" content="https://mohammed-zakee.github.io/Portfolio/profile-new.webp">
 
     <!-- JSON-LD -->
@@ -63,72 +66,44 @@
     }
     </script>
 
-    <title>Mohammed Zakee (Zakee Nowfal) | AI & Fintech Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Premium Google Fonts: Plus Jakarta Sans for Body, Space Grotesk for Headings, JetBrains Mono for Metadata -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@400;500;600;700;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Modern Tech Fonts: Space Grotesk for Headings, Plus Jakarta Sans for Body, JetBrains Mono for Code -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
 <body>
-    <!-- Dynamic Page Scroll Indicator -->
-    <div id="scrollProgress" class="scroll-progress-bar"></div>
+    <div class="reading-progress" aria-hidden="true"></div>
+    <button class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause decorative animations">Pause motion <span aria-hidden="true">Ⅱ</span></button>
+    <a href="#hero" class="skip-link">Skip to content</a>
+    <!-- Theme Initializer script (blocks rendering to avoid flash) -->
+    <script>
+        (function() {
+            try {
+                const theme = localStorage.getItem("portfolio_theme") || "light";
+                document.documentElement.setAttribute("data-theme", theme);
+            } catch (e) {}
+        })();
+    </script>
 
-    <!-- Premium Cinematic Preloader Overlay -->
-    <div id="preloader" class="preloader">
-        <button id="skipPreloader" class="skip-preloader-btn" aria-label="Skip introduction animation">Skip Intro // &gt;&gt;</button>
-        <div class="preloader-content">
-            <div class="preloader-terminal">
-                <div class="terminal-line">// SYNCING PORTFOLIO NODE...</div>
-                <div class="terminal-line" id="loaderStatus">◆ SYSTEM STATUS: SHIELDING</div>
-                <div class="terminal-line">◆ CORE LAYOUT: SWISS ARCHITECTURAL GRID</div>
-            </div>
-            <div class="loader-counter">
-                <span id="loaderNumber">00</span><span class="pct-sign">%</span>
-            </div>
-            <div class="loader-bar-wrap">
-                <div class="loader-bar" id="loaderBar"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Interactive Neural Network Canvas Backdrop -->
-    <canvas id="neuralCanvas" class="neural-canvas"></canvas>
-
-    <!-- Premium Interactive Magnetic/Custom Cursor -->
-    <div class="cursor-dot" id="cursorDot"></div>
-    <div class="cursor-ring" id="cursorRing"></div>
-
-    <!-- Noise & Grid Backdrop Layer -->
-    <div class="noise-bg"></div>
-    <div class="grid-backdrop"></div>
-
-    <!-- App Wrapper to support simulated frame sizing -->
-    <div id="appWrapper" class="app-wrapper">
-
-    <!-- Floating Dynamic Pill Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
+    <!-- Floating Glass Pill Navbar -->
+    <header class="navbar-wrapper">
+        <nav class="navbar" aria-label="Main navigation">
             <a href="#hero" class="nav-logo">
-                <span class="logo-mono">&lt;</span><span class="logo-name">ZAKEE NOWFAL</span><span class="logo-mono">/&gt;</span>
+                <span class="logo-monogram">mz.</span><span class="logo-name">Mohammed Zakee</span>
             </a>
-            
-            <ul class="nav-links" id="navLinks">
+
+            <ul class="nav-links">
+                <li><a href="#projects" class="nav-link">Work</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#education" class="nav-link">Education</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#community" class="nav-link">Community</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#ledger" class="nav-link">Learning</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-
             <div class="nav-controls">
+                <!-- Theme Switch Toggle -->
                 <div class="theme-switch-wrapper" title="Toggle Light/Dark Theme">
                     <label class="theme-switch" for="themeToggle">
                         <input type="checkbox" id="themeToggle" aria-label="Toggle theme">
@@ -138,142 +113,153 @@
                         </span>
                     </label>
                 </div>
-                <a href="CV_Mohammed_Zakee.pdf" download class="nav-cta magnetic-btn">
+                <!-- Resume Download Button -->
+                <a href="CV%20Official%202026.pdf" download class="nav-cta magnetic-btn">
                     <span>Resume</span> <i class="fa-solid fa-arrow-down-long"></i>
                 </a>
             </div>
+        </nav>
+    </header>
 
-            <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+    <!-- MAIN PAGE CONTAINER -->
+    <main class="main-container">
 
-    <!-- HERO SECTION -->
-    <section id="hero" class="hero">
-        <div class="hero-inner">
-            <div class="hero-left">
-                <div class="hero-badge reveal">
-                    <span class="badge-dot"></span>
-                    <span class="badge-text">STATUS // AVAILABLE FOR OPPORTUNITIES</span>
-                </div>
-                
-                <h1 class="hero-name reveal">
-                    ZAKEE<br><span class="name-accent">NOWFAL</span>
+        <!-- 01. HERO / LANDING SECTION -->
+        <section class="hero-section" id="hero">
+            <div class="hero-badge reveal">
+                <span class="badge-dot"></span>
+                <span class="badge-text">ARTIFICIAL INTELLIGENCE · FINTECH · PEOPLE</span>
+            </div>
+
+            <div class="hero-body">
+                <h1 class="hero-title reveal">
+                    Building technology.<br /><span class="text-gradient">Connecting people.</span>
                 </h1>
-                
-                <div class="hero-roles reveal">
-                    <span class="role-prefix">I am a</span>
-                    <span class="role-text" id="roleText"></span><span class="cursor-blink">_</span>
-                </div>
-                
-                <p class="hero-desc reveal">
-                    AI Undergraduate at <strong class="text-highlight">SLIIT</strong> · Strategic Partnership Executive at <strong class="text-highlight">Fintech Digital</strong> · Project Lead at <strong class="text-highlight">FASL</strong>
-                </p>
-                
+
+                <p class="hero-subtitle reveal">I’m Zakee Nowfal — Mohammed Zakee.</p>
+                <p class="hero-desc reveal">Third-year <strong>Artificial Intelligence student at SLIIT</strong>, hands-on developer, and Strategic Partnership Executive. I build web, AI, and IoT projects and bring teams together through fintech and community leadership.</p>
+
                 <div class="hero-actions reveal">
-                    <a href="#contact" class="btn-primary">
-                        <span>Let's Connect</span>
+                    <a href="#contact" class="btn-primary magnetic-btn">
+                        <span>Let's talk opportunities</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
                     <a href="#projects" class="btn-ghost">
                         <span>View Projects</span>
                     </a>
                 </div>
-                
-                <div class="hero-socials reveal">
-                    <a href="https://www.linkedin.com/in/mohammed-zakee/" target="_blank" aria-label="LinkedIn" class="social-icon">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://github.com/Mohammed-Zakee" target="_blank" aria-label="GitHub" class="social-icon">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.instagram.com/its.zakee/" target="_blank" aria-label="Instagram" class="social-icon">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://linktr.ee/mohammedzakee" target="_blank" aria-label="Linktree" class="social-icon">
-                        <i class="fas fa-link"></i>
-                    </a>
-                    <a href="mailto:mohammedzakee2006@gmail.com" aria-label="Email" class="social-icon">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
             </div>
-            
-            <div class="hero-right reveal">
-                <div class="portrait-card">
-                    <div class="portrait-img-wrap">
-                        <img src="profile-new.webp" alt="Zakee Nowfal" id="profileImg">
-                        <div class="portrait-overlay"></div>
-                    </div>
-                    <div class="portrait-meta">
-                        <div class="meta-item">
-                            <span class="meta-label">FOCUS //</span>
-                            <span class="meta-val highlight-meta">AI & FINTECH</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">LOCATION //</span>
-                            <span class="meta-val">Malabe, Sri Lanka 🇱🇰</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">LOCAL TIME //</span>
-                            <span class="meta-val mono-val" id="localTime">19:44:06 (UTC+5:30)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-cue" id="scrollCue">
-            <span class="scroll-text">EXPLORE</span>
-            <div class="scroll-line"></div>
-        </div>
-    </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="section border-top">
-        <div class="container">
-            <div class="section-meta reveal">01 // IDENTITY</div>
-            <h2 class="section-heading reveal">About <span class="accent">Me</span></h2>
-            
-            <div class="bento-grid about-bento">
-                <!-- Biography Card -->
+            <figure class="hero-portrait">
+                <div class="portrait-orbit" aria-hidden="true"><span>✦</span></div>
+                <div class="portrait-sticker" aria-hidden="true">IDEAS INTO<br /><strong>IMPACT ↗</strong></div>
+                <img src="profile-new.webp" alt="Mohammed Zakee" width="600" height="750" fetchpriority="high" />
+                <figcaption><span>BASED IN SRI LANKA</span><strong>A technical mind.<br />A people-first approach.</strong></figcaption>
+                <span class="portrait-index" aria-hidden="true">01 / INTRODUCTION</span>
+            </figure>
+            <div class="hero-proof"><span><strong>7+</strong> university projects</span><span><strong>AI + IoT</strong> practical experience</span><span><strong>Fintech</strong> project leadership</span></div>
+            <!-- Floating Social Bar -->
+            <div class="hero-socials reveal">
+                <a href="https://www.linkedin.com/in/mohammed-zakee/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/Mohammed-Zakee" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/its.zakee/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://linktr.ee/mohammedzakee" target="_blank" rel="noopener noreferrer" aria-label="Linktree" class="social-icon">
+                    <i class="fas fa-link"></i>
+                </a>
+                <a href="mailto:mohammedzakee2006@gmail.com" aria-label="Email" class="social-icon">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
+            <div class="scroll-indicator" id="scrollCue">
+                <span class="scroll-text">SCROLL TO DISCOVER</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <div class="focus-ribbon" aria-label="Focus areas: Artificial Intelligence, Fintech, Partnerships, Community">
+            <div class="ribbon-track" aria-hidden="true">
+                <span>ARTIFICIAL INTELLIGENCE <b>✦</b> FINTECH <b>✦</b> PARTNERSHIPS <b>✦</b> COMMUNITY <b>✦</b>&nbsp;</span>
+                <span>ARTIFICIAL INTELLIGENCE <b>✦</b> FINTECH <b>✦</b> PARTNERSHIPS <b>✦</b> COMMUNITY <b>✦</b>&nbsp;</span>
+            </div>
+        </div>
+<section id="projects" class="section"><div class="section-label reveal">01 / SELECTED WORK</div><div class="section-heading"><h2 class="section-title reveal">Ideas made <span class="text-accent-gold">real.</span></h2><p>Web experiences, applied AI, and connected hardware. A selection of what I’ve been building.</p></div><div class="project-filters" role="group" aria-label="Filter projects"><button type="button" data-filter="All" aria-pressed="true">All</button><button type="button" data-filter="Web development" aria-pressed="false">Web development</button><button type="button" data-filter="AI & data" aria-pressed="false">AI & data</button><button type="button" data-filter="IoT" aria-pressed="false">IoT</button></div><div class="work-grid"><article class="work-card reveal" data-category="Web development"><div class="work-visual visual-domains" aria-hidden="true"><div class="mock-window"><span class="mock-eyebrow">FIND YOUR NEXT BIG IDEA</span><strong>It starts with a name<span>.</span></strong><div class="mock-search">your-next-idea.com <b>↗</b></div><div class="mock-tags"><span>.com</span><span>.io</span><span>.ai</span></div></div></div><div class="work-content"><div class="work-meta"><span>Web development</span><span>01</span></div><h3>QDomains</h3><p class="work-summary">A domain marketplace for discovering a name and taking the next step toward an online presence.</p><p class="work-detail">Built a browse-and-purchase experience for domain names, using JavaScript and HTML.</p><p class="work-stack">JavaScript · React · HTML</p><div class="work-links"><a href="https://github.com/Mohammed-Zakee/QDomains" target="_blank" rel="noopener noreferrer" aria-label="View QDomains source on GitHub">GitHub ↗</a></div></div></article><article class="work-card reveal" data-category="AI & data"><div class="work-visual visual-analytics" aria-hidden="true"><div class="mock-window"><span class="mock-eyebrow">VERITY / REVIEW INTELLIGENCE</span><strong>See the bigger picture.</strong><div class="mock-chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="mock-footnote">Sentiment · Themes · Insights</span></div></div><div class="work-content"><div class="work-meta"><span>AI & data</span><span>02</span></div><h3>Verity</h3><p class="work-summary">Business reviews, turned into clearer insights.</p><p class="work-detail">A business intelligence project combining review analysis, sentiment insights, charts, and report exports.</p><p class="work-stack">Python · Flask · Next.js</p><div class="work-links"><a href="https://verity-orpin-omega.vercel.app" target="_blank" rel="noopener noreferrer" class="project-live" aria-label="Open Verity live website">Live website ↗</a><a href="https://github.com/Mohammed-Zakee/Verity" target="_blank" rel="noopener noreferrer" aria-label="View Verity source on GitHub">GitHub ↗</a></div></div></article><article class="work-card reveal" data-category="Web development"><div class="work-visual visual-housing" aria-hidden="true"><div class="mock-window"><span class="mock-eyebrow">BOARDING SOLUTION</span><strong>A place to begin.</strong><div class="mock-houses"><span>⌂</span><span>⌂</span><span>⌂</span></div><span class="mock-footnote">Explore. Compare. Find your place.</span></div></div><div class="work-content"><div class="work-meta"><span>Web development</span><span>03</span></div><h3>Boarding Solution</h3><p class="work-summary">Helping students explore housing options in Sri Lanka.</p><p class="work-detail">A student housing platform with listing search, maps, saved properties, and dedicated dashboards.</p><p class="work-stack">Next.js · Firebase · Leaflet</p><div class="work-links"><a href="https://boarding-solution.vercel.app" target="_blank" rel="noopener noreferrer" class="project-live" aria-label="Open Boarding Solution live website">Live website ↗</a><a href="https://github.com/Mohammed-Zakee/boarding-solution" target="_blank" rel="noopener noreferrer" aria-label="View Boarding Solution source on GitHub">GitHub ↗</a></div></div></article><article class="work-card reveal" data-category="AI & data"><div class="work-visual visual-voice" aria-hidden="true"><div class="mock-window"><span class="mock-eyebrow">VOICE → TASK</span><div class="waveform"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><strong>Say it. Plan it. Do it.</strong></div></div><div class="work-content"><div class="work-meta"><span>AI & data</span><span>04</span></div><h3>Voice-to-Task</h3><p class="work-summary">From a spoken thought to an actionable reminder.</p><p class="work-detail">Developed an AI-powered application integrating speech-to-text, task and time extraction, reminders, and calendar functionality.</p><p class="work-stack">Speech-to-text · AI · Calendars</p><div class="work-links"><a href="CV%20Official%202026.pdf" target="_blank" rel="noopener noreferrer">Details in my CV ↗</a></div></div></article><article class="work-card reveal" data-category="IoT"><div class="work-visual visual-greenhouse" aria-hidden="true"><div class="mock-window"><span class="mock-eyebrow">CONNECTED GREENHOUSE</span><div class="plant-icon">♧</div><div class="mock-tags"><span>Moisture</span><span>Light</span><span>Temperature</span></div></div></div><div class="work-content"><div class="work-meta"><span>IoT</span><span>05</span></div><h3>Smart Greenhouse</h3><p class="work-summary">Sensor data that drives automated growing conditions.</p><p class="work-detail">Built an ESP32 system with DHT22, LDR, soil-moisture and ultrasonic sensors to control a water pump, fan, and lights.</p><p class="work-stack">ESP32 · Sensors · Automation</p><div class="work-links"><a href="CV%20Official%202026.pdf" target="_blank" rel="noopener noreferrer">Details in my CV ↗</a></div></div></article><article class="work-card reveal" data-category="AI & data"><div class="work-visual visual-health" aria-hidden="true"><div class="mock-window"><span class="mock-eyebrow">DENTAI / CONNECTED CARE</span><div class="care-nodes"><span>Patients</span><b>+</b><span>Doctors</span></div><strong>Better connected.</strong></div></div><div class="work-content"><div class="work-meta"><span>AI & data</span><span>06</span></div><h3>DentAI</h3><p class="work-summary">Bringing healthcare participants into one digital system.</p><p class="work-detail">Worked on an AI and healthcare-oriented platform connecting patients, doctors, administrators, and pharmacies.</p><p class="work-stack">AI · Healthcare · Platform design</p><div class="work-links"><a href="CV%20Official%202026.pdf" target="_blank" rel="noopener noreferrer">Details in my CV ↗</a></div></div></article></div><p class="visual-note">Project illustrations are conceptual; use the live website and GitHub links to explore the work.</p><details class="more-projects"><summary>More projects &amp; achievements <span>+</span></summary><div class="more-projects-grid"><article><h3>OrantaHolidays</h3><p>Developed and deployed a travel website using HTML, CSS, and JavaScript; learned cPanel hosting and deployment from scratch.</p></article><article><h3>NetRunners</h3><p>Part of the team that secured victories at Intellicon ’25 and the Microsoft Mini Hackathon.</p></article><article><h3>MindMate</h3><p>A student wellness and academic planning project.</p><a href="https://github.com/Mohammed-Zakee/MindMate" target="_blank" rel="noopener noreferrer">View repository ↗</a></article><article><h3>University web applications</h3><p>Additional public repositories covering car rental and hotel reservations.</p><a href="https://github.com/Mohammed-Zakee/Project-Phoenix" target="_blank" rel="noopener noreferrer">Project Phoenix ↗</a><br /><a href="https://github.com/Mohammed-Zakee/Golden-Palm-Hotel-Reservation-System" target="_blank" rel="noopener noreferrer">Golden Palm Hotel ↗</a></article></div></details></section>
+        <!-- 02. ABOUT & BENTO GRID SECTION -->
+        <section id="about" class="section">
+            <div class="section-label reveal">02 / ABOUT</div>
+            <h2 class="section-title reveal">About <span class="text-accent-gold">Me</span></h2>
+
+            <article class="education-strip reveal"><span class="bento-tag">EDUCATION</span><h3>BSc (Hons) in Information Technology</h3><p>Specializing in Artificial Intelligence · SLIIT · Year 3, Semester 1</p><p class="education-secondary">Previously: Sri Lankan International School Jeddah, Saudi Arabia · High school completed</p></article>
+            <!-- Glassmorphism Bento Grid -->
+            <div class="bento-grid">
+
+                <!-- Story Card (Span 2x2) -->
                 <div class="bento-card bento-bio reveal">
                     <div class="card-num">01</div>
                     <div class="bento-header">
                         <span class="bento-tag">// THE BRIEF</span>
-                        <h3>The Short Story</h3>
+                        <h3>A little about me</h3>
                     </div>
                     <p class="bio-text">
-                        I'm <strong>Mohammed Zakee</strong> — an Artificial Intelligence undergraduate at
+                        I am <strong>Mohammed Zakee</strong> — an Artificial Intelligence undergraduate at
                         <strong>SLIIT Malabe</strong>, Sri Lanka. I bridge the worlds of technology, finance,
                         and community leadership. From strategising fintech partnerships to leading global events,
-                        I bring a rare blend of technical depth and people-first thinking.
+                        I enjoy turning ideas into working products, learning new tools, and helping teams deliver together.
                     </p>
                 </div>
-                
-                <!-- Stat Cards -->
-                <div class="bento-card bento-stat reveal">
+
+                <!-- Grayscale-to-Color Portrait Image Card -->
+                <div class="bento-card bento-portrait reveal">
                     <div class="card-num">02</div>
-                    <div class="stat-number" data-count="4">0</div>
-                    <div class="stat-label">Roles in Fintech</div>
+                    <div class="portrait-wrap">
+                        <img src="profile-new.webp" alt="Mohammed Zakee Portrait" class="bento-img" />
+                        <div class="portrait-overlay"></div>
+                    </div>
+                    <div class="portrait-meta">
+                        <span class="meta-label">FOCUS //</span>
+                        <span class="meta-val">AI &amp; FINTECH STRATEGY</span>
+                    </div>
                 </div>
-                
+
+                <!-- Stats 1: Fintech Roles -->
                 <div class="bento-card bento-stat reveal">
                     <div class="card-num">03</div>
-                    <div class="stat-number" data-count="8">0</div>
-                    <div class="stat-label">Volunteer Roles</div>
+                    <div class="stat-number" data-count="7">7+</div><div class="stat-label">University projects completed</div>
                 </div>
-                
+
+                <!-- Stats 2: Volunteer Roles -->
                 <div class="bento-card bento-stat reveal">
                     <div class="card-num">04</div>
-                    <div class="stat-number" data-count="15">0</div>
-                    <div class="stat-label">Certifications</div>
+                    <div class="stat-number" data-count="3">3</div><div class="stat-label">Year of AI studies</div>
                 </div>
-                
-                <!-- Languages Card -->
-                <div class="bento-card bento-languages reveal">
+
+                <!-- Stats 3: Certifications -->
+                <div class="bento-card bento-stat reveal">
                     <div class="card-num">05</div>
+                    <div class="stat-number" data-count="4">4</div><div class="stat-label">Languages spoken</div>
+                </div>
+
+                <!-- Location & Clock Card -->
+                <div class="bento-card bento-location reveal">
+                    <div class="card-num">06</div>
+                    <div class="bento-header">
+                        <span class="bento-tag">// LOCATION &amp; ZONE</span>
+                        <h3>Based in Sri Lanka</h3>
+                    </div>
+                    <p class="location-text">Malabe, Sri Lanka 🇱🇰</p>
+                    <p class="location-clock" id="localTime">00:00:00 (UTC+5:30)</p>
+                    <p class="location-phone"><i class="fa-solid fa-phone"></i> +94 706 103 115</p>
+                </div>
+
+                <!-- Multilingual Languages Card -->
+                <div class="bento-card bento-languages reveal">
+                    <div class="card-num">07</div>
                     <div class="bento-header">
                         <span class="bento-tag">// COMMUNICATE</span>
                         <h3>Languages</h3>
@@ -285,872 +271,207 @@
                         <span class="lang-chip"><img src="https://flagcdn.com/sa.svg" alt="Saudi Arabia Flag" class="flag-icon"> Arabic</span>
                     </div>
                 </div>
-                
-                <!-- Coordinates Card -->
-                <div class="bento-card bento-location reveal">
-                    <div class="card-num">06</div>
+
+                <!-- Tech Stack tags bento -->
+                <div class="bento-card bento-tech-cloud reveal">
+                    <div class="card-num">08</div>
                     <div class="bento-header">
-                        <span class="bento-tag">// ANCHOR</span>
-                        <h3>Based In</h3>
+                        <span class="bento-tag">// CAPABILITIES</span>
+                        <h3>Core Tech Stack</h3>
                     </div>
-                    <p class="location-text">Malabe, Sri Lanka 🇱🇰</p>
-                    <p class="location-sub"><i class="fa-solid fa-phone"></i> +94 706 103 115</p>
+                    <div class="bento-stack-groups">
+                        <div class="bento-stack-group">
+                            <span class="stack-group-title">Languages //</span>
+                            <div class="stack-chips">
+                                <span class="stack-chip">Python</span>
+                                <span class="stack-chip">JavaScript</span>
+                                <span class="stack-chip">Java</span>
+                                <span class="stack-chip">SQL</span>
+                                <span class="stack-chip">C++</span>
+                            </div>
+                        </div>
+                        <div class="bento-stack-group" style="margin-top: 1rem;">
+                            <span class="stack-group-title">Systems &amp; Libraries //</span>
+                            <div class="stack-chips">
+                                <span class="stack-chip">React.js</span>
+                                <span class="stack-chip">Node.js / Express</span>
+                                <span class="stack-chip">AWS Cloud</span>
+                                <span class="stack-chip">MongoDB / MySQL</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
 
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- EDUCATION SECTION -->
-    <section id="education" class="section section-alt border-top">
-        <div class="container">
-            <div class="section-meta reveal">02 // KNOWLEDGE</div>
-            <h2 class="section-heading reveal">Education &amp; <span class="accent">Archives</span></h2>
+        <!-- 03. EXPERIENCE & TIMELINE SECTION -->
+        <section id="experience" class="section">
+            <div class="section-label reveal">03 / EXPERIENCE</div>
+            <h2 class="section-title reveal">Professional <span class="text-accent-gold">Journey</span></h2>
 
-            <div class="education-layout">
-                <!-- Timeline Grid -->
-                <div class="timeline reveal">
-                    <div class="timeline-item active-item">
-                        <div class="timeline-marker">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-line"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">[ 2024 – PRESENT ]</div>
-                            <h3 class="timeline-title">BSc (Hons) in Information Technology</h3>
-                            <p class="timeline-sub">Specializing in <strong class="highlight-inline">Artificial Intelligence</strong></p>
-                            <p class="timeline-org">Sri Lanka Institute of Information Technology (SLIIT)</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-marker">
-                            <div class="timeline-dot"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">[ 2020 – 2024 ]</div>
-                            <h3 class="timeline-title">Sri Lankan International School Jeddah</h3>
-                            <p class="timeline-sub">A Levels · Chemistry, Physics &amp; Mathematics</p>
-                            <p class="timeline-sub">IGCSEs · <strong>2A*s and 6As</strong></p>
-                        </div>
-                    </div>
+<div class="timeline"><article class="timeline-item reveal"><div class="timeline-marker"><div class="timeline-dot"></div></div><div class="timeline-card glass-card"><div class="timeline-header"><span class="timeline-dates">FEB 2026 — PRESENT</span><span class="timeline-status-badge ">CURRENT</span></div><h3 class="timeline-role">Project Lead</h3><h4 class="timeline-org">Fintech Association of Sri Lanka (FASL)</h4><p class="timeline-desc">Project leadership within Sri Lanka’s fintech community, alongside my university studies.</p></div></article><article class="timeline-item reveal"><div class="timeline-marker"><div class="timeline-dot"></div></div><div class="timeline-card glass-card"><div class="timeline-header"><span class="timeline-dates">AUG 2025 — PRESENT</span><span class="timeline-status-badge ">CURRENT</span></div><h3 class="timeline-role">Strategic Partnership Executive</h3><h4 class="timeline-org">Fintech Digital Pvt Ltd</h4><p class="timeline-desc">Working at the intersection of technology, business relationships, and fintech partnerships.</p></div></article><article class="timeline-item reveal"><div class="timeline-marker"><div class="timeline-dot"></div></div><div class="timeline-card glass-card"><div class="timeline-header"><span class="timeline-dates">NOV 2025 — PRESENT</span><span class="timeline-status-badge ">CURRENT</span></div><h3 class="timeline-role">Project Lead — QChat Pay</h3><h4 class="timeline-org">Fintech Digital Pvt Ltd</h4><p class="timeline-desc">Project leadership experience on QChat Pay, bringing together my interests in fintech and product development.</p></div></article><article class="timeline-item reveal"><div class="timeline-marker"><div class="timeline-dot"></div></div><div class="timeline-card glass-card"><div class="timeline-header"><span class="timeline-dates">AUG 2025 — NOV 2025</span><span class="timeline-status-badge completed">COMPLETED</span></div><h3 class="timeline-role">Project Lead — Singapore Fintech Festival</h3><h4 class="timeline-org">Fintech Digital Pvt Ltd</h4><p class="timeline-desc">Project leadership for the Singapore Fintech Festival, combining team coordination with exposure to the fintech ecosystem.</p></div></article><article class="timeline-item reveal"><div class="timeline-marker"><div class="timeline-dot"></div></div><div class="timeline-card glass-card"><div class="timeline-header"><span class="timeline-dates">MAY 2025 — NOV 2025</span><span class="timeline-status-badge completed">COMPLETED</span></div><h3 class="timeline-role">Seasonal Exam Invigilator</h3><h4 class="timeline-org">British Council</h4><p class="timeline-desc">Experience in a structured examination environment, with a focus on responsibility, attention to detail, and professional conduct.</p></div></article></div>
+</section>
+
+        <!-- 05. CERTIFICATIONS LEDGER SECTION -->
+        <section id="ledger" class="section">
+            <div class="section-label reveal">04 / LEARNING</div>
+            <h2 class="section-title reveal">Qualifications &amp; <span class="text-accent-gold">Certifications</span></h2>
+
+            <div class="ledger-card glass-card reveal">
+                <div class="ledger-table-header">
+                    <span>ISSUING ORGANIZATION //</span>
+                    <span>CREDENTIAL CATALOG //</span>
                 </div>
+<div class="ledger-table-body"><div class="ledger-row"><div class="ledger-org">University of Moratuwa</div><div class="ledger-courses"><span>Python for Beginners</span><span>Front-End Developing</span><span>Back-End Developing</span></div></div><div class="ledger-row"><div class="ledger-org">Google Cloud</div><div class="ledger-courses"><span>Introduction to Generative AI</span><span>AI for Data Analysis</span><span>AI for Content Creation</span></div></div><div class="ledger-row"><div class="ledger-org">AWS Training & Certification</div><div class="ledger-courses"><span>AWS Cloud Essentials</span><span>Introduction to Generative AI</span></div></div><div class="ledger-row"><div class="ledger-org">HP LIFE</div><div class="ledger-courses"><span>AI for Business Professionals</span><span>Critical Thinking in the AI Era</span></div></div><div class="ledger-row"><div class="ledger-org">Forage</div><div class="ledger-courses"><span>GenAI Powered Data Analytics Job Simulation</span></div></div><div class="ledger-row"><div class="ledger-org">SLIIT</div><div class="ledger-courses"><span>AIML Engineer Stage 1</span><span>AIML Engineer Stage 2</span></div></div><div class="ledger-row"><div class="ledger-org">Alison</div><div class="ledger-courses"><span>AI Awareness for Safety Professionals</span><span>Graphic Designing</span><span>Microsoft Office Revised</span><span>Computer Networking</span></div></div><div class="ledger-row"><div class="ledger-org">British Council</div><div class="ledger-courses"><span>Child Protection Awareness</span><span>Introduction to Exams Invigilation</span></div></div></div></div></section>
+        <!-- 06. COMMUNITY & SOCIAL ENGAGEMENTS -->
+        <section id="community" class="section">
+            <div class="section-label reveal">05 / COMMUNITY</div>
+            <h2 class="section-title reveal">Community <span class="text-accent-gold">Involvement</span></h2>
 
-                <!-- Academic Archives Ledger -->
-                <div class="archives-ledger reveal">
-                    <h3 class="ledger-heading">ARCHIVAL DIRECTORY // COURSES &amp; CERTIFICATIONS</h3>
-                    
-                    <div class="ledger-grid">
-                        <div class="ledger-item">
-                            <div class="ledger-issuer">AWS</div>
-                            <ul class="ledger-courses">
-                                <li>Introduction to Generative AI</li>
-                                <li>AWS Foundations</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="ledger-item highlight-ledger">
-                            <div class="ledger-issuer">UNIVERSITY OF PENNSYLVANIA</div>
-                            <ul class="ledger-courses">
-                                <li>Artificial Intelligence Essentials</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="ledger-item">
-                            <div class="ledger-issuer">COURSERA</div>
-                            <ul class="ledger-courses">
-                                <li>Introduction to Generative AI</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="ledger-item highlight-ledger">
-                            <div class="ledger-issuer">SLIIT</div>
-                            <ul class="ledger-courses">
-                                <li>AIML Stage 1</li>
-                                <li>AIML Stage 2</li>
-                            </ul>
-                        </div>
-
-                        <div class="ledger-item">
-                            <div class="ledger-issuer">UNIVERSITY OF MORATUWA</div>
-                            <ul class="ledger-courses">
-                                <li>Python for Beginners</li>
-                                <li>Front-End Developing</li>
-                                <li>Back-End Developing</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="ledger-item">
-                            <div class="ledger-issuer">HP LIFE</div>
-                            <ul class="ledger-courses">
-                                <li>Data Science &amp; Analytics</li>
-                                <li>AI for Business Professionals</li>
-                                <li>Critical Thinking in the AI Era</li>
-                                <li>Business Emails</li>
-                            </ul>
-                        </div>
-
-                        <div class="ledger-item">
-                            <div class="ledger-issuer">ALISON</div>
-                            <ul class="ledger-courses">
-                                <li>Microsoft Office Revised</li>
-                                <li>Graphic Designing</li>
-                                <li>AI Awareness for Safety Professionals</li>
-                                <li>Computer Networking</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="ledger-item">
-                            <div class="ledger-issuer">BRITISH COUNCIL</div>
-                            <ul class="ledger-courses">
-                                <li>Child Protection Awareness</li>
-                                <li>Introduction to Exams Invigilation</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- EXPERIENCE SECTION -->
-    <section id="experience" class="section border-top">
-        <div class="container">
-            <div class="section-meta reveal">03 // CAREER</div>
-            <h2 class="section-heading reveal">Experience &amp; <span class="accent">Leadership</span></h2>
-            
-            <div class="exp-ledger">
-                <!-- FASL -->
-                <div class="exp-row exp-expandable reveal">
-                    <div class="exp-left">
-                        <div class="exp-dates">FEB 2026 — PRESENT</div>
-                        <div class="exp-badge current-badge">CURRENT</div>
-                        <span class="exp-hint">EXPAND // <i class="fa-solid fa-chevron-down"></i></span>
-                    </div>
-                    <div class="exp-right">
-                        <h3 class="exp-role">Project Lead</h3>
-                        <div class="exp-institution">FASL – Fintech Association of Sri Lanka</div>
-                        <p class="exp-desc">Spearheading national-level event coordination for banking and finance organizations in Sri Lanka; co-organizing premium B2B fintech events to accelerate digital adoption and network engagement for 15+ institutional partners.</p>
-                        <div class="exp-details-panel">
-                            <ul class="exp-achievements">
-                                <li><span class="bullet">■</span> Orchestrated collaborative sync sessions with 15+ central banking and private institutional tech leaders.</li>
-                                <li><span class="bullet">■</span> Designed agendas for nationwide tech-adoption panels and B2B matchmaking roundtables.</li>
-                                <li><span class="bullet">■</span> Drafted project proposals and partnership packages for corporate sponsors and international delegates.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Strategic Partnership Exec -->
-                <div class="exp-row exp-expandable reveal">
-                    <div class="exp-left">
-                        <div class="exp-dates">AUG 2025 — PRESENT</div>
-                        <div class="exp-badge current-badge">CURRENT</div>
-                        <span class="exp-hint">EXPAND // <i class="fa-solid fa-chevron-down"></i></span>
-                    </div>
-                    <div class="exp-right">
-                        <h3 class="exp-role">Strategic Partnership Executive</h3>
-                        <div class="exp-institution">Fintech Digital Pvt Ltd</div>
-                        <p class="exp-desc">Driving strategic business development and high-value alliances; successfully established key touchpoints with 10+ financial institutions, technology partners, and industry bodies to scale Fintech Digital's national ecosystem.</p>
-                        <div class="exp-details-panel">
-                            <ul class="exp-achievements">
-                                <li><span class="bullet">■</span> Onboarded key tech partners to the startup ecosystem, negotiating 5 strategic agreements.</li>
-                                <li><span class="bullet">■</span> Managed pipelines for high-value Fintech alliances in B2B spaces.</li>
-                                <li><span class="bullet">■</span> Supported sales outreach campaigns for enterprise digital banking platforms.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SFF Lead -->
-                <div class="exp-row exp-expandable reveal">
-                    <div class="exp-left">
-                        <div class="exp-dates">AUG 2025 — NOV 2025</div>
-                        <div class="exp-badge">COMPLETED</div>
-                        <span class="exp-hint">EXPAND // <i class="fa-solid fa-chevron-down"></i></span>
-                    </div>
-                    <div class="exp-right">
-                        <h3 class="exp-role">Project Lead – Singapore Fintech Festival</h3>
-                        <div class="exp-institution">Fintech Digital Pvt Ltd</div>
-                        <p class="exp-desc">Directly managed the Sri Lankan delegation at the Singapore Fintech Festival 2025; successfully onboarded high-potential local startups, coordinated international booth presence, and facilitated cross-border B2B collaboration pipelines.</p>
-                        <div class="exp-details-panel">
-                            <ul class="exp-achievements">
-                                <li><span class="bullet">■</span> Represented Sri Lanka in Singapore, managing communication and presentation logistics for 6 local startups.</li>
-                                <li><span class="bullet">■</span> Facilitated 20+ investor networking meetings for delegation startup founders.</li>
-                                <li><span class="bullet">■</span> Managed booth designs and international media pipelines.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Invigilator -->
-                <div class="exp-row exp-expandable reveal">
-                    <div class="exp-left">
-                        <div class="exp-dates">MAY 2025 — PRESENT</div>
-                        <div class="exp-badge current-badge">CURRENT</div>
-                        <span class="exp-hint">EXPAND // <i class="fa-solid fa-chevron-down"></i></span>
-                    </div>
-                    <div class="exp-right">
-                        <h3 class="exp-role">Exam Invigilator</h3>
-                        <div class="exp-institution">British Council</div>
-                        <p class="exp-desc">Managing secure, fair, and high-fidelity administration of international IELTS and Cambridge examinations; supervised 500+ high-stakes academic and professional assessments under stringent compliance guidelines.</p>
-                        <div class="exp-details-panel">
-                            <ul class="exp-achievements">
-                                <li><span class="bullet">■</span> Enforced compliance guidelines for British Council exam centers.</li>
-                                <li><span class="bullet">■</span> Welcomed and verified ID checks for hundreds of students.</li>
-                                <li><span class="bullet">■</span> Supervised exams under strict timelines and reporting parameters.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- COMMUNITY SECTION -->
-    <section id="community" class="section section-alt border-top">
-        <div class="container">
-            <div class="section-meta reveal">04 // LEADERSHIP</div>
-            <h2 class="section-heading reveal">Community <span class="accent">Involvement</span></h2>
-            
             <div class="community-grid">
                 <!-- United Nations -->
-                <div class="comm-card reveal">
+                <div class="bento-card glass-card reveal">
                     <div class="card-num">01</div>
-                    <div class="comm-header">
-                        <div class="comm-icon-tag">// GLOBAL</div>
+                    <div class="bento-header">
+                        <span class="bento-tag">// GLOBAL INITIATIVES</span>
                         <h3>United Nations</h3>
-                        <p class="comm-tag">UN Online Volunteer</p>
                     </div>
-                    <p class="comm-desc">Contributing to sustainable development and global initiatives through the United Nations volunteer platform.</p>
+                    <p class="comm-subtitle">UN Online Volunteer</p>
+                    <p class="comm-desc">United Nations volunteer experience alongside university and community commitments.</p>
                 </div>
 
                 <!-- Majlis -->
-                <div class="comm-card reveal">
+                <div class="bento-card glass-card reveal">
                     <div class="card-num">02</div>
-                    <div class="comm-header">
-                        <div class="comm-icon-tag">// FAITH &amp; SOC</div>
-                        <h3>Majlis of SLIIT</h3>
-                        <p class="comm-tag">Muslim Students' Association</p>
+                    <div class="bento-header">
+                        <span class="bento-tag">// SUSTAINABILITY</span>
+                        <h3>SDG Sprints 2026</h3>
                     </div>
+                    <p class="comm-subtitle">University Ambassador</p>
                     <ul class="comm-roles">
-                        <li><span class="role-marker">■</span> Assistant Treasurer (2026/27)</li>
+                        <li><span class="bullet">◆</span> University Ambassador (2026)</li>
                     </ul>
                 </div>
 
                 <!-- SIS -->
-                <div class="comm-card reveal">
+                <div class="bento-card glass-card reveal">
                     <div class="card-num">03</div>
-                    <div class="comm-header">
-                        <div class="comm-icon-tag">// CAMPUS CORE</div>
-                        <h3>SIS</h3>
-                        <p class="comm-tag">Student Interactive Society</p>
+                    <div class="bento-header">
+                        <span class="bento-tag">// CAMPUS CORE</span>
+                        <h3>SIS (Student Interactive Society)</h3>
                     </div>
                     <ul class="comm-roles">
-                        <li><span class="role-marker">■</span> EUPHORIA – Volunteer</li>
-                        <li><span class="role-marker">■</span> ODYSSEY 2025 – Organizing Committee</li>
-                        <li><span class="role-marker">■</span> Convocation Volunteer</li>
+                        <li><span class="bullet">◆</span> Euphoria 2025 – Crew</li>
+                        <li><span class="bullet">◆</span> ODYSSEY 2024 – Official</li>
+                        <li><span class="bullet">◆</span> Student Interactive Society Volunteer</li>
                     </ul>
                 </div>
 
-                <!-- IEEE -->
-                <div class="comm-card comm-card-wide reveal">
+                <!-- IEEE SLIIT -->
+                <div class="bento-card glass-card bento-wide reveal">
                     <div class="card-num">04</div>
-                    <div class="comm-header">
-                        <div class="comm-icon-tag">// ACADEMIC TECH</div>
-                        <h3>IEEE of SLIIT</h3>
-                        <p class="comm-tag">Institute of Electrical &amp; Electronics Engineers</p>
+                    <div class="bento-header">
+                        <span class="bento-tag">// CAMPUS TECH BRANCH</span>
+                        <h3>IEEE SLIIT Student Branch</h3>
                     </div>
-                    <ul class="comm-roles comm-roles-grid">
-                        <li><span class="role-marker">■</span> Assistant Treasurer – IEEE Student Branch (SB) of SLIIT (2026/27)</li>
-                        <li><span class="role-marker">■</span> Logistic Lead – LeadSpring 2025 (IAS)</li>
-                        <li><span class="role-marker">■</span> Program Co-Lead – CellSpell (EMBS)</li>
-                        <li><span class="role-marker">■</span> Finance Team Member – RoboMesh (PES)</li>
-                    </ul>
+                    <div class="comm-roles-grid">
+                        <ul>
+                            <li><span class="bullet">◆</span> Assistant Treasurer – IEEE Student Branch (SB) of SLIIT (2026/27)</li>
+                            <li><span class="bullet">◆</span> Finance Lead – TransitionX 2026</li><li><span class="bullet">◆</span> Logistics Lead – LeadSpring 2025 (IAS)</li>
+                        </ul>
+                        <ul>
+                            <li><span class="bullet">◆</span> Program Co-Lead – CellSpell (EMBS)</li>
+                            <li><span class="bullet">◆</span> Finance Team Member – RoboMesh (PES)</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <!-- FCSC -->
-                <div class="comm-card reveal">
+                <div class="bento-card glass-card reveal">
                     <div class="card-num">05</div>
-                    <div class="comm-header">
-                        <div class="comm-icon-tag">// COMPUTING</div>
+                    <div class="bento-header">
+                        <span class="bento-tag">// COMPUTING SOCIETY</span>
                         <h3>FCSC</h3>
-                        <p class="comm-tag">Faculty of Computing Student Community</p>
                     </div>
+                    <p class="comm-subtitle">Faculty of Computing Student Community</p>
                     <ul class="comm-roles">
-                        <li><span class="role-marker">■</span> Committee Member</li>
+                        <li><span class="bullet">◆</span> Committee Member · Wiramaya 2026 · Blood Donation 2026 · Wasantha Muduwora 2026 · SLIIT Bash 2026</li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="section border-top">
-        <div class="container">
-            <div class="section-meta reveal">05 // CAPABILITIES</div>
-            <h2 class="section-heading reveal">Technical <span class="accent">Skills</span></h2>
-            
-            <div class="skills-layout">
-                <!-- Precision Progress Indicators -->
-                <div class="skills-wrapper reveal">
-                    <div class="skill-row">
-                        <div class="skill-box" data-progress="95">
-                            <div class="skill-info">
-                                <div class="skill-name-row">
-                                    <span class="skill-name">HTML5</span>
-                                    <span class="skill-pct">95%</span>
-                                </div>
-                                <div class="skill-track">
-                                    <div class="skill-fill" style="--target:95%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-box" data-progress="90">
-                            <div class="skill-info">
-                                <div class="skill-name-row">
-                                    <span class="skill-name">CSS3</span>
-                                    <span class="skill-pct">90%</span>
-                                </div>
-                                <div class="skill-track">
-                                    <div class="skill-fill" style="--target:90%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-row">
-                        <div class="skill-box" data-progress="90">
-                            <div class="skill-info">
-                                <div class="skill-name-row">
-                                    <span class="skill-name">Python</span>
-                                    <span class="skill-pct">90%</span>
-                                </div>
-                                <div class="skill-track">
-                                    <div class="skill-fill" style="--target:90%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-box" data-progress="85">
-                            <div class="skill-info">
-                                <div class="skill-name-row">
-                                    <span class="skill-name">Java</span>
-                                    <span class="skill-pct">85%</span>
-                                </div>
-                                <div class="skill-track">
-                                    <div class="skill-fill" style="--target:85%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-row">
-                        <div class="skill-box" data-progress="85">
-                            <div class="skill-info">
-                                <div class="skill-name-row">
-                                    <span class="skill-name">SQL</span>
-                                    <span class="skill-pct">85%</span>
-                                </div>
-                                <div class="skill-track">
-                                    <div class="skill-fill" style="--target:85%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-box" data-progress="80">
-                            <div class="skill-info">
-                                <div class="skill-name-row">
-                                    <span class="skill-name">C++</span>
-                                    <span class="skill-pct">80%</span>
-                                </div>
-                                <div class="skill-track">
-                                    <div class="skill-fill" style="--target:80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- 07. CONTACT SECTION -->
+        <section id="contact" class="section">
+            <div class="section-label reveal">06 / SAY HELLO</div>
+            <h2 class="section-title reveal">Let’s build <span class="text-accent-gold">what’s next.</span></h2>
 
-                <!-- Interactive Radar Chart -->
-                <div class="skills-radar-wrap reveal">
-                    <div class="radar-header">
-                        <span class="radar-tag">// DATA VISUALIZATION</span>
-                        <h3>Skill Dimensions</h3>
+            <p class="contact-intro">Hiring for an AI, software, or fintech opportunity? Let’s talk about where I can contribute.</p>
+            <div class="recruiter-links"><a class="btn-primary" href="CV%20Official%202026.pdf" download>Download my CV ↓</a><a class="btn-ghost" href="https://www.linkedin.com/in/mohammed-zakee/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a></div>
+            <div class="contact-card glass-card reveal">
+                <!-- Sentence form builder -->
+                <form id="contactForm" class="contact-sentence-form" action="https://formspree.io/f/xvonzpge" method="POST">
+                    <div class="sentence-row">
+                        Hey, Zakee! My name is
+                        <span class="input-wrap">
+                            <input type="text" name="name" aria-label="Your name" autocomplete="name" placeholder="Your Name" required />
+                        </span>
+                        and I am representing
+                        <span class="input-wrap">
+                            <input type="text" name="country" aria-label="Company or country" placeholder="Company/Country" required />
+                        </span>.
                     </div>
-                    <div class="radar-container">
-                        <canvas id="radarChart" width="300" height="300"></canvas>
+                    <div class="sentence-row">
+                        Let's connect about
+                        <span class="select-wrap">
+                            <select name="purpose" aria-label="Reason for contacting" required>
+                                <option value="Internship">an Internship</option>
+                                <option value="Full-Time Role">a Full-Time Role</option>
+                                <option value="Strategic Partnership">a Strategic Partnership</option>
+                                <option value="AI Integration Product">Building an AI Product</option>
+                                <option value="Fintech Consulting">Fintech Consulting</option>
+                            </select>
+                        </span>.
                     </div>
-                </div>
-
-                <!-- Sleek Tag Clouds -->
-                <div class="skill-tags-ledger reveal">
-                    <div class="ledger-tag-label">CORE DOMAINS //</div>
-                    <div class="skill-tags-wrap">
-                        <span class="skill-tag"><span class="tag-marker">#</span> Machine Learning</span>
-                        <span class="skill-tag"><span class="tag-marker">#</span> Generative AI</span>
-                        <span class="skill-tag"><span class="tag-marker">#</span> Data Science</span>
-                        <span class="skill-tag"><span class="tag-marker">#</span> Data Structures &amp; Algorithms</span>
+                    <div class="sentence-row">
+                        You can email me back at
+                        <span class="input-wrap">
+                            <input type="email" name="email" aria-label="Your email address" autocomplete="email" placeholder="your email address" required />
+                        </span>.
                     </div>
-                    <div class="ledger-tag-label" style="margin-top: 1.5rem;">FRAMEWORKS &amp; TOOLS //</div>
-                    <div class="skill-tags-wrap">
-                        <span class="skill-tag"><span class="tag-marker">#</span> React.js</span>
-                        <span class="skill-tag"><span class="tag-marker">#</span> Java Servlets</span>
-                        <span class="skill-tag"><span class="tag-marker">#</span> AWS Cloud</span>
-                        <span class="skill-tag"><span class="tag-marker">#</span> SQL / PostgreSQL</span>
-                        <span class="skill-tag"><span class="tag-marker">#</span> Graphic Design</span>
+                    <div class="sentence-row textarea-row">
+                        Message summary:
+                        <span class="textarea-wrap">
+                            <textarea name="message" aria-label="Your message" placeholder="Type your message details here..." required></textarea>
+                        </span>
                     </div>
-                    <div class="ledger-tag-label" style="margin-top: 1.5rem;">CURRENTLY EXPLORING //</div>
-                    <div class="skill-tags-wrap">
-                        <span class="skill-tag" style="border-color: var(--accent); color: var(--accent);"><span class="tag-marker">#</span> Rust Lang</span>
-                        <span class="skill-tag" style="border-color: var(--accent); color: var(--accent);"><span class="tag-marker">#</span> Large Language Models</span>
+                    <div class="sentence-submit-row">
+                        <button type="submit" class="btn-submit magnetic-btn">
+                            <span>Send Message</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="section section-alt border-top">
-        <div class="container">
-            <div class="section-meta reveal">06 // ARCHITECTURE</div>
-            <h2 class="section-heading reveal">Featured <span class="accent">Projects</span></h2>
-            
-            <div class="projects-slideshow-container">
-                <div class="projects-tabs">
-                    <button type="button" class="project-tab active" data-slide="0">01 / Project Phoenix</button>
-                    <button type="button" class="project-tab" data-slide="1">02 / Golden Palm</button>
-                    <button type="button" class="project-tab" data-slide="2">03 / IEEE Logistics</button>
-                </div>
-                
-                <div class="projects-ledger">
-                    <!-- Project 01 -->
-                    <div class="project-item active reveal" data-project="0">
-                        <div class="project-header">
-                            <span class="project-num">01 /</span>
-                            <h3 class="project-title">Project Phoenix</h3>
-                        </div>
-                        
-                        <p class="project-desc">A comprehensive car rental system featuring secure user auth, dual payment modes (cash/card), and an enterprise admin console for fleet management.</p>
-                        
-                        <div class="project-meta-row" style="margin-bottom: 1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
-                            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); font-weight: 600; letter-spacing: 1px;">ARCHITECTURAL DECISIONS &amp; DESIGN //</div>
-                            <div class="project-highlights" style="display: flex; flex-direction: column; gap: 0.5rem; width: 100%;">
-                                <span style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;"><strong style="color: var(--text);">• Stack Data Structure:</strong> Engineered custom LIFO buffer logic for fleet availability states, ensuring immediate query times for recently returned cars.</span>
-                                <span style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;"><strong style="color: var(--text);">• Java Servlets &amp; MVC:</strong> Designed a highly modular server architecture, decoupling HTTP-servlet request logic from core fleet data model states.</span>
-                            </div>
-                        </div>
-                        
-                        <div class="project-meta-row">
-                            <div class="project-tech">
-                                <span class="tech-pill">HTML</span>
-                                <span class="tech-pill">CSS</span>
-                                <span class="tech-pill">Servlets</span>
-                                <span class="tech-pill">Stack DSA</span>
-                            </div>
-                            <div class="project-highlights">
-                                <span><i class="fa-solid fa-check"></i> User Auth</span>
-                                <span><i class="fa-solid fa-check"></i> Reservation System</span>
-                                <span><i class="fa-solid fa-check"></i> Admin Panel</span>
-                                <span><i class="fa-solid fa-check"></i> Payment Integration</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Architecture Explorer -->
-                        <div class="project-explorer-container">
-                            <button type="button" class="btn-explorer-toggle" data-target="explorerPhoenix">
-                                <i class="fa-solid fa-folder-open"></i> <span>Explore Architecture Tree</span>
-                            </button>
-                            <div class="project-explorer" id="explorerPhoenix">
-                                <div class="explorer-inner">
-                                    <div class="file-tree">
-                                        <ul>
-                                            <li class="folder open">
-                                                <span class="tree-item"><i class="fa-solid fa-folder"></i> src/</span>
-                                                <ul>
-                                                    <li class="folder">
-                                                        <span class="tree-item"><i class="fa-solid fa-folder"></i> controller/</span>
-                                                        <ul>
-                                                            <li class="file" data-desc="Handles client HTTP requests (GET/POST), performs user session validation, and interfaces with the database controllers."><span class="tree-item"><i class="fa-solid fa-file-code"></i> CarServlet.java</span></li>
-                                                            <li class="file" data-desc="Manages authentication and access permissions for users, hosts, and admins."><span class="tree-item"><i class="fa-solid fa-file-code"></i> AuthServlet.java</span></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="folder">
-                                                        <span class="tree-item"><i class="fa-solid fa-folder"></i> model/</span>
-                                                        <ul>
-                                                            <li class="file" data-desc="A custom Stack (LIFO) implementation to manage car keys and vehicle availability queue for returns."><span class="tree-item"><i class="fa-solid fa-file-code"></i> ReturnStack.java</span></li>
-                                                            <li class="file" data-desc="Entity model containing car states, availability boolean, fuel levels, and pricing data."><span class="tree-item"><i class="fa-solid fa-file-code"></i> Car.java</span></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="folder">
-                                                <span class="tree-item"><i class="fa-solid fa-folder"></i> web/</span>
-                                                <ul>
-                                                    <li class="file" data-desc="The landing and search interface for customers to select rental dates and check rates."><span class="tree-item"><i class="fa-solid fa-file-code"></i> dashboard.jsp</span></li>
-                                                    <li class="file" data-desc="Admin control center showing active rentals and fleet stack levels."><span class="tree-item"><i class="fa-solid fa-file-code"></i> admin.jsp</span></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="file-details">
-                                        <div class="details-placeholder">Click a file to inspect its architectural purpose and decisions.</div>
-                                        <div class="details-content" style="display: none;">
-                                            <h4 class="details-filename"></h4>
-                                            <p class="details-description"></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="project-footer">
-                            <a href="https://github.com/Mohammed-Zakee/Project-Phoenix" target="_blank" class="project-link">
-                                <span>GitHub Source</span> <i class="fa-brands fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project 02 -->
-                    <div class="project-item reveal" data-project="1">
-                        <div class="project-header">
-                            <span class="project-num">02 /</span>
-                            <h3 class="project-title">Golden Palm Grand Hotel</h3>
-                        </div>
-                        
-                        <p class="project-desc">A sophisticated hotel reservation system tailored for wedding events. Couples can browse and book accommodations, send RSVP forms to guests, and manage event details through a comprehensive admin panel powered by React and SQL.</p>
-                        
-                        <div class="project-meta-row" style="margin-bottom: 1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
-                            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); font-weight: 600; letter-spacing: 1px;">ARCHITECTURAL DECISIONS &amp; DESIGN //</div>
-                            <div class="project-highlights" style="display: flex; flex-direction: column; gap: 0.5rem; width: 100%;">
-                                <span style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;"><strong style="color: var(--text);">• SQL Relational Schema:</strong> Engineered complex queries with highly-optimized joins to dynamically map real-time guest lodging choices and meal preference updates.</span>
-                                <span style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;"><strong style="color: var(--text);">• State Synchronization:</strong> Leveraged React state cycles to sync reservation ledger panels without redundant database roundtrips.</span>
-                            </div>
-                        </div>
-                        
-                        <div class="project-meta-row">
-                            <div class="project-tech">
-                                <span class="tech-pill">HTML</span>
-                                <span class="tech-pill">CSS</span>
-                                <span class="tech-pill">React</span>
-                                <span class="tech-pill">SQL</span>
-                            </div>
-                            <div class="project-highlights">
-                                <span><i class="fa-solid fa-check"></i> Wedding Booking</span>
-                                <span><i class="fa-solid fa-check"></i> RSVP System</span>
-                                <span><i class="fa-solid fa-check"></i> Preference Booking</span>
-                                <span><i class="fa-solid fa-check"></i> SQL Database</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Architecture Explorer -->
-                        <div class="project-explorer-container">
-                            <button type="button" class="btn-explorer-toggle" data-target="explorerHotel">
-                                <i class="fa-solid fa-folder-open"></i> <span>Explore Architecture Tree</span>
-                            </button>
-                            <div class="project-explorer" id="explorerHotel">
-                                <div class="explorer-inner">
-                                    <div class="file-tree">
-                                        <ul>
-                                            <li class="folder open">
-                                                <span class="tree-item"><i class="fa-solid fa-folder"></i> src/</span>
-                                                <ul>
-                                                    <li class="folder">
-                                                        <span class="tree-item"><i class="fa-solid fa-folder"></i> components/</span>
-                                                        <ul>
-                                                            <li class="file" data-desc="React dashboard panel displaying dynamic guest accommodation availability grids."><span class="tree-item"><i class="fa-solid fa-file-code"></i> RoomGrid.jsx</span></li>
-                                                            <li class="file" data-desc="Interactive form collecting meal choices, RSVP validations, and guest listings."><span class="tree-item"><i class="fa-solid fa-file-code"></i> RsvpForm.jsx</span></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="folder">
-                                                        <span class="tree-item"><i class="fa-solid fa-folder"></i> database/</span>
-                                                        <ul>
-                                                            <li class="file" data-desc="Relational SQL tables defining users, reservations, guest preference mappings, and foreign-key logs."><span class="tree-item"><i class="fa-solid fa-file-code"></i> schema.sql</span></li>
-                                                            <li class="file" data-desc="Optimized query script joining bookings and guest RSVP records for admin ledger sheets."><span class="tree-item"><i class="fa-solid fa-file-code"></i> queries.sql</span></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="file-details">
-                                        <div class="details-placeholder">Click a file to inspect its architectural purpose and decisions.</div>
-                                        <div class="details-content" style="display: none;">
-                                            <h4 class="details-filename"></h4>
-                                            <p class="details-description"></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="project-footer">
-                            <a href="https://github.com/Mohammed-Zakee/Golden-Palm-Hotel-Reservation-System" target="_blank" class="project-link">
-                                <span>GitHub Source</span> <i class="fa-brands fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project 03 -->
-                    <div class="project-item reveal" data-project="2">
-                        <div class="project-header">
-                            <span class="project-num">03 /</span>
-                            <h3 class="project-title">IEEE SLIIT Logistics Portal</h3>
-                        </div>
-                        
-                        <p class="project-desc">A professional dashboard built for the IEEE Student Branch of SLIIT. It streamlines event resource allocation, inventory tracking, membership verification rosters, and dynamic task assignment queues.</p>
-                        
-                        <div class="project-meta-row" style="margin-bottom: 1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
-                            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); font-weight: 600; letter-spacing: 1px;">ARCHITECTURAL DECISIONS &amp; DESIGN //</div>
-                            <div class="project-highlights" style="display: flex; flex-direction: column; gap: 0.5rem; width: 100%;">
-                                <span style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;"><strong style="color: var(--text);">• Resource Matrix Ledger:</strong> Built relational database queries mapping physical equipment status with real-time event timelines and logistics checklists.</span>
-                                <span style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;"><strong style="color: var(--text);">• Indexed Roster Search:</strong> Integrated high-speed debounce filtering for member indexing, lowering lookup overheads across SLIIT's student branch.</span>
-                            </div>
-                        </div>
-                        
-                        <div class="project-meta-row">
-                            <div class="project-tech">
-                                <span class="tech-pill">HTML</span>
-                                <span class="tech-pill">CSS</span>
-                                <span class="tech-pill">JavaScript</span>
-                                <span class="tech-pill">Local Storage</span>
-                            </div>
-                            <div class="project-highlights">
-                                <span><i class="fa-solid fa-check"></i> Stock Tracker</span>
-                                <span><i class="fa-solid fa-check"></i> Roster Verification</span>
-                                <span><i class="fa-solid fa-check"></i> Task Allocation</span>
-                                <span><i class="fa-solid fa-check"></i> Event Checklists</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Architecture Explorer -->
-                        <div class="project-explorer-container">
-                            <button type="button" class="btn-explorer-toggle" data-target="explorerLogistics">
-                                <i class="fa-solid fa-folder-open"></i> <span>Explore Architecture Tree</span>
-                            </button>
-                            <div class="project-explorer" id="explorerLogistics">
-                                <div class="explorer-inner">
-                                    <div class="file-tree">
-                                        <ul>
-                                            <li class="folder open">
-                                                <span class="tree-item"><i class="fa-solid fa-folder"></i> src/</span>
-                                                <ul>
-                                                    <li class="folder">
-                                                        <span class="tree-item"><i class="fa-solid fa-folder"></i> components/</span>
-                                                        <ul>
-                                                            <li class="file" data-desc="Handles local inventory levels, warnings for low resources, and item checkout registers."><span class="tree-item"><i class="fa-solid fa-file-code"></i> InventoryTracker.jsx</span></li>
-                                                            <li class="file" data-desc="A dynamic membership table component supporting sorting, search index filters, and volunteer check-ins."><span class="tree-item"><i class="fa-solid fa-file-code"></i> MemberRoster.jsx</span></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="folder">
-                                                        <span class="tree-item"><i class="fa-solid fa-folder"></i> services/</span>
-                                                        <ul>
-                                                            <li class="file" data-desc="Manages local caching buffers, and local storage state hydration hooks for offline utility."><span class="tree-item"><i class="fa-solid fa-file-code"></i> db.js</span></li>
-                                                            <li class="file" data-desc="A synchronization service to push local logistics snapshots into cloud buckets when connected."><span class="tree-item"><i class="fa-solid fa-file-code"></i> sync.js</span></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="file-details">
-                                        <div class="details-placeholder">Click a file to inspect its architectural purpose and decisions.</div>
-                                        <div class="details-content" style="display: none;">
-                                            <h4 class="details-filename"></h4>
-                                            <p class="details-description"></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="project-footer">
-                            <a href="https://github.com/Mohammed-Zakee" target="_blank" class="project-link">
-                                <span>GitHub Source</span> <i class="fa-brands fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="projects-controls">
-                    <button type="button" class="projects-control-btn prev" id="projectPrevBtn" aria-label="Previous Project"><i class="fa-solid fa-arrow-left"></i> Prev</button>
-                    <div class="projects-dots" id="projectsDots">
-                        <span class="project-dot active" data-slide="0"></span>
-                        <span class="project-dot" data-slide="1"></span>
-                        <span class="project-dot" data-slide="2"></span>
-                    </div>
-                    <button type="button" class="projects-control-btn next" id="projectNextBtn" aria-label="Next Project">Next <i class="fa-solid fa-arrow-right"></i></button>
-                </div>
-            </div>
-
-            <!-- GitHub Repos Carousel Section -->
-            <div class="github-repos-section reveal" style="margin-top: 5rem; border-top: 1px solid var(--border); padding-top: 4rem;">
-                <div class="github-header" style="margin-bottom: 2.5rem;">
-                    <span class="github-tag" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); letter-spacing: 2px; font-weight: 500; text-transform: uppercase;">06.1 // OPEN SOURCE CONTRIBUTION</span>
-                    <h3 class="github-title" style="font-family: var(--font-title); font-size: 2.2rem; font-weight: 700; text-transform: uppercase; margin-top: 0.5rem; letter-spacing: -0.02em;">GitHub Repositories</h3>
-                </div>
-                <div class="carousel-container-outer" style="position: relative; display: flex; align-items: center; gap: 16px; width: 100%;">
-                    <button class="carousel-control prev" id="carouselPrev" aria-label="Previous Slide" style="background: rgba(13, 13, 15, 0.8); border: 1px solid var(--border); color: var(--text); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all var(--trans); z-index: 10;"><i class="fa-solid fa-chevron-left"></i></button>
-                    <div class="carousel-track-wrapper" style="overflow: hidden; width: 100%;">
-                        <div class="carousel-track" id="githubReposCarousel" style="display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); width: 100%;">
-                            <!-- Dynamically loaded repositories go here -->
-                            <div class="carousel-placeholder" style="width: 100%; text-align: center; font-family: var(--font-mono); color: var(--text-muted); padding: 40px 0;">Loading repositories from GitHub...</div>
-                        </div>
-                    </div>
-                    <button class="carousel-control next" id="carouselNext" aria-label="Next Slide" style="background: rgba(13, 13, 15, 0.8); border: 1px solid var(--border); color: var(--text); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all var(--trans); z-index: 10;"><i class="fa-solid fa-chevron-right"></i></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="section border-top">
-        <div class="container">
-            <div class="section-meta reveal">07 // CORRESPONDENCE</div>
-            
-            <div class="contact-layout">
-                <div class="contact-info reveal">
-                    <h2 class="contact-heading">LET'S CREATE<br>SOMETHING<br><span class="accent">REMARKABLE.</span></h2>
-                    <p class="contact-intro">Whether it's a collaboration, a project, or just a conversation — I'd love to hear from you. Reach out through the form or my social channels.</p>
-                    
-                    <div class="contact-ledger">
-                        <div class="contact-ledger-row">
-                            <span class="c-label">EMAIL //</span>
-                            <a href="mailto:mohammedzakee2006@gmail.com" class="c-val">mohammedzakee2006@gmail.com</a>
-                        </div>
-                        <div class="contact-ledger-row">
-                            <span class="c-label">PHONE //</span>
-                            <a href="tel:+94706103115" class="c-val">+94 706 103 115</a>
-                        </div>
-                        <div class="contact-ledger-row">
-                            <span class="c-label">LINKTREE //</span>
-                            <a href="https://linktr.ee/mohammedzakee" target="_blank" class="c-val">linktr.ee/mohammedzakee</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-socials-row">
-                        <a href="https://www.linkedin.com/in/mohammed-zakee/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/Mohammed-Zakee" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://www.instagram.com/its.zakee/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                
-                <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/xldzqpvv" method="POST">
-                    <div class="form-row">
-                        <div class="form-field">
-                            <label>YOUR NAME //</label>
-                            <input type="text" name="name" placeholder="Mohammed Zakee" required>
-                        </div>
-                        <div class="form-field">
-                            <label>YOUR EMAIL //</label>
-                            <input type="email" name="email" placeholder="hello@example.com" required>
-                        </div>
-                    </div>
-                    <div class="form-field">
-                        <label>SUBJECT //</label>
-                        <input type="text" name="_subject" placeholder="Collaboration Opportunity" required>
-                    </div>
-                    <div class="form-field">
-                        <label>MESSAGE //</label>
-                        <textarea name="message" rows="5" placeholder="Tell me about your project or idea..." required></textarea>
-                    </div>
-                    <button type="submit" class="form-submit">
-                        <span>Send Message</span>
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </button>
                 </form>
             </div>
-        </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer class="footer border-top">
-        <div class="footer-inner">
-            <div class="footer-logo">
-                <span class="logo-mono">&lt;</span><span class="logo-name">ZN</span><span class="logo-mono">/&gt;</span>
-            </div>
-            
-            <p class="footer-text">&copy; 2026 Zakee Nowfal · Crafted with purpose &amp; architectural precision.</p>
-            
-            <div class="footer-back-top">
-                <a href="#hero" id="backTop" aria-label="Back to top">
-                    <i class="fa-solid fa-arrow-up-long"></i>
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Zakee-Bot On-Page AI Terminal Assistant -->
-    <div id="zakeeBot" class="zakeebot-widget">
-        <button id="botToggle" class="bot-toggle-btn magnetic-btn" aria-label="Toggle AI Assistant">
-            <span class="bot-pulse"></span>
-            <i class="fa-solid fa-terminal"></i>
-            <span class="bot-toggle-text">Zakee-Bot</span>
-        </button>
-        <div id="botConsole" class="bot-console">
-            <div class="console-header">
-                <div class="console-title"><i class="fa-solid fa-terminal"></i> ZAKEE-BOT v1.2</div>
-                <div class="console-actions" style="display: flex; align-items: center; gap: 12px;">
-                    <button type="button" class="sound-toggle-btn" id="soundToggle" title="Toggle Terminal Sounds" style="background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; padding: 4px; transition: color var(--trans);"><i class="fa-solid fa-volume-xmark"></i></button>
-                    <button id="consoleClose" class="console-close-btn" style="margin: 0;">&times;</button>
+            <!-- Footer -->
+            <footer class="footer">
+                <p class="footer-direct">Or email directly at <a href="mailto:mohammedzakee2006@gmail.com" class="email-link">mohammedzakee2006@gmail.com</a></p>
+                <div class="footer-bottom">
+                    <p class="copy-text">&copy; 2026 Mohammed Zakee. Made with curiosity and purpose.</p>
+                    <div class="footer-social-links">
+                        <a href="https://www.linkedin.com/in/mohammed-zakee/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Mohammed-Zakee" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/its.zakee/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linktr.ee/mohammedzakee" target="_blank" rel="noopener noreferrer" aria-label="Linktree"><i class="fas fa-link"></i></a>
+                    </div>
                 </div>
-            </div>
-            <div id="consoleBody" class="console-body">
-                <div class="console-msg system">◆ AI NODE ONLINE. Ask me anything about Zakee's skills, qualifications, certifications, or hobbies. Type 'help' to see suggestions.</div>
-            </div>
-            <div class="console-chips">
-                <button type="button" class="console-chip" data-cmd="about">About</button>
-                <button type="button" class="console-chip" data-cmd="skills">Skills</button>
-                <button type="button" class="console-chip" data-cmd="experience">Jobs</button>
-                <button type="button" class="console-chip" data-cmd="volunteer">Volunteering</button>
-                <button type="button" class="console-chip" data-cmd="source">Source Code</button>
-            </div>
-            <form id="consoleForm" class="console-input-row">
-                <span class="console-prompt">&gt;</span>
-                <input type="text" id="consoleInput" placeholder="Ask a question..." autocomplete="off">
-            </form>
-        </div>
-    </div>
-    </div> <!-- /#appWrapper -->
+            </footer>
+        </section>
 
-    <!-- Retro Developer CLI Terminal Overlay -->
-    <div id="devCliTerminal" class="dev-cli-terminal">
-        <div class="cli-overlay-effects">
-            <div class="cli-scanlines"></div>
-            <div class="cli-flicker"></div>
-        </div>
-        
-        <div class="cli-header">
-            <div class="cli-header-left">
-                <span class="cli-status-dot"></span>
-                <span class="cli-title">DEV_SHELL v2.6 // SECURE_NODE</span>
-            </div>
-            <div class="cli-header-right">
-                <span class="cli-help-tip">Type 'help' for commands // Press 'ESC' or type 'exit'</span>
-                <button type="button" id="cliCloseBtn" class="cli-close-btn">&times;</button>
-            </div>
-        </div>
-        
-        <div class="cli-body" id="cliBody">
-            <div class="cli-line">◆ ZAKEE SECURE NODE INITIALIZED [v2.6.4]</div>
-            <div class="cli-line">◆ SYSTEM: DEBIAN CORE / PORTFOLIO SHIELDED</div>
-            <div class="cli-line">◆ TYPE 'help' TO QUERY DIRECTORIES OR RUN MODULES.</div>
-            <div class="cli-line">&nbsp;</div>
-        </div>
-        
-        <form id="cliForm" class="cli-input-line">
-            <span class="cli-prompt">guest@zakee-node:~$</span>
-            <input type="text" id="cliInput" autocomplete="off" autofocus>
-        </form>
-    </div>
+    </main>
 
-    <!-- Floating Developer CLI Trigger -->
-    <button id="cliToggleBtn" class="cli-floating-toggle" title="Open Developer CLI (~)" aria-label="Toggle Developer CLI">
-        <i class="fa-solid fa-terminal"></i>
-    </button>
-
-
-
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
-
 </html>
