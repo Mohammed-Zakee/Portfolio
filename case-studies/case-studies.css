@@ -64,3 +64,5 @@
  .case-contact .btn-ghost { margin: 12px 0 0; }
 }
 @media (max-width: 380px) { .system-flow { grid-template-columns: 1fr; } }
+/* Keep the contents index tied to document scrolling on wide screens. */
+html, body { overflow-x: clip; }
