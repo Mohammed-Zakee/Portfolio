@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="#f6f5f0" name="theme-color"/>
+  <title>
+   Smart Greenhouse — Case study | Zakee Nowfal
+  </title>
+  <meta content="From environmental readings to automated control." name="description"/>
+  <link href="https://mohammed-zakee.github.io/Portfolio/case-studies/smart-greenhouse.html" rel="canonical"/>
+  <link href="../style.css" rel="stylesheet"/>
+  <link href="case-studies.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+  <script>
+   try{document.documentElement.dataset.theme=localStorage.getItem('portfolio_theme')||'light';}catch{}
+  </script>
+ </head>
+ <body>
+  <a class="skip-link" href="#case-main">
+   Skip to case study
+  </a>
+  <header class="case-nav">
+   <a class="case-brand" href="../index.html">
+    mz.
+    <span>
+     Mohammed Zakee
+    </span>
+   </a>
+   <a href="../index.html#projects">
+    ← All projects
+   </a>
+   <a class="case-cv" download="" href="../CV%20Official%202026.pdf">
+    Download CV ↓
+   </a>
+  </header>
+  <main class="case-main" id="case-main">
+   <section class="case-hero">
+    <p class="case-eyebrow">
+     CONNECTED HARDWARE / IOT CASE STUDY
+    </p>
+    <h1>
+     Smart Greenhouse
+    </h1>
+    <p class="case-subtitle">
+     From environmental readings to automated control.
+    </p>
+    <p class="case-intro">
+     An ESP32-based system connecting environmental sensors with a water pump, fan, and lighting.
+    </p>
+    <div class="case-facts">
+     <div>
+      <span>
+       IMPLEMENTATION SCOPE
+      </span>
+      <p>
+       ESP32 system development · Sensor integration · Automation
+      </p>
+     </div>
+     <div>
+      <span>
+       TECHNOLOGY
+      </span>
+      <p>
+       ESP32 · DHT22 · LDR · Soil-moisture sensor · Ultrasonic sensor
+      </p>
+     </div>
+    </div>
+    <div class="case-actions">
+    </div>
+   </section>
+   <div class="hardware-overview">
+    <span>
+     ESP32
+    </span>
+    <div>
+     <p>
+      DHT22 · Light · Soil moisture · Ultrasonic
+     </p>
+     <strong>
+      Sense → Process → Control
+     </strong>
+     <p>
+      Water pump · Fan · Lighting
+     </p>
+    </div>
+   </div>
+   <p class="case-caption">
+    System overview based on the documented project scope; not a wiring schematic.
+   </p>
+   <div class="case-layout">
+    <aside aria-label="Case study contents" class="case-index">
+     <a href="#problem">
+      01 / The problem
+     </a>
+     <a href="#implementation">
+      02 / Implementation
+     </a>
+     <a href="#decisions">
+      03 / Engineering choices
+     </a>
+     <a href="#evidence">
+      04 / Evidence
+     </a>
+     <a href="#next">
+      05 / Next steps
+     </a>
+    </aside>
+    <div class="case-body">
+     <section id="problem">
+      <p class="case-eyebrow">
+       01 / THE PROBLEM
+      </p>
+      <h2>
+       What needed solving?
+      </h2>
+      <p>
+       A growing environment needs monitoring and timely responses to changing conditions. The project explores how multiple sensor inputs can inform automated control rather than relying only on manual checks.
+      </p>
+     </section>
+     <section id="implementation">
+      <p class="case-eyebrow">
+       02 / IMPLEMENTATION
+      </p>
+      <h2>
+       How the system fits together.
+      </h2>
+      <p>
+       I developed a Smart Greenhouse IoT system using an ESP32, DHT22, LDR, soil-moisture and ultrasonic sensors, with automated control of a water pump, fan, and lighting system. This is the implementation scope documented in my official CV.
+      </p>
+      <ol class="system-flow">
+       <li>
+        <span>
+         01
+        </span>
+        <h3>
+         Sense
+        </h3>
+        <p>
+         Environmental and distance-related readings are collected from the sensor set.
+        </p>
+       </li>
+       <li>
+        <span>
+         02
+        </span>
+        <h3>
+         Process
+        </h3>
+        <p>
+         The ESP32 is the central controller for the system.
+        </p>
+       </li>
+       <li>
+        <span>
+         03
+        </span>
+        <h3>
+         Act
+        </h3>
+        <p>
+         The system controls the water pump, fan, and lights.
+        </p>
+       </li>
+       <li>
+        <span>
+         04
+        </span>
+        <h3>
+         Observe
+        </h3>
+        <p>
+         Physical testing and calibration are the next evidence to document.
+        </p>
+       </li>
+      </ol>
+      <div class="contribution-note">
+       <h3>
+        Contribution &amp; scope
+       </h3>
+       <p>
+        Developed the ESP32-based Smart Greenhouse system, integrating the documented environmental sensor set and automated control of the water pump, fan, and lights.
+       </p>
+      </div>
+     </section>
+     <section id="decisions">
+      <p class="case-eyebrow">
+       03 / ENGINEERING CHOICES
+      </p>
+      <h2>
+       The choices and their trade-offs.
+      </h2>
+      <article class="decision">
+       <h3>
+        One controller, multiple inputs
+       </h3>
+       <p>
+        An ESP32 brings the sensor and actuator sides into one system. The important engineering challenge is making the combined behavior dependable, rather than treating each sensor as an isolated demo.
+       </p>
+      </article>
+      <article class="decision">
+       <h3>
+        A mix of sensing methods
+       </h3>
+       <p>
+        The project combines temperature/humidity, light, soil moisture, and ultrasonic sensing. This spans different physical measurements and the integration work needed to use them together.
+       </p>
+      </article>
+      <article class="decision">
+       <h3>
+        Control that affects the physical world
+       </h3>
+       <p>
+        A pump, fan, and lights make this more than a passive dashboard. Calibration, safe actuator behavior, and handling faulty readings are important next validation steps.
+       </p>
+      </article>
+     </section>
+     <section id="evidence">
+      <p class="case-eyebrow">
+       04 / EVIDENCE
+      </p>
+      <h2>
+       What is demonstrated.
+      </h2>
+      <div class="evidence-grid">
+       <div>
+        <strong>
+         ESP32
+        </strong>
+        <span>
+         central controller
+        </span>
+       </div>
+       <div>
+        <strong>
+         4
+        </strong>
+        <span>
+         sensor types documented
+        </span>
+       </div>
+       <div>
+        <strong>
+         3
+        </strong>
+        <span>
+         controlled device types
+        </span>
+       </div>
+      </div>
+      <p>
+       The project combines sensor integration with automated pump, fan, and lighting control, as documented in my CV. Publishing the prototype, firmware, and calibration records is the next step toward a reproducible technical demonstration.
+      </p>
+      <h3 class="limits-title">
+       Limitations
+      </h3>
+      <ul>
+       <li>
+        No public firmware or wiring evidence is currently linked, so this walkthrough does not claim particular thresholds, sampling rates, or circuit details.
+       </li>
+       <li>
+        No measured water savings, long-duration reliability results, or before/after growing outcomes are documented.
+       </li>
+       <li>
+        The diagram is a system overview based on the CV, not a photograph or verified wiring schematic.
+       </li>
+      </ul>
+      <div class="source-links">
+       <a href="../CV%20Official%202026.pdf" rel="noopener noreferrer" target="_blank">
+        Official CV ↗
+       </a>
+      </div>
+     </section>
+     <section id="next">
+      <p class="case-eyebrow">
+       05 / NEXT STEPS
+      </p>
+      <h2>
+       What I would improve next.
+      </h2>
+      <ol class="next-steps">
+       <li>
+        Document the actual prototype with photos, firmware, and a pin-by-pin wiring diagram.
+       </li>
+       <li>
+        Record calibration and repeated tests for dry/wet soil, light changes, and temperature changes.
+       </li>
+       <li>
+        Measure actuator response, sensor-disconnection behavior, and performance during an extended run.
+       </li>
+      </ol>
+     </section>
+    </div>
+   </div>
+   <section class="case-contact">
+    <p class="case-eyebrow">
+     LET’S TALK ABOUT THE WORK
+    </p>
+    <h2>
+     Interested in how I could contribute?
+    </h2>
+    <a class="btn-primary" href="mailto:mohammedzakee2006@gmail.com">
+     Email Zakee ↗
+    </a>
+    <a class="btn-ghost" href="../index.html#projects">
+     Back to projects
+    </a>
+   </section>
+  </main>
+  <footer class="case-footer">
+   © 2026 Mohammed Zakee · Zakee Nowfal
+  </footer>
+ </body>
+</html>

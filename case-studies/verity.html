@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="#f6f5f0" name="theme-color"/>
+  <title>
+   Verity — Case study | Zakee Nowfal
+  </title>
+  <meta content="Turning scattered reviews into an explorable business picture." name="description"/>
+  <link href="https://mohammed-zakee.github.io/Portfolio/case-studies/verity.html" rel="canonical"/>
+  <link href="../style.css" rel="stylesheet"/>
+  <link href="case-studies.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+  <script>
+   try{document.documentElement.dataset.theme=localStorage.getItem('portfolio_theme')||'light';}catch{}
+  </script>
+ </head>
+ <body>
+  <a class="skip-link" href="#case-main">
+   Skip to case study
+  </a>
+  <header class="case-nav">
+   <a class="case-brand" href="../index.html">
+    mz.
+    <span>
+     Mohammed Zakee
+    </span>
+   </a>
+   <a href="../index.html#projects">
+    ← All projects
+   </a>
+   <a class="case-cv" download="" href="../CV%20Official%202026.pdf">
+    Download CV ↓
+   </a>
+  </header>
+  <main class="case-main" id="case-main">
+   <section class="case-hero">
+    <p class="case-eyebrow">
+     REVIEW ANALYTICS / SOFTWARE CASE STUDY
+    </p>
+    <h1>
+     Verity
+    </h1>
+    <p class="case-subtitle">
+     Turning scattered reviews into an explorable business picture.
+    </p>
+    <p class="case-intro">
+     A review-analysis project that brings data collection, rule-based NLP, and a visual dashboard into one workflow.
+    </p>
+    <div class="case-facts">
+     <div>
+      <span>
+       IMPLEMENTATION SCOPE
+      </span>
+      <p>
+       Web interface · Python API · Review analytics
+      </p>
+     </div>
+     <div>
+      <span>
+       TECHNOLOGY
+      </span>
+      <p>
+       Next.js · TypeScript · Flask · Playwright · Chart.js
+      </p>
+     </div>
+    </div>
+    <div class="case-actions">
+     <a class="btn-primary" href="https://verity-orpin-omega.vercel.app" rel="noopener noreferrer" target="_blank">
+      Explore live interface ↗
+     </a>
+     <a class="btn-ghost" href="https://github.com/Mohammed-Zakee/Verity" rel="noopener noreferrer" target="_blank">
+      Explore source ↗
+     </a>
+    </div>
+   </section>
+   <figure class="case-screenshot">
+    <img alt="Real Verity landing page with business name and location fields" height="720" src="../assets/projects/verity-live.webp" width="1280"/>
+    <figcaption>
+     Actual public demo interface. No fabricated dashboard results or customer data.
+    </figcaption>
+   </figure>
+   <div class="case-layout">
+    <aside aria-label="Case study contents" class="case-index">
+     <a href="#problem">
+      01 / The problem
+     </a>
+     <a href="#implementation">
+      02 / Implementation
+     </a>
+     <a href="#decisions">
+      03 / Engineering choices
+     </a>
+     <a href="#evidence">
+      04 / Evidence
+     </a>
+     <a href="#next">
+      05 / Next steps
+     </a>
+    </aside>
+    <div class="case-body">
+     <section id="problem">
+      <p class="case-eyebrow">
+       01 / THE PROBLEM
+      </p>
+      <h2>
+       What needed solving?
+      </h2>
+      <p>
+       A star rating alone does not explain what customers repeatedly praise or complain about. Reading individual reviews is slow; a useful exploration tool needs to bring themes, sentiment, and changes over time together.
+      </p>
+     </section>
+     <section id="implementation">
+      <p class="case-eyebrow">
+       02 / IMPLEMENTATION
+      </p>
+      <h2>
+       How the system fits together.
+      </h2>
+      <p>
+       The repository contains a Next.js interface, a Flask API, and a Playwright collection pipeline. The analysis layer produces sentiment labels, theme counts, recurring negative terms, word frequencies, and a rating timeline. The Next.js frontend includes JSON, CSV, Excel, and PDF export paths.
+      </p>
+      <ol class="system-flow">
+       <li>
+        <span>
+         01
+        </span>
+        <h3>
+         Collect
+        </h3>
+        <p>
+         A business name and location are submitted to the Flask API.
+        </p>
+       </li>
+       <li>
+        <span>
+         02
+        </span>
+        <h3>
+         Analyze
+        </h3>
+        <p>
+         A keyword-based NLP engine labels text and groups recurring themes.
+        </p>
+       </li>
+       <li>
+        <span>
+         03
+        </span>
+        <h3>
+         Explore
+        </h3>
+        <p>
+         Charts, review details, and a timeline organize the returned data.
+        </p>
+       </li>
+       <li>
+        <span>
+         04
+        </span>
+        <h3>
+         Export
+        </h3>
+        <p>
+         The Next.js frontend offers downloadable reports in four formats.
+        </p>
+       </li>
+      </ol>
+      <div class="contribution-note">
+       <h3>
+        Contribution &amp; scope
+       </h3>
+       <p>
+        This case study covers the web interface, Flask API, and rule-based analysis implementation in my public project repository. Source links below make the implementation available to explore.
+       </p>
+      </div>
+     </section>
+     <section id="decisions">
+      <p class="case-eyebrow">
+       03 / ENGINEERING CHOICES
+      </p>
+      <h2>
+       The choices and their trade-offs.
+      </h2>
+      <article class="decision">
+       <h3>
+        An explainable NLP baseline
+       </h3>
+       <p>
+        The current engine uses positive and negative word sets, immediate-word negation, and fixed thresholds. It is small and inspectable, with no model-service dependency; it cannot interpret language as broadly as a contextual model.
+       </p>
+      </article>
+      <article class="decision">
+       <h3>
+        Separate presentation from collection
+       </h3>
+       <p>
+        The frontend talks to a Flask API. This keeps browser-driven collection outside the interface, while making deployment configuration and backend availability part of the end-to-end experience.
+       </p>
+      </article>
+      <article class="decision">
+       <h3>
+        Multiple ways to inspect the same data
+       </h3>
+       <p>
+        Themes, individual reviews, word frequency, and time-based summaries give context beyond a single score. Export paths make the analysis portable.
+       </p>
+      </article>
+     </section>
+     <section id="evidence">
+      <p class="case-eyebrow">
+       04 / EVIDENCE
+      </p>
+      <h2>
+       What is demonstrated.
+      </h2>
+      <div class="evidence-grid">
+       <div>
+        <strong>
+         8
+        </strong>
+        <span>
+         focused sentiment checks passed
+        </span>
+       </div>
+       <div>
+        <strong>
+         4
+        </strong>
+        <span>
+         frontend export formats in source
+        </span>
+       </div>
+       <div>
+        <strong>
+         Live
+        </strong>
+        <span>
+         public landing interface inspected
+        </span>
+       </div>
+      </div>
+      <p>
+       The public landing interface loads, and the repository contains the collection, analysis, dashboard, and export implementations. Eight focused checks of the sentiment function were run for this case study; they confirm basic behavior, not real-world classification accuracy.
+      </p>
+      <h3 class="limits-title">
+       Limitations
+      </h3>
+      <ul>
+       <li>
+        Keyword rules can miss sarcasm, context, and multilingual reviews. No independently measured accuracy figure is available.
+       </li>
+       <li>
+        Live collection depends on the external site and backend environment; loading the frontend does not establish that every end-to-end search succeeds.
+       </li>
+       <li>
+        Relative review dates are grouped approximately. Scraped reviews are a sample, not a complete or unbiased view of a business.
+       </li>
+      </ul>
+      <div class="source-links">
+       <a href="https://github.com/Mohammed-Zakee/Verity/blob/main/backend/app.py" rel="noopener noreferrer" target="_blank">
+        Analysis and API source ↗
+       </a>
+       <a href="https://github.com/Mohammed-Zakee/Verity/blob/main/frontend/app/page.tsx" rel="noopener noreferrer" target="_blank">
+        Frontend implementation ↗
+       </a>
+       <a href="https://github.com/Mohammed-Zakee/Verity/blob/main/tests/test_sentiment.py" rel="noopener noreferrer" target="_blank">
+        Focused behavior checks ↗
+       </a>
+      </div>
+     </section>
+     <section id="next">
+      <p class="case-eyebrow">
+       05 / NEXT STEPS
+      </p>
+      <h2>
+       What I would improve next.
+      </h2>
+      <ol class="next-steps">
+       <li>
+        Build a labeled review set and report precision, recall, and error examples.
+       </li>
+       <li>
+        Compare a contextual model with the rule-based baseline, including latency and multilingual cases.
+       </li>
+       <li>
+        Add deterministic collection fixtures, clearer empty/error states, and end-to-end deployment checks.
+       </li>
+      </ol>
+     </section>
+    </div>
+   </div>
+   <section class="case-contact">
+    <p class="case-eyebrow">
+     LET’S TALK ABOUT THE WORK
+    </p>
+    <h2>
+     Interested in how I could contribute?
+    </h2>
+    <a class="btn-primary" href="mailto:mohammedzakee2006@gmail.com">
+     Email Zakee ↗
+    </a>
+    <a class="btn-ghost" href="../index.html#projects">
+     Back to projects
+    </a>
+   </section>
+  </main>
+  <footer class="case-footer">
+   © 2026 Mohammed Zakee · Zakee Nowfal
+  </footer>
+ </body>
+</html>

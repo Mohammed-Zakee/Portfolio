@@ -2135,3 +2135,29 @@ a, button { cursor: pointer; }
     .ledger-org, .ledger-courses { width: 100%; text-align: left; }
     .ledger-courses { align-items: flex-start; }
 }
+
+/* Evidence and case-study entry points. */
+.role-interests { font-size: 11px; line-height: 1.9; color: var(--color-text-muted-strong); margin: -12px 0 24px; max-width: 480px; }
+.role-interests > span { display: block; font: 8px var(--font-mono); letter-spacing: 1.6px; color: var(--color-accent-cyan); margin-bottom: 6px; }
+.work-screenshot { position: relative; padding: 24px; text-decoration: none; }
+.work-screenshot img { display: block; width: 100%; height: auto; max-height: 205px; object-fit: contain; border: 1px solid #ffffff40; border-radius: 7px; box-shadow: 0 12px 24px #00000014; transition: transform .5s; }
+.work-screenshot:hover img { transform: scale(1.025); }
+.work-screenshot > span { position: absolute; bottom: 8px; right: 20px; font: 7px var(--font-mono); letter-spacing: .8px; }
+.work-links { flex-wrap: wrap; row-gap: 12px; }
+.work-links .case-link { flex-basis: 100%; color: var(--color-primary-text); font-size: 13px; }
+.achievement-note { display: grid; grid-template-columns: 135px 1fr auto; align-items: center; gap: 20px; padding: 22px 25px; border: 1px solid var(--glass-border); background: var(--glass-bg); border-radius: 8px; margin: 28px 0; }
+.achievement-note > span { font: 8px var(--font-mono); letter-spacing: 1px; color: var(--color-accent-cyan); }
+.achievement-note p { font-size: 12px; }
+.achievement-note a { font-size: 10px; white-space: nowrap; }
+.skill-evidence-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
+.skill-evidence-grid > a { border: 1px solid var(--glass-border); border-radius: 8px; padding: 26px; transition: background .3s, border-color .3s; }
+.skill-evidence-grid > a:hover { background: var(--glass-bg); border-color: var(--glass-border-hover); }
+.skill-evidence-grid span { font: 8px var(--font-mono); letter-spacing: 1px; color: var(--color-accent-cyan); }
+.skill-evidence-grid h3 { font: 500 21px/1.3 var(--font-heading); letter-spacing: -.5px; margin: 16px 0; }
+.skill-evidence-grid p { font-size: 12px; color: var(--color-text-muted-strong); }
+@media (max-width: 768px) {
+ .role-interests { font-size: 11px; margin-top: -8px; }
+ .achievement-note { grid-template-columns: 1fr; gap: 10px; padding: 22px; }
+ .skill-evidence-grid { grid-template-columns: 1fr; }
+ .work-screenshot { padding: 22px; }
+}
