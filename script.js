@@ -286,6 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (mascot) {
         syncMascot();
+        mascotToggle.addEventListener('focus', calmMascot);
         mascotToggle.addEventListener('click', () => {
             const open = mascotPanel.hidden;
             mascotPanel.hidden = !open;
