@@ -249,4 +249,93 @@ document.addEventListener('DOMContentLoaded', () => {
         portrait.style.setProperty('--portrait-x', '0px');
         portrait.style.setProperty('--portrait-y', '0px');
     });
+
+    // Byte is a lightweight SVG companion: one entrance, then interaction on demand.
+    const mascot = document.getElementById('portfolio-mascot');
+    const mascotRestore = document.getElementById('mascot-restore');
+    const mascotToggle = document.getElementById('mascot-toggle');
+    const mascotPanel = document.getElementById('mascot-panel');
+    const smallScreen = matchMedia('(max-width: 1024px)');
+    let mascotHidden = false;
+    let contactVisible = false;
+    let waveTimer;
+    try { mascotHidden = localStorage.getItem('portfolio_mascot_hidden') === 'true'; } catch {}
+    function closeMascotPanel() {
+        mascotPanel.hidden = true;
+        mascotToggle.setAttribute('aria-expanded', 'false');
+    }
+    function calmMascot() {
+        mascot.classList.remove('mascot-running', 'mascot-waving');
+    }
+    function syncMascot() {
+        mascot.hidden = mascotHidden || contactVisible;
+        mascotRestore.hidden = !mascotHidden || contactVisible;
+        if (mascotHidden || contactVisible || smallScreen.matches || reducedMotion.matches || root.dataset.motion === 'paused' || document.hidden) {
+            calmMascot();
+        }
+        if (mascotHidden || contactVisible) closeMascotPanel();
+    }
+    function waveMascot() {
+        if (reducedMotion.matches || root.dataset.motion === 'paused') return;
+        clearTimeout(waveTimer);
+        mascot.classList.remove('mascot-running', 'mascot-waving');
+        requestAnimationFrame(() => {
+            if (!mascot.hidden && !reducedMotion.matches && root.dataset.motion !== 'paused' && !document.hidden) mascot.classList.add('mascot-waving');
+        });
+        waveTimer = setTimeout(() => mascot.classList.remove('mascot-waving'), 1600);
+    }
+    if (mascot) {
+        syncMascot();
+        mascotToggle.addEventListener('click', () => {
+            const open = mascotPanel.hidden;
+            mascotPanel.hidden = !open;
+            mascotToggle.setAttribute('aria-expanded', String(open));
+            if (open) waveMascot();
+        });
+        document.getElementById('mascot-wave').addEventListener('click', waveMascot);
+        document.getElementById('mascot-hide').addEventListener('click', () => {
+            mascotHidden = true;
+            try { localStorage.setItem('portfolio_mascot_hidden', 'true'); } catch {}
+            syncMascot();
+            if (!mascotRestore.hidden) mascotRestore.focus();
+        });
+        mascotRestore.addEventListener('click', () => {
+            mascotHidden = false;
+            try { localStorage.removeItem('portfolio_mascot_hidden'); } catch {}
+            syncMascot();
+            mascotToggle.focus();
+            waveMascot();
+        });
+        mascotPanel.querySelector('a').addEventListener('click', closeMascotPanel);
+        mascot.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && !mascotPanel.hidden) {
+                closeMascotPanel();
+                mascotToggle.focus();
+            }
+        });
+        document.addEventListener('pointerdown', event => {
+            if (!mascot.contains(event.target)) closeMascotPanel();
+        });
+        mascot.querySelector('.mascot-character').addEventListener('animationend', event => {
+            if (event.animationName === 'byteCross') mascot.classList.remove('mascot-running');
+        });
+        reducedMotion.addEventListener('change', syncMascot);
+        smallScreen.addEventListener('change', syncMascot);
+        document.addEventListener('visibilitychange', syncMascot);
+        new MutationObserver(syncMascot).observe(root, { attributes: true, attributeFilter: ['data-motion'] });
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(entries => {
+                contactVisible = entries[0].isIntersecting;
+                syncMascot();
+            }, { threshold: 0 }).observe(document.getElementById('contact'));
+        }
+        setTimeout(() => {
+            let seen = false;
+            try { seen = sessionStorage.getItem('portfolio_mascot_intro_seen') === 'true'; } catch {}
+            if (!seen && !mascot.hidden && !smallScreen.matches && !reducedMotion.matches && root.dataset.motion === 'running' && !document.hidden) {
+                mascot.classList.add('mascot-running');
+                try { sessionStorage.setItem('portfolio_mascot_intro_seen', 'true'); } catch {}
+            }
+        }, 700);
+    }
 });

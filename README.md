@@ -53,3 +53,7 @@ Google Fonts and Font Awesome require an internet connection; fallback system fo
 
 ## Continuous certificate strip
 All 14 certificates travel in a seamless, linear loop. Filtered sets repeat enough times to fill the viewport. Visual duplicates are hidden from assistive technology and carry no duplicate keyboard controls. Pause and grid controls remain available; keyboard navigation switches to a stable grid, and reduced-motion settings use the grid automatically. Certificate originals remain private.
+
+
+## Byte mascot
+A small original SVG robot makes one seven-second entrance per tab session on desktop, then rests at the left edge. Clicking opens a wave/project panel. Hide preference is stored locally and can be reversed with Show robot. Tablets and phones use an inline stationary character in the hero padding. The mascot hides near the contact form and behind certificate dialogs, respects reduced motion/global pause, and introduces no extra network dependency or continuous JavaScript animation loop.

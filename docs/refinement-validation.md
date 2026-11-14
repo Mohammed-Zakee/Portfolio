@@ -39,3 +39,13 @@
 - SIS, FCSC, IEEE, SDG Sprints, United Nations order verified.
 - Desktop cards and a single 344px column at a 390px phone viewport verified without horizontal overflow.
 - The IEEE proof link points to the existing watermarked leadership certificate.
+
+
+## Byte companion
+- Original SVG character and CSS-based run, leg movement, blink, and wave animations.
+- Desktop intro lasts seven seconds and is limited to once per tab session.
+- Hide/restore and hide preference across reload verified.
+- Global pause produced animation:none and removed the running state.
+- Contact observer hid the robot when the form entered view.
+- At 390px the mascot uses absolute hero positioning, has no running state, and causes no horizontal overflow.
+- The stationary tablet/phone placement and desktop edge placement keep the character away from the main content column.
