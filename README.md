@@ -39,3 +39,13 @@ Google Fonts and Font Awesome require an internet connection; fallback system fo
 - Keeps supplementary projects, earlier experience, and extended course/community lists in native expandable sections.
 - Removes the external icon font and reduces the requested font families. Video uses preload=none and never autoplays.
 - Form validation was checked without submitting a message; actual delivery remains untested.
+
+
+## Sapphire palette and certificate proof
+- Navy/blue light and dark palette, straight scrolling focus ribbon, motion-aware pointer depth and certificate interactions.
+- QDomains uses the current live URL and a real screenshot of its public interface.
+- Fourteen distinct certificates are cataloged in `assets/certificates/catalog.json`; duplicate copies are not counted.
+- Only baked-in watermarked image previews are published. The user-selected `/Certificates/` original folder is ignored by Git and remains local.
+- No original certificate PDFs or direct original-document URLs are published. Issuer verification pages are external and may have their own display/download options.
+- Native accessible dialog supports previous/next browsing, Escape, and focus return. Direct preview-image links work without JavaScript.
+- Certificates are described as course completion, job simulation, or appreciation according to the document, not as professional licensure.

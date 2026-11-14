@@ -1,0 +1,142 @@
+[
+  {
+    "id": "sliit-aiml-stage-1",
+    "title": "AI/ML Engineer — Stage 1",
+    "issuer": "SLIIT",
+    "category": "AI / ML",
+    "kind": "Course completion",
+    "image": "assets/certificates/sliit-aiml-stage-1.webp",
+    "thumbnail": "assets/certificates/sliit-aiml-stage-1-thumb.webp",
+    "verify": null
+  },
+  {
+    "id": "sliit-aiml-stage-2",
+    "title": "AI/ML Engineer — Stage 2",
+    "issuer": "SLIIT",
+    "category": "AI / ML",
+    "kind": "Course completion",
+    "image": "assets/certificates/sliit-aiml-stage-2.webp",
+    "thumbnail": "assets/certificates/sliit-aiml-stage-2-thumb.webp",
+    "verify": null
+  },
+  {
+    "id": "google-generative-ai",
+    "title": "Introduction to Generative AI",
+    "issuer": "Google Cloud / Coursera",
+    "category": "AI / ML",
+    "kind": "Course completion",
+    "image": "assets/certificates/google-generative-ai.webp",
+    "thumbnail": "assets/certificates/google-generative-ai-thumb.webp",
+    "verify": "https://coursera.org/verify/BWWCF2AD8BS8"
+  },
+  {
+    "id": "google-data-analysis",
+    "title": "AI for Data Analysis",
+    "issuer": "Google / Coursera",
+    "category": "AI / ML",
+    "kind": "Course completion",
+    "image": "assets/certificates/google-data-analysis.webp",
+    "thumbnail": "assets/certificates/google-data-analysis-thumb.webp",
+    "verify": "https://coursera.org/verify/QKGVVQZO3EIF"
+  },
+  {
+    "id": "google-content-creation",
+    "title": "AI for Content Creation",
+    "issuer": "Google / Coursera",
+    "category": "AI / ML",
+    "kind": "Course completion",
+    "image": "assets/certificates/google-content-creation.webp",
+    "thumbnail": "assets/certificates/google-content-creation-thumb.webp",
+    "verify": "https://coursera.org/verify/N46WZHZWA8CY"
+  },
+  {
+    "id": "tata-genai-analytics",
+    "title": "GenAI Powered Data Analytics Job Simulation",
+    "issuer": "Tata / Forage",
+    "category": "AI / ML",
+    "kind": "Job simulation",
+    "image": "assets/certificates/tata-genai-analytics.webp",
+    "thumbnail": "assets/certificates/tata-genai-analytics-thumb.webp",
+    "verify": null
+  },
+  {
+    "id": "aws-generative-ai",
+    "title": "Introduction to Generative AI — Art of the Possible",
+    "issuer": "AWS Training & Certification",
+    "category": "AI / ML",
+    "kind": "Course completion",
+    "image": "assets/certificates/aws-generative-ai.webp",
+    "thumbnail": "assets/certificates/aws-generative-ai-thumb.webp",
+    "verify": null
+  },
+  {
+    "id": "aws-cloud-essentials",
+    "title": "AWS Foundations: Getting Started with the AWS Cloud Essentials",
+    "issuer": "AWS Training & Certification",
+    "category": "Cloud & web",
+    "kind": "Course completion",
+    "image": "assets/certificates/aws-cloud-essentials.webp",
+    "thumbnail": "assets/certificates/aws-cloud-essentials-thumb.webp",
+    "verify": null
+  },
+  {
+    "id": "hp-ai-business",
+    "title": "AI for Business Professionals",
+    "issuer": "HP LIFE",
+    "category": "AI / ML",
+    "kind": "Course completion",
+    "image": "assets/certificates/hp-ai-business.webp",
+    "thumbnail": "assets/certificates/hp-ai-business-thumb.webp",
+    "verify": null
+  },
+  {
+    "id": "hp-critical-thinking",
+    "title": "Critical Thinking in the AI Era",
+    "issuer": "HP LIFE",
+    "category": "AI / ML",
+    "kind": "Course completion",
+    "image": "assets/certificates/hp-critical-thinking.webp",
+    "thumbnail": "assets/certificates/hp-critical-thinking-thumb.webp",
+    "verify": null
+  },
+  {
+    "id": "alison-ai-safety",
+    "title": "AI Awareness for Safety Professionals",
+    "issuer": "Alison",
+    "category": "AI / ML",
+    "kind": "Course completion",
+    "image": "assets/certificates/alison-ai-safety.webp",
+    "thumbnail": "assets/certificates/alison-ai-safety-thumb.webp",
+    "verify": "https://alison.com/verify/11d4d2c047"
+  },
+  {
+    "id": "uom-python",
+    "title": "Python for Beginners",
+    "issuer": "University of Moratuwa",
+    "category": "Cloud & web",
+    "kind": "Course completion",
+    "image": "assets/certificates/uom-python.webp",
+    "thumbnail": "assets/certificates/uom-python-thumb.webp",
+    "verify": null
+  },
+  {
+    "id": "uom-web-design",
+    "title": "Web Design for Beginners",
+    "issuer": "University of Moratuwa",
+    "category": "Cloud & web",
+    "kind": "Course completion",
+    "image": "assets/certificates/uom-web-design.webp",
+    "thumbnail": "assets/certificates/uom-web-design-thumb.webp",
+    "verify": null
+  },
+  {
+    "id": "leadspring-logistics",
+    "title": "LeadSpring — Logistic Team Leader",
+    "issuer": "IEEE IAS / PES, SLIIT",
+    "category": "Leadership",
+    "kind": "Appreciation",
+    "image": "assets/certificates/leadspring-logistics.webp",
+    "thumbnail": "assets/certificates/leadspring-logistics-thumb.webp",
+    "verify": null
+  }
+]

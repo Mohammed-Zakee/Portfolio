@@ -11,3 +11,14 @@
 - New one-page PDF was rendered and visually inspected. Source links, image paths, document links, and anchor targets were checked.
 - Prioritizes AI/ML and fintech roles; solo Verity and team Smart Greenhouse attribution comes directly from the owner.
 - No Lighthouse score, end-to-end data-collection result, delivery test, or real-world model accuracy is claimed.
+
+
+## Sapphire palette and protected credentials
+- Ribbon transform verified as none, including dark mode.
+- Fourteen distinct certificate previews; native modal browsing, previous/next, Escape close, focus return, and category filters verified.
+- A 390px phone modal was visually reviewed with no horizontal overflow.
+- Every certificate derivative is visibly watermarked in the rendered pixels; no unwatermarked certificate file or certificate PDF is in public assets.
+- Original Certificates folder is ignored by Git; all 20 supplied files remain local and unchanged.
+- Public catalog and embedded metadata match exactly, and contain no original-document path.
+- QDomains landing interface visually reviewed at the owner-supplied live URL and captured as a real screenshot.
+- Reduced-motion and pause controls remain available; pointer depth does not use a continuous rendering loop.
