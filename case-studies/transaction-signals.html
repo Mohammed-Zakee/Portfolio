@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="#f6f5f0" name="theme-color"/>
+  <title>
+   Transaction Signals — Synthetic fintech experiment | Zakee Nowfal
+  </title>
+  <meta content="Explore an explainable transaction anomaly baseline using synthetic data, an adjustable threshold, and reproducible precision and recall results." name="description"/>
+  <link href="https://mohammed-zakee.github.io/Portfolio/case-studies/transaction-signals.html" rel="canonical"/>
+  <link href="../favicon.ico" rel="icon" sizes="16x16 32x32 48x48"/>
+  <link href="../assets/icons/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+  <link href="../assets/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+  <link href="../style.css?v=20261114-sapphire2" rel="stylesheet"/>
+  <link href="case-studies.css?v=20261114" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600&amp;display=swap" rel="stylesheet"/>
+  <script>
+   try{document.documentElement.dataset.theme=localStorage.getItem('portfolio_theme')||'light';}catch{}
+  </script>
+  <link href="../assets/portfolio-lab.css?v=20261114-labs1" rel="stylesheet"/>
+ </head>
+ <body>
+  <a class="skip-link" href="#case-main">
+   Skip to case study
+  </a>
+  <header class="case-nav">
+   <a class="case-brand" href="../index.html">
+    mz.
+    <span>
+     Mohammed Zakee
+    </span>
+   </a>
+   <a href="../index.html#projects">
+    ← All projects
+   </a>
+   <a class="case-cv" download="" href="../CV%20Official%202026.pdf">
+    Download CV ↓
+   </a>
+  </header>
+  <main class="case-main" id="case-main">
+   <section class="case-hero">
+    <p class="case-eyebrow">
+     NEW PORTFOLIO EXPERIMENT / SYNTHETIC DATA ONLY
+    </p>
+    <h1>
+     Transaction Signals
+    </h1>
+    <p class="case-subtitle">
+     How many alerts are too many?
+    </p>
+    <p class="case-intro">
+     A small, reproducible experiment at the intersection of data and fintech. Move the threshold to explore the trade-off between catching unusual activity and creating unnecessary reviews.
+    </p>
+    <div class="case-facts">
+     <div>
+      <span>
+       ADDED NOVEMBER 2026
+      </span>
+      <p>
+       Built for this portfolio · Browser-based statistical baseline
+      </p>
+     </div>
+     <div>
+      <span>
+       DATA &amp; TECHNOLOGY
+      </span>
+      <p>
+       JavaScript · 400 training records · 200 evaluation records · Entirely synthetic
+      </p>
+     </div>
+    </div>
+   </section>
+   <section aria-labelledby="risk-title" class="lab-panel" id="risk-lab">
+    <span class="lab-tag">
+     INTERACTIVE EVALUATION / NO LIVE FINANCIAL DATA
+    </span>
+    <h2 class="lab-heading" id="risk-title">
+     Move the threshold. See the cost.
+    </h2>
+    <p>
+     Each transaction is scored against a baseline fitted only on 400 synthetic ordinary transactions. Evaluation uses a separate fixed set of 200 records. Labels are used for evaluation, never for fitting the baseline.
+    </p>
+    <label for="risk-threshold">
+     Alert threshold:
+     <output for="risk-threshold" id="threshold-value">
+      2.0
+     </output>
+     standard deviations
+    </label>
+    <input aria-describedby="threshold-help" id="risk-threshold" max="4.5" min="0.5" step="0.1" type="range" value="2.0"/>
+    <p class="lab-note" id="threshold-help">
+     Lower values flag more records. Higher values reduce review workload but can miss more anomalies. Ordinary and anomalous feature ranges overlap.
+    </p>
+    <div class="lab-stats">
+     <div>
+      <strong id="risk-precision">
+       —
+      </strong>
+      <span>
+       Precision · flagged records that are labeled anomalies
+      </span>
+     </div>
+     <div>
+      <strong id="risk-recall">
+       —
+      </strong>
+      <span>
+       Recall · labeled anomalies successfully flagged
+      </span>
+     </div>
+     <div>
+      <strong id="risk-alerts">
+       —
+      </strong>
+      <span>
+       Records sent for review
+      </span>
+     </div>
+     <div>
+      <strong id="risk-missed">
+       —
+      </strong>
+      <span>
+       Labeled anomalies missed
+      </span>
+     </div>
+    </div>
+    <p aria-live="polite" id="risk-summary" role="status">
+    </p>
+    <div class="lab-table-wrap">
+     <table class="lab-table">
+      <caption>
+       Eight highest-scoring evaluation records · amounts in synthetic LKR
+      </caption>
+      <thead>
+       <tr>
+        <th scope="col">
+         Synthetic ID
+        </th>
+        <th scope="col">
+         Amount
+        </th>
+        <th scope="col">
+         Last-hour count
+        </th>
+        <th scope="col">
+         Score
+        </th>
+        <th scope="col">
+         Decision
+        </th>
+        <th scope="col">
+         Generated label
+        </th>
+       </tr>
+      </thead>
+      <tbody id="risk-rows">
+      </tbody>
+     </table>
+    </div>
+    <div class="lab-actions">
+     <button id="risk-export" type="button">
+      Download all 200 scored records ↓
+     </button>
+     <a href="../assets/portfolio-lab.js">
+      Read the scoring &amp; evaluation source ↗
+     </a>
+    </div>
+    <noscript>
+     <p>
+      This interactive evaluation needs JavaScript. The methodology and baseline results remain below.
+     </p>
+    </noscript>
+   </section>
+   <div class="case-layout">
+    <aside aria-label="Case study contents" class="case-index">
+     <a href="#question">
+      01 / The question
+     </a>
+     <a href="#method">
+      02 / Method
+     </a>
+     <a href="#results">
+      03 / Results
+     </a>
+     <a href="#limits">
+      04 / Limits
+     </a>
+    </aside>
+    <div class="case-body">
+     <section id="question">
+      <p class="case-eyebrow">
+       01 / THE QUESTION
+      </p>
+      <h2>
+       A useful alert needs a useful explanation.
+      </h2>
+      <p>
+       In a review workflow, flagging everything creates work and flagging nothing misses unusual activity. This experiment explores that trade-off without using customer information or pretending to make a financial decision.
+      </p>
+      <div class="contribution-note">
+       <h3>
+        What was built for this portfolio
+       </h3>
+       <p>
+        A deterministic synthetic data generator, a statistical scoring baseline, evaluation metrics, an adjustable threshold, and CSV export. This is a new demonstration added in November 2026, separate from my employment projects.
+       </p>
+      </div>
+     </section>
+     <section id="method">
+      <p class="case-eyebrow">
+       02 / METHOD
+      </p>
+      <h2>
+       Simple enough to inspect.
+      </h2>
+      <ol>
+       <li>
+        Generate 400 ordinary training records using fixed seed 104729. Features are an amount and a recent transaction count.
+       </li>
+       <li>
+        Fit means and population standard deviations to log(1 + amount) and transaction count using only the training set.
+       </li>
+       <li>
+        Generate 200 separate evaluation records using seed 130363 and a 12% anomaly probability. The observed number of anomalies can differ from 24.
+       </li>
+       <li>
+        Score each feature as its positive deviation from the training mean, divided by the training standard deviation. The transaction score is the larger feature score.
+       </li>
+       <li>
+        Flag scores at or above the chosen threshold. Compare flags with generated labels to compute precision and recall.
+       </li>
+      </ol>
+      <p>
+       Higher amounts or bursts can increase a score. A high score explains deviation from this generator’s baseline; it does not establish fraud. Negative deviations are deliberately ignored by this one-sided baseline.
+      </p>
+     </section>
+     <section id="results">
+      <p class="case-eyebrow">
+       03 / REPRODUCIBLE RESULTS
+      </p>
+      <h2>
+       The default baseline.
+      </h2>
+      <div id="static-results">
+       <p>
+        At a threshold of 2.0 standard deviations:
+        <strong>
+         17 true positives, 0 false positives, 5 false negatives, and 178 true negatives
+        </strong>
+        .
+       </p>
+       <p>
+        Precision:
+        <strong>
+         100.0%
+        </strong>
+        . Recall:
+        <strong>
+         77.3%
+        </strong>
+        . Evaluation size: 200 synthetic records. Recomputed from the shipped scoring code on 14 November 2026.
+       </p>
+      </div>
+      <p>
+       These are measurements on a toy generator, not evidence of performance on real payments. The generator intentionally overlaps classes, but it also creates the patterns the detector looks for. That makes this evaluation easier than an independently collected dataset.
+      </p>
+      <p>
+       Try thresholds 0.5 and 4.5 above to inspect how alert volume and missed anomalies change. Download the full scored set to check the confusion counts yourself.
+      </p>
+     </section>
+     <section id="limits">
+      <p class="case-eyebrow">
+       04 / LIMITATIONS &amp; NEXT STEPS
+      </p>
+      <h2>
+       A baseline, with clear boundaries.
+      </h2>
+      <ul>
+       <li>
+        Synthetic labels are generator choices, not investigated fraud outcomes. No real-world accuracy, business savings, or production readiness is claimed.
+       </li>
+       <li>
+        No per-customer history, geography, merchant context, class-drift handling, or calibrated fraud probabilities are modeled.
+       </li>
+       <li>
+        The evaluation set is visible in this demo. Adjusting the threshold against it is exploration, not a valid final model-selection procedure.
+       </li>
+       <li>
+        Next: use a separately held-out, appropriately licensed dataset, choose thresholds on validation data, compare with a trained anomaly detector, and measure review capacity and false-positive costs.
+       </li>
+      </ul>
+      <p>
+       This demonstration flags synthetic records for review; it does not approve, block, or score real people or payments.
+      </p>
+     </section>
+    </div>
+   </div>
+   <section class="case-contact">
+    <h2>
+     Interested in AI applied thoughtfully?
+    </h2>
+    <a class="btn-primary" href="../index.html#contact">
+     Let’s talk →
+    </a>
+    <a class="btn-ghost" href="../index.html#projects">
+     Back to projects
+    </a>
+   </section>
+  </main>
+  <footer class="case-footer">
+   © 2026 Zakee Nowfal
+  </footer>
+  <script defer="" src="../assets/verity-lexicon.js?v=20261114-labs1">
+  </script>
+  <script defer="" src="../assets/portfolio-lab.js?v=20261114-labs1">
+  </script>
+ </body>
+</html>

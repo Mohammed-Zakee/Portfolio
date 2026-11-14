@@ -9,9 +9,9 @@
   </title>
   <meta content="Turning scattered reviews into an explorable business picture." name="description"/>
   <link href="https://mohammed-zakee.github.io/Portfolio/case-studies/verity.html" rel="canonical"/>
-  <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48"/>
-  <link rel="icon" type="image/png" sizes="96x96" href="../assets/icons/favicon-96.png"/>
-  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png"/>
+  <link href="../favicon.ico" rel="icon" sizes="16x16 32x32 48x48"/>
+  <link href="../assets/icons/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+  <link href="../assets/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
   <link href="../style.css?v=20261114-sapphire2" rel="stylesheet"/>
   <link href="case-studies.css?v=20261114" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -20,6 +20,7 @@
   <script>
    try{document.documentElement.dataset.theme=localStorage.getItem('portfolio_theme')||'light';}catch{}
   </script>
+  <link href="../assets/portfolio-lab.css?v=20261114-labs1" rel="stylesheet"/>
  </head>
  <body>
   <a class="skip-link" href="#case-main">
@@ -86,6 +87,54 @@
      Actual public demo interface. No fabricated dashboard results or customer data.
     </figcaption>
    </figure>
+   <section aria-labelledby="review-lab-title" class="lab-panel" id="review-lab">
+    <span class="lab-tag">
+     TRY THE LOGIC / NO SIGN-IN
+    </span>
+    <h2 class="lab-heading" id="review-lab-title">
+     A review. A result. A reason.
+    </h2>
+    <div class="lab-grid">
+     <div>
+      <p>
+       Try Verity’s explainable sentiment baseline. Paste a review, or load four fictional examples to see where simple rules help—and where they fall short.
+      </p>
+      <form id="review-demo">
+       <label for="review-input">
+        Review text · one review per line
+       </label>
+       <textarea aria-describedby="review-help" id="review-input" maxlength="6000" placeholder="Friendly staff and delicious food." rows="6"></textarea>
+       <p class="lab-note" id="review-help">
+        Up to 12 reviews. Text stays in this browser; nothing is collected or sent to an AI service.
+       </p>
+       <div class="lab-actions">
+        <button class="lab-primary" type="submit">
+         Analyze reviews →
+        </button>
+        <button id="review-sample" type="button">
+         Load fictional samples
+        </button>
+       </div>
+      </form>
+      <p class="lab-note">
+       This browser port uses Verity’s word lists, immediate-word negation, and sentiment thresholds. It does not scrape Google Maps or run a contextual language model. Sarcasm and multilingual text can be misread.
+      </p>
+      <a href="https://github.com/Mohammed-Zakee/Verity/blob/main/backend/app.py" rel="noopener noreferrer" target="_blank">
+       Inspect the original Python implementation ↗
+      </a>
+     </div>
+     <div aria-live="polite" class="lab-output" id="review-output" role="status">
+      <p>
+       Results and matched words will appear here. Try the sample’s sarcastic final review and inspect the limitation yourself.
+      </p>
+     </div>
+    </div>
+    <noscript>
+     <p>
+      This optional demo needs JavaScript. The case study and source remain available without it.
+     </p>
+    </noscript>
+   </section>
    <div class="case-layout">
     <aside aria-label="Case study contents" class="case-index">
      <a href="#problem">
@@ -314,5 +363,9 @@
   <footer class="case-footer">
    © 2026 Mohammed Zakee · Zakee Nowfal
   </footer>
+  <script defer="" src="../assets/verity-lexicon.js?v=20261114-labs1">
+  </script>
+  <script defer="" src="../assets/portfolio-lab.js?v=20261114-labs1">
+  </script>
  </body>
 </html>

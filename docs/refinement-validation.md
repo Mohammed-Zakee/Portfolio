@@ -1,5 +1,15 @@
 # Refinement verification — 14 November 2026
 
+## Interactive portfolio additions
+- Review demonstrator ports Verity’s existing lexicon, immediate-word negation and sentiment thresholds. Ten edge cases matched the original Python implementation for label and positive/negative counts.
+- Node checks cover review behavior, seeded data reproducibility, train/evaluation record isolation, training-only fit, confusion-matrix arithmetic, zero-alert precision and threshold monotonicity.
+- Transaction Signals default metrics recomputed from shipped code: 17 TP, 0 FP, 5 FN, 178 TN. All data is synthetic and its evaluation limitations are stated on the page.
+- Browser checks confirmed sample review output, keyboard threshold changes and CSV download with 200 records.
+- At 390px, review/current-work columns collapse and the page has no horizontal overflow. The financial data table scrolls within its own container.
+- Introduction is 40 seconds, approximately 281KB, with captions, transcript, manual playback and preload=none. Playback advanced without browser errors.
+- Existing project assets, relative links and IDs were checked; no missing local files or duplicate IDs were found.
+- Owner confirmed four additional solo projects and Smart Greenhouse team leadership, hardware coordination and sensor monitoring. Testimonial content remains unpublished pending approved quotes.
+
 - Desktop and 390px phone layouts visually reviewed in the browser, including light and dark contact sections.
 - Project filters verified; selecting IoT opens the supplemental projects section and shows Smart Greenhouse.
 - Conventional form has visible labels, name/email/message requirements, optional company, and native email validation. No message was submitted.
