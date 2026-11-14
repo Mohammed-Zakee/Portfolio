@@ -2352,3 +2352,32 @@ html { transition: background-color .4s, color .4s; }
 [data-motion="paused"] .hero-portrait img { transform: none; }
 @media (prefers-reduced-motion:reduce) { .hero-portrait img { transform: none; } }
 [data-motion="paused"] .certificate-dialog[open], [data-motion="paused"] .section-title.reveal.active::after { animation: none !important; }
+/* Seamless certificate loop: two equal groups, no gap at the repeat point. */
+.certificate-strip-controls { display: flex; flex-wrap: wrap; gap: 10px; margin: -8px 0 22px; }
+.certificate-strip-controls[hidden] { display: none; }
+.certificate-strip-controls button { min-height: 44px; padding: 9px 16px; border: 1px solid var(--glass-border-hover); border-radius: 6px; font-size: 11px; }
+.certificate-strip-controls button[hidden] { display: none; }
+.certificate-viewport.strip-enabled[data-view="strip"] { overflow: hidden; padding: 8px 0 20px; }
+.strip-enabled[data-view="strip"] .certificate-track { display: flex; width: max-content; animation: certificateConveyor var(--strip-duration,126s) linear infinite; will-change: transform; }
+.strip-enabled[data-view="strip"] .certificate-group { display: flex; flex-shrink: 0; width: max-content; gap: 22px; padding-right: 22px; }
+.strip-enabled[data-view="strip"] .certificate-card { width: clamp(280px,28vw,350px); flex: 0 0 auto; }
+.strip-enabled[data-view="strip"] .certificate-copy h3 { min-height: 78px; }
+.strip-enabled[data-view="strip"] .certificate-copy { min-height: 212px; }
+.certificate-group-copy { cursor: pointer; }
+.certificate-group-copy .certificate-actions > span { min-height: 44px; display: inline-flex; align-items: center; font-size: 10px; color: var(--color-accent-cyan); }
+.strip-enabled[data-paused="true"] .certificate-track, .certificate-open .certificate-track { animation-play-state: paused; }
+.strip-enabled[data-view="grid"] .certificate-track { transform: none; animation: none; }
+.strip-enabled[data-view="grid"] .certificate-group-copy { display: none; }
+@keyframes certificateConveyor { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (max-width: 768px) { .strip-enabled[data-view="strip"] .certificate-card { width: 285px; } }
+@media (prefers-reduced-motion:reduce) {
+ .certificate-viewport.strip-enabled[data-view="strip"] { overflow: visible; }
+ .strip-enabled[data-view="strip"] .certificate-track { display: block; width: auto; animation: none; transform: none; will-change: auto; }
+ .strip-enabled[data-view="strip"] .certificate-group { display: grid; width: auto; padding: 0; }
+ .strip-enabled[data-view="strip"] .certificate-card { width: auto; }
+ .strip-enabled[data-view="strip"] .certificate-group-copy { display: none; }
+}
+.certificate-card-filler { cursor: pointer; }
+.certificate-card-filler .certificate-actions > span { min-height: 44px; display: inline-flex; align-items: center; font-size: 10px; color: var(--color-accent-cyan); }
+.strip-enabled[data-view="grid"] .certificate-card-filler { display: none; }
+@media (prefers-reduced-motion:reduce) { .strip-enabled[data-view="strip"] .certificate-card-filler { display: none; } }

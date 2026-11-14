@@ -135,19 +135,95 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const certificateFilters = document.querySelectorAll('[data-certificate-filter]');
     const certificateCards = document.querySelectorAll('.certificate-card');
-    const moreCertificates = document.querySelector('.certificate-more');
+    const certificateViewport = document.querySelector('.certificate-viewport');
+    const certificateTrack = document.querySelector('.certificate-track');
+    const certificateGroup = document.querySelector('.certificate-group');
+    const stripPause = document.getElementById('certificate-strip-pause');
+    const viewToggle = document.getElementById('certificate-view-toggle');
+    let stripPaused = false;
+    let gridView = false;
+    function updateCertificateView() {
+        certificateViewport.dataset.view = gridView ? 'grid' : 'strip';
+        certificateViewport.dataset.paused = String(stripPaused);
+        stripPause.setAttribute('aria-pressed', String(stripPaused));
+        stripPause.textContent = stripPaused ? 'Resume strip ▷' : 'Pause strip Ⅱ';
+        stripPause.hidden = gridView || reducedMotion.matches;
+        viewToggle.setAttribute('aria-pressed', String(gridView));
+        viewToggle.textContent = gridView ? 'Show moving strip' : 'Browse as grid';
+        viewToggle.hidden = reducedMotion.matches;
+    }
+    function visualCertificateCopy(source) {
+        const copy = source.cloneNode(true);
+        copy.setAttribute('aria-hidden', 'true');
+        copy.querySelectorAll('a,button').forEach(control => {
+            const span = document.createElement('span');
+            span.className = control.className;
+            if (control.dataset.certificatePreview) span.dataset.certificatePreview = control.dataset.certificatePreview;
+            while (control.firstChild) span.append(control.firstChild);
+            control.replaceWith(span);
+        });
+        return copy;
+    }
+    function refreshCertificateLoop() {
+        certificateTrack.querySelector('.certificate-group-copy')?.remove();
+        certificateGroup.querySelectorAll('.certificate-card-filler').forEach(card => card.remove());
+        certificateCards.forEach(card => {
+            card.classList.remove('reveal-pending');
+            const image = card.querySelector('img');
+            if (image) image.loading = 'eager';
+        });
+        const visible = [...certificateCards].filter(card => !card.hidden);
+        if (!visible.length) return;
+        const cardWidth = Math.max(285, visible[0].getBoundingClientRect().width);
+        const minimum = Math.ceil(certificateViewport.clientWidth / (cardWidth + 22)) + 1;
+        const units = Math.max(visible.length, minimum);
+        for (let i = visible.length; i < units; i++) {
+            const filler = visualCertificateCopy(visible[i % visible.length]);
+            filler.classList.add('certificate-card-filler');
+            certificateGroup.append(filler);
+        }
+        const copy = visualCertificateCopy(certificateGroup);
+        copy.classList.add('certificate-group-copy');
+        certificateTrack.append(copy);
+        certificateTrack.style.setProperty('--strip-duration', `${Math.max(18, units * 9)}s`);
+    }
+    if (certificateViewport && certificateTrack && certificateGroup) {
+        certificateViewport.classList.add('strip-enabled');
+        document.querySelector('.certificate-strip-controls').hidden = false;
+        refreshCertificateLoop();
+        updateCertificateView();
+        stripPause.addEventListener('click', () => { stripPaused = !stripPaused; updateCertificateView(); });
+        viewToggle.addEventListener('click', () => { gridView = !gridView; updateCertificateView(); });
+        reducedMotion.addEventListener('change', updateCertificateView);
+        certificateTrack.addEventListener('click', event => {
+            if (!event.target.closest('.certificate-group-copy,.certificate-card-filler')) return;
+            const card = event.target.closest('.certificate-card');
+            const id = card?.querySelector('[data-certificate-preview]')?.dataset.certificatePreview;
+            if (id) {
+                const source = [...previewButtons].find(button => button.dataset.certificatePreview === id);
+                source?.click();
+                if (source) certificateTrigger = stripPause;
+            }
+        });
+        let loopResize;
+        addEventListener('resize', () => {
+            clearTimeout(loopResize);
+            loopResize = setTimeout(refreshCertificateLoop, 180);
+        });
+        let keyboardNavigation = false;
+        document.addEventListener('keydown', event => { if (event.key === 'Tab') keyboardNavigation = true; });
+        document.addEventListener('pointerdown', () => { keyboardNavigation = false; }, { capture: true });
+        certificateGroup.addEventListener('focusin', () => {
+            if (keyboardNavigation && !gridView) { gridView = true; updateCertificateView(); }
+        });
+    }
     certificateFilters.forEach(button => button.addEventListener('click', () => {
         certificateFilters.forEach(filter => filter.setAttribute('aria-pressed', String(button === filter)));
         certificateCards.forEach(card => {
             card.hidden = button.dataset.certificateFilter !== 'All' && card.dataset.certificateCategory !== button.dataset.certificateFilter;
             card.classList.remove('reveal-pending');
         });
-        if (moreCertificates) {
-            const count = [...moreCertificates.querySelectorAll('.certificate-card')].filter(card => !card.hidden).length;
-            moreCertificates.hidden = count === 0;
-            moreCertificates.open = button.dataset.certificateFilter !== 'All';
-            moreCertificates.querySelector('summary').firstChild.textContent = `Explore ${count} more certificate${count === 1 ? '' : 's'} `;
-        }
+        refreshCertificateLoop();
     }));
 
     // Pointer depth follows interaction; there is no permanent rendering loop.

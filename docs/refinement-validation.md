@@ -22,3 +22,13 @@
 - Public catalog and embedded metadata match exactly, and contain no original-document path.
 - QDomains landing interface visually reviewed at the owner-supplied live URL and captured as a real screenshot.
 - Reduced-motion and pause controls remain available; pointer depth does not use a continuous rendering loop.
+
+
+## Continuous certificate queue
+- Two equal-width groups measured at 5208px each on desktop and 4298px each at a 390px viewport.
+- Linear, infinite animation translates exactly one group width, so the end and start show identical content.
+- Small filtered sets receive visual repeats; Leadership filled two equal groups wider than the viewport.
+- Repeated-card preview click opened the correct certificate and restored focus to the strip controls.
+- Pause/resume, stable grid view, keyboard-to-grid transition, and no mobile page overflow were verified.
+- Visual duplicates have no interactive descendants and are hidden from assistive technology; the canonical 14 certificates remain keyboard accessible.
+- Reduced-motion CSS uses a static grid and omits visual repeats.

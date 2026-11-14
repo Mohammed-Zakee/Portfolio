@@ -49,3 +49,7 @@ Google Fonts and Font Awesome require an internet connection; fallback system fo
 - No original certificate PDFs or direct original-document URLs are published. Issuer verification pages are external and may have their own display/download options.
 - Native accessible dialog supports previous/next browsing, Escape, and focus return. Direct preview-image links work without JavaScript.
 - Certificates are described as course completion, job simulation, or appreciation according to the document, not as professional licensure.
+
+
+## Continuous certificate strip
+All 14 certificates travel in a seamless, linear loop. Filtered sets repeat enough times to fill the viewport. Visual duplicates are hidden from assistive technology and carry no duplicate keyboard controls. Pause and grid controls remain available; keyboard navigation switches to a stable grid, and reduced-motion settings use the grid automatically. Certificate originals remain private.
