@@ -2381,3 +2381,22 @@ html { transition: background-color .4s, color .4s; }
 .certificate-card-filler .certificate-actions > span { min-height: 44px; display: inline-flex; align-items: center; font-size: 10px; color: var(--color-accent-cyan); }
 .strip-enabled[data-view="grid"] .certificate-card-filler { display: none; }
 @media (prefers-reduced-motion:reduce) { .strip-enabled[data-view="strip"] .certificate-card-filler { display: none; } }
+/* Always-visible volunteer roles: campus work first, wider initiatives after. */
+.volunteer-grid { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 22px; margin-top: 32px; }
+.volunteer-card { grid-column: span 2; min-width: 0; padding: 28px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; position: relative; transition: border-color .3s,transform .3s,box-shadow .3s; }
+.volunteer-top { display: flex; justify-content: space-between; gap: 12px; font: 9px/1.6 var(--font-mono); letter-spacing: .8px; color: var(--color-accent-cyan); margin-bottom: 24px; }
+.volunteer-card h3 { font: 500 29px/1.2 var(--font-heading); letter-spacing: -.8px; margin-bottom: 8px; }
+.volunteer-organisation { min-height: 40px; font-size: 11px; color: var(--color-text-muted); line-height: 1.7; }
+.volunteer-role { font-size: 12px; line-height: 1.7; font-weight: 600; color: var(--color-accent-cyan); margin: 18px 0; padding-top: 18px; border-top: 1px solid var(--glass-border); }
+.volunteer-card ul { list-style: none; display: grid; gap: 10px; }
+.volunteer-card li { position: relative; padding-left: 13px; font-size: 12px; line-height: 1.8; color: var(--color-text-muted-strong); overflow-wrap: anywhere; }
+.volunteer-card li::before { content: ''; position: absolute; width: 4px; height: 4px; left: 0; top: 9px; border-radius: 50%; background: var(--color-accent-cyan); }
+.volunteer-supporting { grid-column: span 3; }
+.volunteer-supporting h3 { font-size: 23px; }
+.volunteer-supporting .volunteer-role { margin-top: 14px; }
+.volunteer-description { font-size: 12px; line-height: 1.9; color: var(--color-text-muted-strong); max-width: 450px; }
+.volunteer-proof { display: inline-flex; align-items: center; min-height: 44px; margin-top: 18px; font-size: 10px; color: var(--color-accent-cyan); text-decoration: underline; text-underline-offset: 4px; }
+@media (hover:hover) and (pointer:fine) { .volunteer-card:hover { transform: translateY(-4px); border-color: var(--glass-border-hover); box-shadow: 0 12px 30px #23457614; } }
+@media (max-width:1000px) { .volunteer-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .volunteer-card { grid-column: auto; } .volunteer-ieee { grid-column: 1 / -1; } }
+@media (max-width:600px) { .volunteer-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; } .volunteer-card,.volunteer-ieee,.volunteer-supporting { grid-column: auto; padding: 24px; } .volunteer-top { margin-bottom: 18px; } .volunteer-organisation { min-height: 0; } .volunteer-card h3 { font-size: 26px; } }
+@media (prefers-reduced-motion:reduce) { .volunteer-card { transition: none; } }

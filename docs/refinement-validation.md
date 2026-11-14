@@ -32,3 +32,10 @@
 - Pause/resume, stable grid view, keyboard-to-grid transition, and no mobile page overflow were verified.
 - Visual duplicates have no interactive descendants and are hidden from assistive technology; the canonical 14 certificates remain keyboard accessible.
 - Reduced-motion CSS uses a static grid and omits visual repeats.
+
+
+## Volunteer presentation
+- Always visible; no disclosure/plus button.
+- SIS, FCSC, IEEE, SDG Sprints, United Nations order verified.
+- Desktop cards and a single 344px column at a 390px phone viewport verified without horizontal overflow.
+- The IEEE proof link points to the existing watermarked leadership certificate.
