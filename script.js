@@ -40,12 +40,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const filters = document.querySelectorAll('[data-filter]');
     const projects = document.querySelectorAll('.work-card');
+    const archive = document.querySelector('.archive-projects');
     filters.forEach(button => button.addEventListener('click', () => {
         filters.forEach(filter => filter.setAttribute('aria-pressed', String(filter === button)));
         projects.forEach(card => {
             card.hidden = button.dataset.filter !== 'All' && card.dataset.category !== button.dataset.filter;
             card.classList.remove('reveal-pending');
         });
+        if (archive) {
+            archive.hidden = ![...archive.querySelectorAll('.work-card')].some(card => !card.hidden);
+            archive.open = button.dataset.filter !== 'All';
+        }
     }));
 
     const clock = document.getElementById('localTime');

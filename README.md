@@ -28,3 +28,14 @@ Warm neutral/forest theme, alternate dark theme, animated hero details, scroll r
 - `assets/projects/`: real project screenshots.
 
 Google Fonts and Font Awesome require an internet connection; fallback system fonts remain available. Contact delivery uses the existing Formspree configuration and has not been tested by sending a message. Deploy through GitHub Pages from the repository's `main` branch.
+
+
+## Recruiter refinement — 14 November 2026
+- Prioritizes AI/ML and fintech roles, as confirmed by the owner.
+- Features Verity prominently and identifies it as a solo project; Smart Greenhouse is identified as team work.
+- Offers a 35-second captioned overview with a transcript. It combines a real interface capture with architecture/evidence slides, not an end-to-end scraping demonstration.
+- Provides a one-page downloadable project brief and branded 1200 × 630 sharing image.
+- Uses a conventional labeled contact form with optional company field and a direct email alternative.
+- Keeps supplementary projects, earlier experience, and extended course/community lists in native expandable sections.
+- Removes the external icon font and reduces the requested font families. Video uses preload=none and never autoplays.
+- Form validation was checked without submitting a message; actual delivery remains untested.

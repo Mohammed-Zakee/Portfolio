@@ -66,3 +66,4 @@
 @media (max-width: 380px) { .system-flow { grid-template-columns: 1fr; } }
 /* Keep the contents index tied to document scrolling on wide screens. */
 html, body { overflow-x: clip; }
+.case-index a, .case-nav > a, .source-links a { min-height: 44px; display: flex; align-items: center; }

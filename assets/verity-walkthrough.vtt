@@ -1,0 +1,13 @@
+WEBVTT
+
+00:00.000 --> 00:08.000
+Verity is a solo business exploration project. This is the real public landing interface.
+
+00:08.000 --> 00:17.000
+The documented pipeline connects a Next.js interface, Flask API, Playwright collection, keyword-based analysis, and charts.
+
+00:17.000 --> 00:26.000
+Eight focused sentiment behavior checks passed. These checks do not establish real-world accuracy.
+
+00:26.000 --> 00:35.000
+Explore the case study for source code, engineering trade-offs, current limitations, and next steps. No live collection request is run in this overview.

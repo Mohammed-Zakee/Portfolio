@@ -9,7 +9,13 @@
 
 ## Information still needed
 - Exact personal contributions, module ownership, and team size for team projects.
-- Confirmed target roles and location/work arrangements.
+- Location/work-arrangement preferences.
+
+## Confirmed by the owner on 14 November 2026
+- Prioritize AI/ML and fintech roles.
+- Verity is a solo project intended to simplify Google Maps business information/image collection.
+- Smart Greenhouse is a team project using ESP32 and sensors for greenhouse automation.
+- Exact greenhouse module ownership, team size, measured outcomes, and testimonials remain unconfirmed.
 - Greenhouse prototype photographs, firmware, wiring, and test records.
 - Genuine testimonials with permission to publish the text and attribution.
 - Measured impact or user feedback, if available.
